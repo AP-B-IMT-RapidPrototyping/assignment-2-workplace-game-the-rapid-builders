@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bm6y13s1ny4ak" path="res://Assets/Assets-Leon/hart.webp" id="1_g4q6y"]
 [ext_resource type="Script" uid="uid://da5rianwvj7v3" path="res://Scenes/Leon/ProgressBarAftikken.cs" id="1_yr1ef"]
 [ext_resource type="Script" uid="uid://d4m0hsu4f28oy" path="res://Scenes/Leon/HartScript.cs" id="2_67xc2"]
+[ext_resource type="AudioStream" uid="uid://cy8520oqeys1j" path="res://Assets/Assets-Leon/hartslag-gewoon.mp3" id="4_4hai4"]
+[ext_resource type="AudioStream" uid="uid://bk0hmn24chncb" path="res://Assets/Assets-Leon/hartslag-snel.mp3" id="5_gigca"]
+[ext_resource type="AudioStream" uid="uid://d1bnuq3gsth5h" path="res://Assets/Assets-Leon/hartslag-dood.mp3" id="6_fs7ip"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67xc2"]
 bg_color = Color(0.19219694, 0.192197, 0.19219688, 1)
@@ -29,7 +32,7 @@ script = ExtResource("1_yr1ef")
 mijnHart = NodePath("../TextureRect")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=992086871]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=992086871 node_paths=PackedStringArray("HartslagGewoon", "HartslagSnel", "HartslagDood")]
 custom_minimum_size = Vector2(40, 10)
 offset_left = -137.0
 offset_top = -68.0
@@ -40,4 +43,16 @@ pivot_offset = Vector2(20, 20)
 texture = ExtResource("1_g4q6y")
 expand_mode = 1
 script = ExtResource("2_67xc2")
+HartslagGewoon = NodePath("../hartslag-gewoon")
+HartslagSnel = NodePath("../Hartslag-snel")
+HartslagDood = NodePath("../hartslag-dood")
 metadata/_edit_use_anchors_ = true
+
+[node name="Hartslag-snel" type="AudioStreamPlayer" parent="." unique_id=23983446]
+stream = ExtResource("5_gigca")
+
+[node name="hartslag-dood" type="AudioStreamPlayer" parent="." unique_id=2137811873]
+stream = ExtResource("6_fs7ip")
+
+[node name="hartslag-gewoon" type="AudioStreamPlayer" parent="." unique_id=1809518147]
+stream = ExtResource("4_4hai4")
