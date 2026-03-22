@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://cg1vtr8j540ji"]
+
+[ext_resource type="Script" uid="uid://c6rnqy7f4ui58" path="res://Scenes/Lukas/Movement.cs" id="1_lfc3w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ucp23"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lfc3w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c2f2s"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qwowd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dcxb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ucp23"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwowd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lfc3w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfc3w"]
+albedo_color = Color(1, 0.039215688, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lfc3w"]
+
+[node name="Wereld" type="Node3D" unique_id=395192]
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=416501914]
+transform = Transform3D(43.03244, 0, 0, 0, 1, 0, 0, 0, 42.270443, 0, 0, 0)
+mesh = SubResource("BoxMesh_ucp23")
+
+[node name="floor" type="StaticBody3D" parent="Floor" unique_id=1035780198]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_lfc3w")
+
+[node name="floorCol" type="CollisionShape3D" parent="Floor/floor" unique_id=1371464185]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+shape = SubResource("BoxShape3D_c2f2s")
+
+[node name="player" type="CharacterBody3D" parent="." unique_id=216375361 node_paths=PackedStringArray("InteractionRay", "InteractionLabel", "HoldPosition")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5932269, 0)
+script = ExtResource("1_lfc3w")
+InteractionDistance = 2.0
+InteractionRay = NodePath("Camera3D/RayCast3D")
+InteractionLabel = NodePath("../CanvasLayer/InteractionLabel")
+HoldPosition = NodePath("Camera3D/HoldPosition")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=1983804924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9638687, 0)
+mesh = SubResource("CapsuleMesh_qwowd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=1573553036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9638687, 0)
+shape = SubResource("CapsuleShape3D_5dcxb")
+
+[node name="Camera3D" type="Camera3D" parent="player" unique_id=1835992019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4951565, -0.18426031)
+
+[node name="RayCast3D" type="RayCast3D" parent="player/Camera3D" unique_id=915195273]
+target_position = Vector3(0, 0, 2)
+
+[node name="HoldPosition" type="Marker3D" parent="player/Camera3D" unique_id=215015177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16009474, -1.7786481)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1466208685]
+transform = Transform3D(-0.10792998, -0.58761764, 0.80190814, 0, 0.80662, 0.59107035, -0.9941585, 0.06379421, -0.087058485, 0, 5.491852, 0)
+light_color = Color(0.74509805, 1, 1, 1)
+shadow_enabled = true
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=401178792 groups=["pickable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.922423, 2.0957966, -3.6723385)
+physics_material_override = SubResource("PhysicsMaterial_ucp23")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=348168642]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+shape = SubResource("BoxShape3D_qwowd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1101077171]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("BoxMesh_lfc3w")
+surface_material_override/0 = SubResource("StandardMaterial3D_lfc3w")
+
+[node name="Control" type="Control" parent="." unique_id=1604314226]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1937291, 0.1937291)
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=942264596]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=995802980]
+
+[node name="InteractionLabel" type="Label" parent="CanvasLayer" unique_id=1053801388]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 15.0
+offset_right = 20.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "test"
+label_settings = SubResource("LabelSettings_lfc3w")
+horizontal_alignment = 1
