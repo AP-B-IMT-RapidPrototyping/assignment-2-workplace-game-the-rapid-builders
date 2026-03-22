@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bk104icuou3b2"]
+
+[ext_resource type="Texture2D" uid="uid://bm6y13s1ny4ak" path="res://Assets/Assets-Leon/hart.webp" id="1_g4q6y"]
+[ext_resource type="Script" uid="uid://da5rianwvj7v3" path="res://Scenes/Leon/ProgressBarAftikken.cs" id="1_yr1ef"]
+[ext_resource type="Script" uid="uid://d4m0hsu4f28oy" path="res://Scenes/Leon/HartScript.cs" id="2_67xc2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67xc2"]
+bg_color = Color(0.19219694, 0.192197, 0.19219688, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yr1ef"]
+bg_color = Color(0.9999998, 0.16541186, 0.11993807, 1)
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+
+[node name="Node2D" type="Node2D" unique_id=1036501218]
+position = Vector2(941, 122)
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=738577570 node_paths=PackedStringArray("mijnHart")]
+custom_minimum_size = Vector2(200, 20)
+offset_left = -82.0
+offset_top = -57.0
+offset_right = 118.0
+offset_bottom = -34.0
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_67xc2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yr1ef")
+value = 100.0
+script = ExtResource("1_yr1ef")
+mijnHart = NodePath("../TextureRect")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=992086871]
+custom_minimum_size = Vector2(40, 10)
+offset_left = -137.0
+offset_top = -68.0
+offset_right = -97.0
+offset_bottom = -22.0
+scale = Vector2(1.0431556, 0.92)
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("1_g4q6y")
+expand_mode = 1
+script = ExtResource("2_67xc2")
+metadata/_edit_use_anchors_ = true
