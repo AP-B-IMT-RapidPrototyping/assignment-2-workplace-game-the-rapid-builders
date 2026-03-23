@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c07u8v4so6e8q"]
+
+[ext_resource type="ArrayMesh" uid="uid://b60vf4dhfs6q" path="res://Assets/Virus01.obj" id="1_f18l7"]
+[ext_resource type="Script" uid="uid://jpfn31k22kip" path="res://Scenes/Tutku/Bacterie.cs" id="2_3u1uj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f18l7"]
+radius = 77.97162
+
+[node name="Bacterie3D" type="StaticBody3D" unique_id=1945681965]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("2_3u1uj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=422117739]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0, 0)
+mesh = ExtResource("1_f18l7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1227640651]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -1.3738041, 0, -1.409676)
+shape = SubResource("SphereShape3D_f18l7")

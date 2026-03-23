@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://bvbam8t6au38p"]
+
+[ext_resource type="PackedScene" uid="uid://dav5nc5whb33p" path="res://Scenes/Tutku/Player.tscn" id="1_l0pdq"]
+[ext_resource type="Script" uid="uid://dshwmpk6ixtfc" path="res://Scenes/Tutku/PlayerController.cs" id="1_t6ejk"]
+[ext_resource type="PackedScene" uid="uid://01y4fahkteje" path="res://Assets/Muur.gltf" id="1_x477n"]
+[ext_resource type="PackedScene" uid="uid://5y34s33dwwwu" path="res://Assets/OnderMuur.gltf" id="2_78gbp"]
+[ext_resource type="PackedScene" uid="uid://c23j7t5smrltt" path="res://Assets/DNA-glas.gltf" id="3_78gbp"]
+[ext_resource type="PackedScene" uid="uid://dh2s813rydga5" path="res://Assets/Deur.gltf" id="4_7sqn8"]
+[ext_resource type="PackedScene" uid="uid://b0xats6hobp2y" path="res://Assets/DeurH.gltf" id="5_snbgg"]
+[ext_resource type="PackedScene" uid="uid://c12xiyrcdgjsc" path="res://Assets/Lab Assets/GLB/Furniture/Counters/counter_counter.glb" id="6_rfib3"]
+[ext_resource type="PackedScene" uid="uid://ccwynvdrajn7o" path="res://Assets/Lab Assets/GLB/Furniture/Counters/counter_counter_2_shelves.glb" id="7_vej16"]
+[ext_resource type="PackedScene" uid="uid://mu0ovh0cd6lc" path="res://Assets/Lab Assets/GLB/Furniture/Counters/counter_counter_3_shelves.glb" id="8_di0s1"]
+[ext_resource type="PackedScene" uid="uid://djj8jjyp5dg1e" path="res://Assets/Lab Assets/GLB/Furniture/Counters/counter_counter_4_shelves.glb" id="9_6tf5x"]
+[ext_resource type="Script" uid="uid://c0e0l5eeatj7j" path="res://Assets/Lab Assets/GLB/Machines/MicroscoopInteractie.cs" id="9_7k0bc"]
+[ext_resource type="PackedScene" uid="uid://bmbnqiur28gn8" path="res://Assets/Lab Assets/GLB/Furniture/Counters/counter_counter_sink.glb" id="10_7k0bc"]
+[ext_resource type="PackedScene" uid="uid://cw200l65d7u7b" path="res://Assets/Lab Assets/GLB/Machines/machine_microscope.glb" id="11_vej16"]
+[ext_resource type="PackedScene" uid="uid://cst61ygv146b4" path="res://Assets/Lab Assets/GLB/Machines/machine_electronic_scale.glb" id="12_di0s1"]
+[ext_resource type="PackedScene" uid="uid://ch5wg835tm13d" path="res://Assets/Lab Assets/GLB/Machines/machine_hot_plate.glb" id="13_6tf5x"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l0pdq"]
+sky_top_color = Color(0.3740878, 0.5139291, 0.53198826, 1)
+sky_horizon_color = Color(0.41883105, 0.7165871, 0.6964568, 1)
+
+[sub_resource type="Sky" id="Sky_ms1jh"]
+sky_material = SubResource("ProceduralSkyMaterial_l0pdq")
+
+[sub_resource type="Environment" id="Environment_ugj7w"]
+background_mode = 2
+sky = SubResource("Sky_ms1jh")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l0pdq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7k0bc"]
+radius = 39.493137
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mdra8"]
+albedo_color = Color(0.27996668, 0.2799667, 0.27996668, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2d2y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mdra8"]
+material = SubResource("ShaderMaterial_v2d2y")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dkow3"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dkow3"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+albedo_color = Color(0.84313726, 1, 1, 0.15686275)
+
+[node name="Node3D" type="Node3D" unique_id=1462475848]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=870761643]
+environment = SubResource("Environment_ugj7w")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1836904857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8525684, 1.9156752, -1.9163789)
+visible = false
+
+[node name="Player" parent="." unique_id=1214845102 instance=ExtResource("1_l0pdq")]
+
+[node name="CharacterBody3D" parent="Player" index="0" unique_id=1207224554 groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39184344, 0)
+script = ExtResource("1_t6ejk")
+
+[node name="Camera3D" parent="Player/CharacterBody3D" index="0" unique_id=1533561340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0409834, 1.580811, 0.0290941)
+current = true
+
+[node name="CollisionShape3D" parent="Player/CharacterBody3D" index="1" unique_id=1298991391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0019689, 0.7266756, -0.9282471)
+
+[node name="InteractieObject" parent="Player/CharacterBody3D" index="2" unique_id=2017388858]
+visible = false
+
+[node name="Hart (bal)" parent="Player/CharacterBody3D/InteractieObject" index="0" unique_id=120220148]
+transform = Transform3D(0.2, 0, 0, 0, 0.8520117, 0, 0, 0, 0.3548432, -0.25021416, 0.52300763, -0.8896205)
+mesh = SubResource("CapsuleMesh_l0pdq")
+
+[node name="microscope_01" parent="." unique_id=1486708634 instance=ExtResource("11_vej16")]
+transform = Transform3D(-0.02, 0, -1.7484555e-09, 0, 0.02, 0, 1.7484555e-09, 0, -0.02, 1.3499243, 1.4738815, -3.2841585)
+script = ExtResource("9_7k0bc")
+
+[node name="Area3D" type="Area3D" parent="microscope_01" unique_id=92213247 groups=["Player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="microscope_01/Area3D" unique_id=1628148918]
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0, 6.903015, -9.994827)
+shape = SubResource("SphereShape3D_7k0bc")
+
+[node name="Label3D" type="Label3D" parent="microscope_01" unique_id=544142546]
+transform = Transform3D(-1, -5.5371917e-08, 6.765126e-08, 0, 0.7738402, 0.6333809, -8.742278e-08, 0.6333809, -0.7738402, -1.5778961, 19.042374, -61.556404)
+visible = false
+pixel_size = 0.03
+text = "Druk op [E]"
+font_size = 47
+
+[node name="Vloer" type="MeshInstance3D" parent="." unique_id=1823441949]
+transform = Transform3D(25.411629, 0, 0, 0, 0.083618194, 0, 0, 0, 24.054167, -0.8690462, -3.325939e-05, 2.1652527)
+material_override = SubResource("StandardMaterial3D_mdra8")
+mesh = SubResource("BoxMesh_mdra8")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Vloer" unique_id=958999684]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vloer/StaticBody3D" unique_id=1415528302]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0.088729635, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_dkow3")
+
+[node name="Glas_lab2" type="Node" parent="." unique_id=1114847682]
+
+[node name="Glas 02" type="CSGBox3D" parent="Glas_lab2" unique_id=1649960781]
+transform = Transform3D(-9.026402e-08, 0, -1.3004899, 0, 2.065, 0, 2.065, 0, -5.684622e-08, 10.4573555, 1.0315614, 10.432387)
+size = Vector3(1.950074, 0.5465851, 0.044891357)
+material = SubResource("StandardMaterial3D_dkow3")
+
+[node name="Glas 01" type="CSGBox3D" parent="Glas_lab2" unique_id=1580277641]
+transform = Transform3D(2.065, 0, 0, 0, 2.065, 0, 0, 0, 1.3004899, -1.5033882, 2.0528593, -4.155)
+size = Vector3(3.868486, 1.1095276, 0.044891357)
+material = SubResource("StandardMaterial3D_dkow3")
+
+[node name="Muur3" parent="." unique_id=922121629 instance=ExtResource("1_x477n")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.4997644, 2.051, -4.155)
+
+[node name="OnderMuur" parent="." unique_id=916989122 instance=ExtResource("2_78gbp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.49886322, 2.050826, -4.155)
+
+[node name="Muur8" parent="." unique_id=429055984 instance=ExtResource("1_x477n")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 4.830181, 2.051, 11.551852)
+
+[node name="Muur12" parent="." unique_id=1409193979 instance=ExtResource("1_x477n")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -13.224326, 2.051, 9.614531)
+
+[node name="DNA-glas" parent="." unique_id=1786034060 instance=ExtResource("3_78gbp")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 8.562422, 0.15054476, -3.476835)
+
+[node name="Muur10" parent="." unique_id=559593288 instance=ExtResource("1_x477n")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 10.374103, 2.051, -2.219267)
+
+[node name="Muur11" parent="." unique_id=280125012 instance=ExtResource("1_x477n")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 10.374103, 2.051, 1.7334175)
+
+[node name="Muur13" parent="." unique_id=106981471 instance=ExtResource("1_x477n")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 10.374103, 2.051, 5.695717)
+
+[node name="Muur4" parent="." unique_id=380841598 instance=ExtResource("1_x477n")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.3795776, 2.051, -4.155)
+
+[node name="Muur14" parent="." unique_id=880840712 instance=ExtResource("1_x477n")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 10.374103, 2.051, 9.620446)
+
+[node name="Muur15" parent="." unique_id=15673268 instance=ExtResource("1_x477n")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, -3.396066, 2.051, 11.551852)
+
+[node name="Muur16" parent="." unique_id=557589724 instance=ExtResource("1_x477n")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -13.229624, 2.051, 5.6675987)
+
+[node name="Muur18" parent="." unique_id=1863923179 instance=ExtResource("1_x477n")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -13.232456, 2.051, -2.1999555)
+
+[node name="OnderMuur2" parent="." unique_id=1125301519 instance=ExtResource("2_78gbp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.4456441, 2.050826, -4.155)
+
+[node name="Muur9" parent="." unique_id=83039460 instance=ExtResource("1_x477n")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 8.4291725, 2.051, 11.551852)
+
+[node name="Low Poly - Lab Assets" parent="." unique_id=1632317724 instance=ExtResource("6_rfib3")]
+transform = Transform3D(-0.02, 0, -3.0199159e-09, 0, 0.02, 0, 3.0199159e-09, 0, -0.02, 4.3630505, 0.77101314, -3.3378701)
+
+[node name="Low Poly - Lab Assets2" parent="." unique_id=1150093925 instance=ExtResource("7_vej16")]
+transform = Transform3D(-0.02, 0, -1.7484555e-09, 0, 0.02, 0, 1.7484555e-09, 0, -0.02, -1.7770412, 0.771, -3.338)
+
+[node name="Low Poly - Lab Assets3" parent="." unique_id=1800776955 instance=ExtResource("8_di0s1")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -3.519561, 0.399, 0.447)
+
+[node name="Low Poly - Lab Assets5" parent="." unique_id=46343675 instance=ExtResource("10_7k0bc")]
+transform = Transform3D(-0.02, 0, 1.7484555e-09, 0, 0.02, 0, -1.7484555e-09, 0, -0.02, -0.5388775, 0.771, -3.338)
+
+[node name="Low Poly - Lab Assets6" parent="." unique_id=742739146 instance=ExtResource("6_rfib3")]
+transform = Transform3D(-0.02, 0, -3.0199159e-09, 0, 0.02, 0, 3.0199159e-09, 0, -0.02, 3.142877, 0.77101314, -3.3378701)
+
+[node name="Low Poly - Lab Assets7" parent="." unique_id=1973772702 instance=ExtResource("6_rfib3")]
+transform = Transform3D(-0.02, 0, -3.0199159e-09, 0, 0.02, 0, 3.0199159e-09, 0, -0.02, 1.9312463, 0.77101314, -3.3378701)
+
+[node name="Low Poly - Lab Assets8" parent="." unique_id=151597993 instance=ExtResource("6_rfib3")]
+transform = Transform3D(-0.019999785, 8.418554e-05, 3.819943e-05, 8.4179504e-05, 0.019999823, -3.2443004e-06, -3.8212715e-05, -3.0838858e-06, -0.019999962, 0.69675994, 0.77101314, -3.3378701)
+
+[node name="Low Poly - Lab Assets9" parent="." unique_id=1712679215 instance=ExtResource("7_vej16")]
+transform = Transform3D(-0.02, 0, -1.7484555e-09, 0, 0.02, 0, 1.7484555e-09, 0, -0.02, -3.0185316, 0.771, -3.338)
+
+[node name="Low Poly - Lab Assets11" parent="." unique_id=567030504 instance=ExtResource("7_vej16")]
+transform = Transform3D(-0.02, 0, -1.7484555e-09, 0, 0.02, 0, 1.7484555e-09, 0, -0.02, -4.259302, 0.771, -3.338)
+
+[node name="Muur5" parent="." unique_id=2102720215 instance=ExtResource("1_x477n")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.430036, 2.051, -4.155)
+
+[node name="Muur19" parent="." unique_id=2076387401 instance=ExtResource("1_x477n")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, -7.3907166, 2.051, 11.551852)
+
+[node name="Low Poly - Lab Assets12" parent="." unique_id=74085276 instance=ExtResource("6_rfib3")]
+transform = Transform3D(-0.019999785, 8.418554e-05, 3.819943e-05, 8.4179504e-05, 0.019999823, -3.2443004e-06, -3.8212715e-05, -3.0838858e-06, -0.019999962, -5.488389, 0.77101314, -3.3378701)
+
+[node name="Low Poly - Lab Assets13" parent="." unique_id=676187487 instance=ExtResource("6_rfib3")]
+transform = Transform3D(-0.019999785, 8.418554e-05, 3.819943e-05, 8.4179504e-05, 0.019999823, -3.2443004e-06, -3.8212715e-05, -3.0838858e-06, -0.019999962, -6.714074, 0.77101314, -3.3378701)
+
+[node name="Muur6" parent="." unique_id=904317601 instance=ExtResource("1_x477n")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -11.292026, 2.051, -4.155)
+
+[node name="Muur20" parent="." unique_id=1875258335 instance=ExtResource("1_x477n")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, -11.287853, 2.051, 11.551852)
+
+[node name="Deur2" parent="." unique_id=148276100 instance=ExtResource("4_7sqn8")]
+transform = Transform3D(-0.78, 0, -6.818976e-08, 0, 0.78, 0, 6.818976e-08, 0, -0.78, -13.221737, 0.917717, 4.31234)
+
+[node name="HospitalObjects2" parent="." unique_id=1178230245 instance=ExtResource("5_snbgg")]
+transform = Transform3D(-0.78, 0, -6.818976e-08, 0, 0.78, 0, 6.818976e-08, 0, -0.78, -12.824236, 0.8981321, 3.011)
+
+[node name="Muur17" parent="." unique_id=1587386547 instance=ExtResource("1_x477n")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, 0.9318032, 2.051, 11.551852)
+
+[node name="Muur21" parent="." unique_id=66895792 instance=ExtResource("1_x477n")]
+transform = Transform3D(-2, 0, -3.019916e-07, 0, 2, 0, 3.019916e-07, 0, -2, -0.7688458, 2.051, 11.551852)
+
+[node name="Low Poly - Lab Assets14" parent="." unique_id=1320391105 instance=ExtResource("9_6tf5x")]
+transform = Transform3D(-0.02, 0, -1.7484555e-09, 0, 0.02, 0, 1.7484555e-09, 0, -0.02, 5.587802, 0.771, -3.338)
+
+[node name="Low Poly - Lab Assets15" parent="." unique_id=2057341336 instance=ExtResource("9_6tf5x")]
+transform = Transform3D(-0.02, 0, -1.7484555e-09, 0, 0.02, 0, 1.7484555e-09, 0, -0.02, -7.935176, 0.771, -3.338)
+
+[node name="Low Poly - Lab Assets4" parent="." unique_id=2018698150 instance=ExtResource("12_di0s1")]
+transform = Transform3D(-0.02, 0, -1.7484555e-09, 0, 0.02, 0, 1.7484555e-09, 0, -0.02, 5.0512247, 1.6040287, -3.122895)
+
+[node name="Low Poly - Lab Assets16" parent="." unique_id=306004728 instance=ExtResource("13_6tf5x")]
+transform = Transform3D(-0.02, 0, -1.7484555e-09, 0, 0.02, 0, 1.7484555e-09, 0, -0.02, 3.1545904, 1.5441439, -3.7796159)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1239225431]
+transform = Transform3D(1, 0, 0, 0, 0.043985557, 0.9990322, 0, -0.9990322, 0.043985557, 2.2547648, 7.7615013, 4.000134)
+light_energy = 2.387
+shadow_enabled = true
+
+[editable path="Player"]

@@ -1,75 +1,17 @@
 [gd_scene format=3 uid="uid://fneft1yrw7el"]
 
-[ext_resource type="ArrayMesh" uid="uid://jlmm5bgm5ufn" path="res://Assets/kenney_building-kit/Models/OBJ format/floor.obj" id="1_r1tdc"]
-[ext_resource type="ArrayMesh" uid="uid://dnwg2h0re08tb" path="res://Assets/kenney_building-kit/Models/OBJ format/wall.obj" id="2_57vin"]
-[ext_resource type="ArrayMesh" uid="uid://jbdva7xmlney" path="res://Assets/kenney_building-kit/Models/OBJ format/wall-corner-column-bottom.obj" id="3_tfqbo"]
+[ext_resource type="PackedScene" uid="uid://bvbam8t6au38p" path="res://Scenes/Tutku/labb.tscn" id="1_jwexv"]
 
-[node name="Node3D" type="Node3D" unique_id=725326216]
+[node name="Node3D" type="Node3D" unique_id=1428270883]
 
-[node name="Floor" type="MeshInstance3D" parent="." unique_id=1160999790]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0.10772884, 0, 1.1301997)
-mesh = ExtResource("1_r1tdc")
+[node name="Node3D" parent="." unique_id=1462475848 instance=ExtResource("1_jwexv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.587529, 0, 0.53773487)
 
-[node name="Wall" type="MeshInstance3D" parent="." unique_id=1179042092]
-transform = Transform3D(1, 0, 0, 0, 1.2905663, 0, 0, 0, 1, 7.0487404, 0.7057774, 3.2297888)
-mesh = ExtResource("2_57vin")
+[node name="Glas 02" parent="Node3D/Glas_lab2" parent_id_path=PackedInt32Array(1462475848, 1114847682) index="0" unique_id=1649960781]
+transform = Transform3D(-9.026402e-08, 0, -1.3004899, 0, 2.065, 0, 2.065, 0, -5.684622e-08, 27.392342, 1.0315614, 10.432387)
 
-[node name="Wall2" type="MeshInstance3D" parent="." unique_id=1808647188]
-transform = Transform3D(1.291, 0, 0, 0, 1.291, 0, 0, 0, 1.291, 7.0487404, 0.7057774, 5.2071605)
-mesh = ExtResource("2_57vin")
+[node name="Glas 01" parent="Node3D/Glas_lab2" parent_id_path=PackedInt32Array(1462475848, 1114847682) index="1" unique_id=1580277641]
+transform = Transform3D(2.065, 0, 0, 0, 2.065, 0, 0, 0, 1.3004899, 12.217831, 2.0528593, -4.155)
 
-[node name="WallCornerColumnBottom" type="MeshInstance3D" parent="." unique_id=1052987153]
-transform = Transform3D(1.291, 0, 0, 0, 1.291, 0, 0, 0, 1.291, 5.8279753, 0.7052777, 7.180569)
-mesh = ExtResource("3_tfqbo")
-
-[node name="Wall3" type="MeshInstance3D" parent="." unique_id=1814512064]
-transform = Transform3D(-5.6431404e-08, 0, 1.291, 0, 1.291, 0, -1.291, 0, -5.6431404e-08, 3.2753756, 0.7057774, 8.387983)
-mesh = ExtResource("2_57vin")
-
-[node name="Wall4" type="MeshInstance3D" parent="." unique_id=1751713728]
-transform = Transform3D(-5.6431404e-08, 0, 1.291, 0, 1.291, 0, -1.291, 0, -5.6431404e-08, 1.3266878, 0.7057774, 8.387983)
-mesh = ExtResource("2_57vin")
-
-[node name="Wall5" type="MeshInstance3D" parent="." unique_id=681353992]
-transform = Transform3D(-5.6431404e-08, 0, 1.291, 0, 1.291, 0, -1.291, 0, -5.6431404e-08, -0.67065036, 0.7057774, 8.387983)
-mesh = ExtResource("2_57vin")
-
-[node name="Wall6" type="MeshInstance3D" parent="." unique_id=1387666050]
-transform = Transform3D(-5.6431404e-08, 0, 1.291, 0, 1.291, 0, -1.291, 0, -5.6431404e-08, -2.663208, 0.7057774, 8.387983)
-mesh = ExtResource("2_57vin")
-
-[node name="Wall7" type="MeshInstance3D" parent="." unique_id=894853681]
-transform = Transform3D(-5.6431404e-08, 0, 1.291, 0, 1.291, 0, -1.291, 0, -5.6431404e-08, -4.602453, 0.7057774, 8.387983)
-mesh = ExtResource("2_57vin")
-
-[node name="WallCornerColumnBottom2" type="MeshInstance3D" parent="." unique_id=1965256851]
-transform = Transform3D(-5.6431404e-08, 0, -1.291, 0, 1.291, 0, 1.291, 0, -5.6431404e-08, -5.755373, 0.706, 7.159092)
-mesh = ExtResource("3_tfqbo")
-
-[node name="Wall8" type="MeshInstance3D" parent="." unique_id=1359534523]
-transform = Transform3D(-1.291, 0, -1.1286281e-07, 0, 1.291, 0, 1.1286281e-07, 0, -1.291, -6.9784455, 0.7057774, 4.617219)
-mesh = ExtResource("2_57vin")
-
-[node name="Wall9" type="MeshInstance3D" parent="." unique_id=1152111682]
-transform = Transform3D(-1.291, 0, -1.1286281e-07, 0, 1.291, 0, 1.1286281e-07, 0, -1.291, -6.9784455, 0.7057774, 2.0463347)
-mesh = ExtResource("2_57vin")
-
-[node name="Wall10" type="MeshInstance3D" parent="." unique_id=1964317307]
-transform = Transform3D(-1.291, 0, -1.1286281e-07, 0, 1.291, 0, 1.1286281e-07, 0, -1.291, -6.9784455, 0.7057774, -0.5136124)
-mesh = ExtResource("2_57vin")
-
-[node name="WallCornerColumnBottom3" type="MeshInstance3D" parent="." unique_id=928734965]
-transform = Transform3D(-1.291, 0, 1.1286281e-07, 0, 1.291, 0, -1.1286281e-07, 0, -1.291, -5.761721, 0.706, -3.1108513)
-mesh = ExtResource("3_tfqbo")
-
-[node name="Wall13" type="MeshInstance3D" parent="." unique_id=2128403359]
-transform = Transform3D(-5.6431404e-08, 0, 1.291, 0, 1.291, 0, -1.291, 0, -5.6431404e-08, -3.2433317, 0.7057774, -4.3332744)
-mesh = ExtResource("2_57vin")
-
-[node name="Wall14" type="MeshInstance3D" parent="." unique_id=269379006]
-transform = Transform3D(-5.6431404e-08, 0, 1.291, 0, 1.291, 0, -1.291, 0, -5.6431404e-08, -0.7016015, 0.7057774, -4.3332744)
-mesh = ExtResource("2_57vin")
-
-[node name="Wall15" type="MeshInstance3D" parent="." unique_id=996538629]
-transform = Transform3D(-5.6431404e-08, 0, 1.291, 0, 1.291, 0, -1.291, 0, -5.6431404e-08, 1.9011385, 0.7057774, -4.3332744)
-mesh = ExtResource("2_57vin")
+[editable path="Node3D"]
+[editable path="Node3D/Player"]
