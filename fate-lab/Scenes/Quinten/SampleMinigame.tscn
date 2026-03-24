@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b525ax1u087hk"]
+
+[ext_resource type="Script" uid="uid://br1d842sg20tn" path="res://Scenes/Quinten/SampleMinigame.cs" id="1_gjh1o"]
+[ext_resource type="PackedScene" uid="uid://ccfxait07b3fk" path="res://Scenes/Quinten/infections.tscn" id="2_xwsd1"]
+[ext_resource type="Script" uid="uid://csrqpydna2g8o" path="res://Scenes/Quinten/countdown.cs" id="3_p4gge"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4gge"]
+font_size = 50
+
+[node name="SampleMinigame" type="Node3D" unique_id=466170783]
+script = ExtResource("1_gjh1o")
+InfectionScene = ExtResource("2_xwsd1")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=489770827]
+transform = Transform3D(0.9521293, 0, 0.3056953, 0, 1, 0, -0.3056953, 0, 0.9521293, 1.108, 0, 2.548)
+current = true
+fov = 100.54472
+script = ExtResource("3_p4gge")
+time_left = 10
+
+[node name="Label" type="Label" parent="Camera3D" unique_id=1022137817]
+offset_right = 72.0
+offset_bottom = 35.0
+label_settings = SubResource("LabelSettings_p4gge")
+
+[node name="Timer" type="Timer" parent="Camera3D" unique_id=923789232]
+autostart = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1004980190]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.177, 0)

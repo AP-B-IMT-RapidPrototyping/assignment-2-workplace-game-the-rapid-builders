@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cxyo6ky1aq7yw"]
+
+[ext_resource type="Script" uid="uid://7p40no6hjwwl" path="res://Scenes/Quinten/FailedCountdown.cs" id="1_u4afv"]
+
+[sub_resource type="Environment" id="Environment_835n4"]
+background_color = Color(0.827451, 0, 0, 1)
+ambient_light_color = Color(0.95686275, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u4afv"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+outline_color = Color(0.827451, 0, 0, 1)
+
+[node name="Failed" type="Node3D" unique_id=1546810530]
+script = ExtResource("1_u4afv")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=47757142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.052634)
+environment = SubResource("Environment_835n4")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=665917960]
+offset_right = 1159.0
+offset_bottom = 651.0
+color = Color(0.827451, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label1" type="Label" parent="." unique_id=549422440]
+offset_right = 1155.0
+offset_bottom = 653.0
+text = "test failed"
+label_settings = SubResource("LabelSettings_u4afv")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1983536482]

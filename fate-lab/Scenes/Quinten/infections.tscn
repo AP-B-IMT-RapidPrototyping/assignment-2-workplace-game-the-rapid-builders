@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ccfxait07b3fk"]
+
+[ext_resource type="ArrayMesh" uid="uid://cf8ilcduenp11" path="res://Assets/assets-quinten/Infection.obj" id="1_bgqu1"]
+[ext_resource type="Script" uid="uid://xayoiu6ri3p3" path="res://Scenes/Quinten/MinigameInteraction.cs" id="1_k60bb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k60bb"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k60bb"]
+radius = 1.3620791
+
+[node name="Infections" type="StaticBody3D" unique_id=327188795]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_k60bb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1978807350]
+mesh = ExtResource("1_bgqu1")
+surface_material_override/0 = SubResource("StandardMaterial3D_k60bb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=372913543]
+shape = SubResource("SphereShape3D_k60bb")
