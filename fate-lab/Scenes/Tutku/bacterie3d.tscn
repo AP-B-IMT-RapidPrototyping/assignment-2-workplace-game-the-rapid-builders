@@ -3,6 +3,15 @@
 [ext_resource type="ArrayMesh" uid="uid://b60vf4dhfs6q" path="res://Assets/Virus01.obj" id="1_f18l7"]
 [ext_resource type="Script" uid="uid://jpfn31k22kip" path="res://Scenes/Tutku/Bacterie.cs" id="2_3u1uj"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3u1uj"]
+albedo_color = Color(0.72028625, 0, 0.069048844, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pr7dx"]
+albedo_color = Color(0.5917479, 1.3909787e-05, 0.42430574, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elntv"]
+albedo_color = Color(0.46102822, 0.18263406, 0.37246275, 1)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_f18l7"]
 radius = 77.97162
 
@@ -13,6 +22,9 @@ script = ExtResource("2_3u1uj")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=422117739]
 transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0, 0)
 mesh = ExtResource("1_f18l7")
+surface_material_override/0 = SubResource("StandardMaterial3D_3u1uj")
+surface_material_override/1 = SubResource("StandardMaterial3D_pr7dx")
+surface_material_override/2 = SubResource("StandardMaterial3D_elntv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1227640651]
 transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, -1.3738041, 0, -1.409676)
