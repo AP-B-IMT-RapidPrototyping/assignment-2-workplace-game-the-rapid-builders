@@ -1,16 +1,12 @@
 [gd_scene format=3 uid="uid://cg1vtr8j540ji"]
 
-[ext_resource type="Script" uid="uid://c6rnqy7f4ui58" path="res://Scenes/Lukas/Movement.cs" id="1_lfc3w"]
+[ext_resource type="PackedScene" uid="uid://b215jydv6m1sd" path="res://Scenes/Lukas/player.tscn" id="1_lfc3w"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ucp23"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lfc3w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c2f2s"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_qwowd"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dcxb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ucp23"]
 
@@ -37,30 +33,8 @@ physics_material_override = SubResource("PhysicsMaterial_lfc3w")
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
 shape = SubResource("BoxShape3D_c2f2s")
 
-[node name="player" type="CharacterBody3D" parent="." unique_id=216375361 node_paths=PackedStringArray("InteractionRay", "InteractionLabel", "HoldPosition")]
+[node name="player" parent="." unique_id=1061268430 instance=ExtResource("1_lfc3w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5932269, 0)
-script = ExtResource("1_lfc3w")
-InteractionDistance = 2.0
-InteractionRay = NodePath("Camera3D/RayCast3D")
-InteractionLabel = NodePath("../CanvasLayer/InteractionLabel")
-HoldPosition = NodePath("Camera3D/HoldPosition")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=1983804924]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9638687, 0)
-mesh = SubResource("CapsuleMesh_qwowd")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=1573553036]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9638687, 0)
-shape = SubResource("CapsuleShape3D_5dcxb")
-
-[node name="Camera3D" type="Camera3D" parent="player" unique_id=1835992019]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4951565, -0.18426031)
-
-[node name="RayCast3D" type="RayCast3D" parent="player/Camera3D" unique_id=915195273]
-target_position = Vector3(0, 0, 2)
-
-[node name="HoldPosition" type="Marker3D" parent="player/Camera3D" unique_id=215015177]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16009474, -1.7786481)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1466208685]
 transform = Transform3D(-0.10792998, -0.58761764, 0.80190814, 0, 0.80662, 0.59107035, -0.9941585, 0.06379421, -0.087058485, 0, 5.491852, 0)
