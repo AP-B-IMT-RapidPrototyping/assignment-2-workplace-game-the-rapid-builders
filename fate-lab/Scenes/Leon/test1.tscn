@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://tudkm4ifqvuf"]
+
+[ext_resource type="PackedScene" uid="uid://bk104icuou3b2" path="res://Scenes/Leon/Hartslagmeter.tscn" id="1_s4axa"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vte7x"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s4axa"]
+ground_bottom_color = Color(0.04893522, 0.5648537, 0.82360715, 1)
+ground_horizon_color = Color(0.4439959, 0.6629861, 0.96056384, 1)
+energy_multiplier = 4.56
+
+[sub_resource type="Sky" id="Sky_vte7x"]
+sky_material = SubResource("ProceduralSkyMaterial_s4axa")
+
+[sub_resource type="Environment" id="Environment_agh38"]
+sky = SubResource("Sky_vte7x")
+ambient_light_source = 3
+
+[node name="TestTijd" type="Node3D" unique_id=913328441]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=464823604]
+transform = Transform3D(0.9988324, 0.0035624777, -0.04817782, 0.04701403, 0.15770756, 0.98636603, 0.011111912, -0.98747945, 0.15735593, 0, 4.2788286, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1955471231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69909185, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=114637409]
+
+[node name="Node2D" parent="CanvasLayer" unique_id=1036501218 instance=ExtResource("1_s4axa")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2046759298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3646009, 0, -2.1519537)
+mesh = SubResource("BoxMesh_vte7x")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2041127749]
+environment = SubResource("Environment_agh38")

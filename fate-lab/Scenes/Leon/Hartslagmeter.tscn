@@ -16,9 +16,9 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 
 [node name="Node2D" type="Node2D" unique_id=1036501218]
-position = Vector2(941, 122)
+position = Vector2(1002, 122)
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=738577570 node_paths=PackedStringArray("mijnHart")]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=738577570 node_paths=PackedStringArray("mijnHart", "GameOverTekst")]
 custom_minimum_size = Vector2(200, 20)
 offset_left = -82.0
 offset_top = -57.0
@@ -30,6 +30,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_yr1ef")
 value = 100.0
 script = ExtResource("1_yr1ef")
 mijnHart = NodePath("../TextureRect")
+GameOverTekst = NodePath("../GameOverLabel")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=992086871 node_paths=PackedStringArray("HartslagGewoon", "HartslagSnel", "HartslagDood")]
@@ -56,3 +57,15 @@ stream = ExtResource("6_fs7ip")
 
 [node name="hartslag-gewoon" type="AudioStreamPlayer" parent="." unique_id=1809518147]
 stream = ExtResource("4_4hai4")
+
+[node name="GameOverLabel" type="Label" parent="." unique_id=1232682286]
+visible = false
+anchors_preset = -1
+offset_left = -658.0
+offset_top = 137.0
+offset_right = -200.0
+offset_bottom = 247.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "GAME OVER"

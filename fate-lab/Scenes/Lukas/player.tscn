@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b215jydv6m1sd"]
+
+[ext_resource type="Script" uid="uid://c6rnqy7f4ui58" path="res://Scenes/Lukas/Movement.cs" id="1_v7d15"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qwowd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5dcxb"]
+
+[node name="player" type="CharacterBody3D" unique_id=1061268430 node_paths=PackedStringArray("InteractionRay", "InteractionLabel", "HoldPosition")]
+script = ExtResource("1_v7d15")
+InteractionDistance = 2.0
+InteractionRay = NodePath("Camera3D/RayCast3D")
+InteractionLabel = NodePath("")
+HoldPosition = NodePath("Camera3D/HoldPosition")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1300241650]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9638687, 0)
+mesh = SubResource("CapsuleMesh_qwowd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=733883837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9638687, 0)
+shape = SubResource("CapsuleShape3D_5dcxb")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1784629157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4951565, -0.18426031)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=807775344]
+target_position = Vector3(0, 0, 2)
+
+[node name="HoldPosition" type="Marker3D" parent="Camera3D" unique_id=2040522634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16009474, -1.7786481)

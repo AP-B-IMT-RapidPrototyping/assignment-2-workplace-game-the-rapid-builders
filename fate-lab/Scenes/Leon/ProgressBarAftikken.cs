@@ -3,8 +3,9 @@ using System;
 
 public partial class ProgressBarAftikken : ProgressBar
 {
-	[Export] public double MaxTijd = 30.0;
+	[Export] public double MaxTijd = 15.0; //Tijd in seconde
 	[Export] public HartScript mijnHart;
+    [Export] public Label GameOverTekst;
 	private bool _HartSnel = false;
     private bool _isDood = false;
 	private double _Tijdnu;
@@ -14,6 +15,8 @@ public partial class ProgressBarAftikken : ProgressBar
 		MaxValue = MaxTijd;
 		Value = MaxTijd;
 		_Tijdnu = MaxTijd;
+
+        GameOverTekst.Visible = false;
 	}
 
 	public override void _Process(double delta)
@@ -39,15 +42,16 @@ public partial class ProgressBarAftikken : ProgressBar
         // DOOD: Op of onder 0%
         else 
         {
-            if (!_isDood) // Voer dit maar ÉÉN keer uit
+            if (!_isDood)
             {
                 _isDood = true; 
                 _Tijdnu = 0;
                 Value = 0;
-                GD.Print("NU MOET HET HART STOPPEN!");
+                mijnHart.StopHart();
+                
                 if (mijnHart != null) 
                 {
-                    mijnHart.StopHart();
+                    GameOverTekst.Visible = true;
                     GD.Print("Het hart is gestopt.");
                 }
             }
