@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://dav5nc5whb33p"]
 
+[ext_resource type="Script" uid="uid://dshwmpk6ixtfc" path="res://Scenes/Tutku/PlayerController.cs" id="1_lx0yp"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qbkls"]
 radius = 0.30566406
-height = 1.7992554
+height = 3.0657873
 
-[sub_resource type="SphereMesh" id="SphereMesh_rpqav"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l0pdq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyqiw"]
 albedo_color = Color(0.8235294, 0.078431375, 0.015686275, 1)
@@ -14,28 +16,40 @@ roughness = 0.2
 custom_solver_bias = 1.0
 radius = 2.0
 
-[node name="Player" type="Node3D" unique_id=1214845102]
+[node name="Player" type="Node3D" unique_id=81074348]
+visible = false
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1207224554]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1296665715 groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63723695, 0)
+visible = false
+script = ExtResource("1_lx0yp")
+Speed = 3.0
+MouseSensitivity = 0.001
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=1533561340]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.944)
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=288046770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0409832, 1.7972711, 0.0290941)
+visible = false
 
-[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Camera3D" unique_id=1911104946]
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Camera3D" unique_id=827355017]
+visible = false
 target_position = Vector3(0, 0, -2)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1298991391]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25279582, 0.6487161, 0.3344357)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1376311198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0019684, 0.47375226, -0.9282471)
+visible = false
 shape = SubResource("CapsuleShape3D_qbkls")
 debug_color = Color(0.14178103, 0.61205655, 0.5838905, 0.41960785)
 
-[node name="InteractieObject" type="RigidBody3D" parent="CharacterBody3D" unique_id=2017388858]
+[node name="InteractieObject" type="RigidBody3D" parent="CharacterBody3D" unique_id=1824188390]
+visible = false
 
-[node name="Hart (bal)" type="MeshInstance3D" parent="CharacterBody3D/InteractieObject" unique_id=120220148]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.645504, 0.78349286, 0.20429474)
-mesh = SubResource("SphereMesh_rpqav")
+[node name="Hart (bal)" type="MeshInstance3D" parent="CharacterBody3D/InteractieObject" unique_id=1329453758]
+transform = Transform3D(0.2, 0, 0, 0, 0.8520117, 0, 0, 0, 0.3548432, -0.25021416, 0.52300763, -0.8896205)
+visible = false
+mesh = SubResource("CapsuleMesh_l0pdq")
 surface_material_override/0 = SubResource("StandardMaterial3D_kyqiw")
 
-[node name="Bloedstaal" type="CollisionShape3D" parent="CharacterBody3D/InteractieObject" unique_id=1464523601]
+[node name="Bloedstaal" type="CollisionShape3D" parent="CharacterBody3D/InteractieObject" unique_id=1662648013]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.3724036, 0.7, -0.17774308)
+visible = false
 shape = SubResource("SphereShape3D_rpqav")
