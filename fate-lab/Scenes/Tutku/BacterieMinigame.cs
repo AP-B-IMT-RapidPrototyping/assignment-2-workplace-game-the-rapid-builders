@@ -4,7 +4,7 @@ using System;
 public partial class BacterieMinigame : Node3D
 {
     [Export] public PackedScene BacterieScene; // Vergeet niet de .tscn hierin te slepen!
-    [Export] public int MaxBacterien = 8;
+    [Export] public int MaxBacterien = 5;
     
     private int _overgebleven;
 
@@ -23,9 +23,9 @@ public partial class BacterieMinigame : Node3D
         {
             Bacterie instance = BacterieScene.Instantiate<Bacterie>();
             
-            // Willekeurige positie
-            float x = (float)GD.RandRange(-4.5, 4.5);
-            float y = (float)GD.RandRange(-2.5, 2.5);
+    // Verklein het bereik (bijv. van 4.5 naar 3.5)
+            float x = (float)GD.RandRange(-3.5, 3.5); // Minder breed
+            float y = (float)GD.RandRange(-2.0, 2.0); // Minder hoog
             instance.Position = new Vector3(x, y, 0);
 
             // Verbind de klik aan de teller

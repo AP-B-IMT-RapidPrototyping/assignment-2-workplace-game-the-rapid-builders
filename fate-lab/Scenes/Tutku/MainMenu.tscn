@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://jets7g52wlah"]
+
+[ext_resource type="Script" uid="uid://ct0tgf5sjm8bj" path="res://Scenes/Tutku/MainMenu.cs" id="1_6lee7"]
+[ext_resource type="Texture2D" uid="uid://cllmr0am7bl6i" path="res://Assets/LabMenu2.png" id="1_yprie"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yprie"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.26666668, 0.2509804, 0.2509804, 0.60784316)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3072985, 0.8192999, 0.9999998, 1)
+
+[sub_resource type="Theme" id="Theme_6lee7"]
+Button/styles/normal = SubResource("StyleBoxFlat_yprie")
+
+[node name="MainMenu" type="Control" unique_id=315798789]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6lee7")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2042195992]
+self_modulate = Color(0.5716493, 0.5716493, 0.57164913, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yprie")
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=611984312]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = -127.5
+offset_right = 76.5
+offset_bottom = 127.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_6lee7")
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=140639306]
+layout_mode = 2
+text = "NIEUW SPEL"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1429994418]
+layout_mode = 2
+text = "START"
+
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=786771236]
+layout_mode = 2
+text = "TUTORIAL"
+
+[node name="Button4" type="Button" parent="VBoxContainer" unique_id=912344117]
+layout_mode = 2
+text = "INSTELLINGEN"
+
+[node name="Button5" type="Button" parent="VBoxContainer" unique_id=296588956]
+layout_mode = 2
+text = "AFSLUITEN"
