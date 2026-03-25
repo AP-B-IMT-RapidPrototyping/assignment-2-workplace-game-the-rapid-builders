@@ -8,8 +8,9 @@ size = Vector3(4.038849, 4.2147217, 1.4942322)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oql60"]
 albedo_color = Color(1, 0.81960785, 0.8627451, 1)
 
-[node name="Lungs" type="RigidBody3D" unique_id=757043596 groups=["pickable"]]
+[node name="Lungs" type="RigidBody3D" unique_id=757043596 groups=["Organ", "pickable"]]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.31830716, 0, 0)
+can_sleep = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=517263745]
 transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, 1.549234, 1.6949189, 0.5428073)

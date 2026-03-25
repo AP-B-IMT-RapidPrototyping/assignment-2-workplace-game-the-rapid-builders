@@ -8,8 +8,9 @@ size = Vector3(3.217041, 2.6166992, 2.0975342)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lm6kg"]
 albedo_color = Color(0.827451, 0, 0, 1)
 
-[node name="Heart" type="RigidBody3D" unique_id=857765261 groups=["pickable"]]
+[node name="Heart" type="RigidBody3D" unique_id=857765261 groups=["Organ", "pickable"]]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+can_sleep = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=86954956]
 transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, -0.007326126, 1.0557098, 0.08901024)

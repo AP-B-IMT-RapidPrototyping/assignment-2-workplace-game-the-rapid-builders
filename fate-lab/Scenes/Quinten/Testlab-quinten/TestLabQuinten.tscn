@@ -45,6 +45,8 @@
 [ext_resource type="PackedScene" uid="uid://blivetqaj8o68" path="res://Assets/Lab Assets/GLB/Misc/misc_scale.glb" id="37_8jglp"]
 [ext_resource type="PackedScene" uid="uid://caloq7d0a3h7g" path="res://Assets/Lab Assets/GLB/Tubes and Flasks/Flasks/bottle_glassware_beaker_small.glb" id="38_6wcl3"]
 [ext_resource type="PackedScene" uid="uid://dje2kfy2klgok" path="res://Assets/Lab Assets/GLB/Tubes and Flasks/Flasks/bottle_glassware_erlenmeyer_flask_large.glb" id="39_wd7lh"]
+[ext_resource type="PackedScene" uid="uid://bk4j6d4m64ga3" path="res://Scenes/Leon/poster.tscn" id="46_2kjo2"]
+[ext_resource type="PackedScene" uid="uid://clwfcb3powg0b" path="res://Scenes/Leon/whitebord.tscn" id="47_gl8i4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vw4h8"]
 sky_top_color = Color(0.64705884, 0.78039217, 0.8392157, 1)
@@ -412,6 +414,17 @@ surface_material_override/0 = null
 [node name="machine_microscope_revolving_nosepiece" parent="Node3D/microscope_01/machine_microscope/machine_microscope_arm/machine_microscope_eye_piece" index="0" unique_id=156193817]
 surface_material_override/0 = null
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/microscope_01" unique_id=1133271058]
+transform = Transform3D(20.96269, 0, 1.8189894e-12, 0, 1, 0, -4.5474735e-13, 0, 32.490147, 20.168457, -0.79164886, -9.63739)
+mesh = SubResource("BoxMesh_15t0q")
+surface_material_override/0 = SubResource("StandardMaterial3D_abks3")
+
+[node name="Label3D" type="Label3D" parent="Node3D/microscope_01/MeshInstance3D" unique_id=1124535096]
+transform = Transform3D(-0.43926796, 0.0042808866, -0.0035049159, -0.0024303612, -0.7737398, 0.6334791, -1.8044055e-08, 0.63348883, 0.7737517, 0, 2.4433594, 0)
+text = "Leg hier
+u samples neer"
+font_size = 50
+
 [node name="Test_Machine" parent="Node3D" unique_id=102491177 instance=ExtResource("6_0ajdf")]
 transform = Transform3D(-8.7422775e-10, 0, 0.02, 0, 0.02, 0, -0.02, 0, -8.7422775e-10, -2.448389, 1.5588735, 2.1942568)
 script = ExtResource("12_15t0q")
@@ -448,7 +461,7 @@ transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.0042660236,
 shape = SubResource("ConcavePolygonShape3D_o3v75")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=326748918]
-transform = Transform3D(27.92468, 0, 0, 0, -0.280627, 1.4109497e-06, 0, -2.4533193e-08, -16.139383, -3.28018, 4.128264, 3.587944)
+transform = Transform3D(27.92468, 0, 0, 0, -0.280627, 1.4109497e-06, 0, -2.4533193e-08, -16.139383, -3.2786207, 4.128264, 3.5879402)
 mesh = SubResource("BoxMesh_34wsw")
 surface_material_override/0 = SubResource("StandardMaterial3D_76ef2")
 
@@ -839,6 +852,12 @@ grow_vertical = 2
 text = "test"
 label_settings = SubResource("LabelSettings_0ajdf")
 horizontal_alignment = 1
+
+[node name="Poster" parent="." unique_id=1553215865 instance=ExtResource("46_2kjo2")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 7.296584, 1.1769148, 11.926803)
+
+[node name="Whitebord" parent="." unique_id=1602993350 instance=ExtResource("47_gl8i4")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 17.915663, 1.177, 11.913)
 
 [editable path="Node3D/microscope_01"]
 [editable path="Node3D/Test_Machine"]
