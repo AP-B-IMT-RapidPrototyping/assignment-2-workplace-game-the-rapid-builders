@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://otab50fua4ma"]
+
+[ext_resource type="ArrayMesh" uid="uid://cdavuc0yk0620" path="res://Assets/assets-quinten/heart1.obj" id="1_itko0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f4m43"]
+size = Vector3(3.217041, 2.6166992, 2.0975342)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lm6kg"]
+albedo_color = Color(0.827451, 0, 0, 1)
+
+[node name="Heart" type="RigidBody3D" unique_id=857765261 groups=["pickable"]]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=86954956]
+transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, -0.007326126, 1.0557098, 0.08901024)
+shape = SubResource("BoxShape3D_f4m43")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=563961332]
+transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, 0.020316362, 0, 0)
+mesh = ExtResource("1_itko0")
+surface_material_override/0 = SubResource("StandardMaterial3D_lm6kg")
