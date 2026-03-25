@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://clwfcb3powg0b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdew1"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1tg5t"]
+material = SubResource("StandardMaterial3D_jdew1")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xv7c"]
+
+[node name="Whitebord" type="Node3D" unique_id=1602993350]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=756321318]
+transform = Transform3D(1.763009, 0, 0, 0, 0.108688235, 0, 0, 0, 0.02713553, 0, 1.0381565, 0.038961306)
+mesh = SubResource("BoxMesh_1tg5t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1653580400]
+transform = Transform3D(1.752106, 0, 0, 0, 1, 0, 0, 0, 0.06989443, 0, 0.51907825, 0)
+mesh = SubResource("BoxMesh_0xv7c")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1736064656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021085113, 0.5138219, 0.035906613)
+text = "Controls
+
+Bewegen: ZQSD (WASD)
+Oppakken: G
+Interactie: E"
+font_size = 27
