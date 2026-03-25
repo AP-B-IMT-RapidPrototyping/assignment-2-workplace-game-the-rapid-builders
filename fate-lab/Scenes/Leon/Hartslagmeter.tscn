@@ -60,7 +60,6 @@ stream = ExtResource("4_4hai4")
 
 [node name="GameOverLabel" type="Label" parent="." unique_id=1232682286]
 visible = false
-anchors_preset = -1
 offset_left = -658.0
 offset_top = 137.0
 offset_right = -200.0

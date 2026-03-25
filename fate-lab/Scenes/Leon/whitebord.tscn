@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://clwfcb3powg0b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdew1"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1tg5t"]
+material = SubResource("StandardMaterial3D_jdew1")
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xv7c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1tg5t"]
+size = Vector3(1.7548828, 1.0488281, 0.07875061)
+
+[node name="Whitebord" type="Node3D" unique_id=1602993350]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=235783396]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D" unique_id=756321318]
+transform = Transform3D(1.763009, 0, 0, 0, 0.108688235, 0, 0, 0, 0.122661255, 0, 1.0381565, 0.02017121)
+mesh = SubResource("BoxMesh_1tg5t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1653580400]
+transform = Transform3D(1.752106, 0, 0, 0, 1, 0, 0, 0, 0.06989443, 0, 0.51907825, 0)
+mesh = SubResource("BoxMesh_0xv7c")
+
+[node name="Label3D" type="Label3D" parent="StaticBody3D" unique_id=1736064656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021085113, 0.5138219, 0.035906613)
+text = "Controls
+
+Bewegen: ZQSD (WASD)
+Oppakken: G
+Interactie: E"
+font_size = 27
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=835883046]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0043945313, 0.5332031, -0.0003617704)
+shape = SubResource("BoxShape3D_1tg5t")

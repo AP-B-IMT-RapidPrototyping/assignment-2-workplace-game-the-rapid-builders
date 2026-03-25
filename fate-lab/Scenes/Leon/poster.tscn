@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bk4j6d4m64ga3"]
+
+[ext_resource type="Texture2D" uid="uid://ci55wj2t8mfjg" path="res://Assets/Assets-Leon/uitlegbord.png" id="1_qq0uv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ioq2x"]
+size = Vector3(1.763794, 1.0834961, 0.08154297)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdew1"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ymf5j"]
+material = SubResource("StandardMaterial3D_jdew1")
+
+[sub_resource type="BoxMesh" id="BoxMesh_arsxd"]
+
+[node name="Poster" type="Node3D" unique_id=1553215865]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1878068923]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1772103025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005432129, 0.548836, -0.0031979978)
+shape = SubResource("BoxShape3D_ioq2x")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D" unique_id=1928646952]
+transform = Transform3D(1.763009, 0, 0, 0, 0.108688235, 0, 0, 0, 0.10890655, 0, 1.0381565, 0.013554946)
+mesh = SubResource("BoxMesh_ymf5j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1923434013]
+transform = Transform3D(1.752106, 0, 0, 0, 1, 0, 0, 0, 0.06989443, 0, 0.51907825, 0)
+mesh = SubResource("BoxMesh_arsxd")
+
+[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D" unique_id=581447917]
+transform = Transform3D(0.1448497, 0, 0, 0, 0.11476627, 0, 0, 0, 1, 0, 0.50171113, 0.036818802)
+texture = ExtResource("1_qq0uv")
