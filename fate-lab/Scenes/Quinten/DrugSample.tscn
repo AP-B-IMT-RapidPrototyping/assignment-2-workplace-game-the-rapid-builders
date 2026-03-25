@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bjjt1pcjvun1s"]
+
+[ext_resource type="ArrayMesh" uid="uid://k4la2w5jjhlk" path="res://Assets/assets-quinten/DrugsSample.obj" id="1_8k6rb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tdlsi"]
+height = 0.60461426
+radius = 0.111328125
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdlsi"]
+albedo_color = Color(0.5411765, 0.4, 0.25882354, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7jkx"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mo4w4"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.14117648)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsoxh"]
+
+[node name="DrugSample" type="RigidBody3D" unique_id=1192594390 groups=["pickable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=309029931]
+transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, 0, 0.17319338, 0)
+shape = SubResource("CylinderShape3D_tdlsi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=290308119]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
+mesh = ExtResource("1_8k6rb")
+surface_material_override/0 = SubResource("StandardMaterial3D_tdlsi")
+surface_material_override/1 = SubResource("StandardMaterial3D_u7jkx")
+surface_material_override/2 = SubResource("StandardMaterial3D_mo4w4")
+surface_material_override/3 = SubResource("StandardMaterial3D_bsoxh")
