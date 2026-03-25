@@ -19,7 +19,9 @@ albedo_color = Color(0.5411765, 0.4, 0.25882354, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ybsn"]
 albedo_color = Color(0.5411765, 0.4, 0.25882354, 1)
 
-[node name="BloodSample" type="RigidBody3D" unique_id=137161568 groups=["pickable"]]
+[node name="BloodSample" type="RigidBody3D" unique_id=137161568 groups=["Sample", "pickable"]]
+can_sleep = false
+max_contacts_reported = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=956166283]
 transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, 0, 0.17319338, 0)

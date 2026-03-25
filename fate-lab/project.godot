@@ -22,6 +22,7 @@ project/assembly_name="FateLab"
 [global_group]
 
 pickable="objecten die kunnen worden vasgepakt"
+Sample="To describe if an object is a sample or not"
 
 [input]
 

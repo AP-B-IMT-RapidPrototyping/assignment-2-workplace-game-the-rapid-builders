@@ -18,7 +18,8 @@ albedo_color = Color(1, 1, 1, 0.14117648)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsoxh"]
 
-[node name="DrugSample" type="RigidBody3D" unique_id=1192594390 groups=["pickable"]]
+[node name="DrugSample" type="RigidBody3D" unique_id=1192594390 groups=["Sample", "pickable"]]
+can_sleep = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=309029931]
 transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, 0, 0.17319338, 0)

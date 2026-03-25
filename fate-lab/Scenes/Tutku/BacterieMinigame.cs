@@ -44,7 +44,7 @@ public partial class BacterieMinigame : Node3D
         if (_overgebleven <= 0)
         {
             // Terug naar het lab
-            GetTree().ChangeSceneToFile("res://Scenes/Tutku/Lab.tscn");
+            GetTree().ChangeSceneToFile("res://Scenes/Quinten/Testlab-quinten/TestLabQuinten.tscn");
         }
     }
 }

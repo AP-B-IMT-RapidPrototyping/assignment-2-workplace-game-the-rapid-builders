@@ -51,7 +51,7 @@ public partial class SampleMinigame : Node3D
         if (_geteld <= 0)
         {
             GD.Print("Gewonnen! Terug naar het lab.");
-            GetTree().ChangeSceneToFile("res://Scenes/Tutku/Lab.tscn");
+            GetTree().ChangeSceneToFile("res://Scenes/Quinten/Testlab-quinten/TestLabQuinten.tscn");
         }
     }
 }

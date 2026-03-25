@@ -21,8 +21,10 @@ public partial class OrganSpawning : Node
 	{
 		timer = GetNode<Timer>("Timer");
 		spawn = GetNode<Node3D>("spawn");
+		SpawnSample(bloodSample);
 		timer.Timeout += Ontick;
 		timer.Start();
+		
 		
 
 	}
