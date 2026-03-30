@@ -338,7 +338,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8525684, 1.9156752, -1.916
 visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D" unique_id=1309370565]
-transform = Transform3D(0.9977759, -0.0029319522, -0.066592716, 0.037848976, -0.79743934, 0.6022107, -0.054869313, -0.6033918, -0.7955548, -0.9901142, 3.5493946, 6.4768066)
+transform = Transform3D(0.99777603, -0.0029319527, -0.06659272, 0.059732035, -0.40408018, 0.91277134, -0.029584995, -0.914719, -0.40300635, -0.9901142, 3.5493946, 6.4768066)
 light_energy = 4.249
 shadow_enabled = true
 
@@ -479,7 +479,7 @@ mesh = SubResource("BoxMesh_15t0q")
 surface_material_override/0 = SubResource("StandardMaterial3D_abks3")
 
 [node name="Label3D" type="Label3D" parent="Node3D/microscope_01/MeshInstance3D" unique_id=1124535096]
-transform = Transform3D(-0.43926796, 0.0042808866, -0.0035049159, -0.0024303612, -0.7737398, 0.6334791, -1.8044055e-08, 0.63348883, 0.7737517, 0, 2.4433594, 0)
+transform = Transform3D(-0.43926796, 0.0042808866, -0.0035049159, -0.0024303612, -0.7737398, 0.6334791, -1.8044032e-08, 0.63348883, 0.7737517, 0, 0.77005005, 0)
 text = "Leg hier
 uw samples neer"
 font_size = 50
@@ -496,12 +496,12 @@ transform = Transform3D(-1.1386672, -2.1239725e-08, -9.292998e-08, -7.255493e-08
 font_size = 40
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Test_Machine" unique_id=543773294]
-transform = Transform3D(20.96269, 0, 6.82121e-13, 0, 1, 0, -4.5474735e-13, 0, 32.490147, -31.887405, 0, 0)
+transform = Transform3D(20.96269, 0, 7.9580786e-13, 0, 1, 0, -5.1159077e-13, 0, 32.490147, -31.887405, -4.902397, 0)
 mesh = SubResource("BoxMesh_15t0q")
 surface_material_override/0 = SubResource("StandardMaterial3D_abks3")
 
 [node name="Label3D" type="Label3D" parent="Node3D/Test_Machine/MeshInstance3D" unique_id=2135214577]
-transform = Transform3D(-0.43926796, 0.0042808866, -0.0035049159, -0.0024303612, -0.7737398, 0.6334791, -1.8044055e-08, 0.63348883, 0.7737517, 0, 2.4433594, 0)
+transform = Transform3D(-0.43926796, 0.0042808866, -0.0035049156, -0.0024303612, -0.7737398, 0.6334791, -1.8044055e-08, 0.63348883, 0.7737517, 0, 0.70736694, 0)
 text = "Leg hier
 uw samples neer"
 font_size = 50
