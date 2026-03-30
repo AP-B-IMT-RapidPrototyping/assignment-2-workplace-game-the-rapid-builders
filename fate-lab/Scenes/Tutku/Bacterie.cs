@@ -1,47 +1,49 @@
 using Godot;
 using System;
+
 public partial class Bacterie : StaticBody3D
 {
     [Signal]
     public delegate void GekliktEventHandler();
+
     private Camera3D _camera;
+
     public override void _Ready()
     {
-        // Vind de camera in de scene
+        // Vind de actieve camera om de muisklik naar de 3D wereld te vertalen
         _camera = GetViewport().GetCamera3D();
     }
+
     public override void _Input(InputEvent @event)
     {
-        base._Input(@event);
-        
-        // Verwerk muisklik
-        if (@event is InputEventMouseButton mouseEvent)
+        // Controleer op linkermuisklik
+        if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
         {
-            if (mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
+            if (IsClickedOn(mouseEvent.Position))
             {
-                // Controleer of we op deze bacterie klikken met raycast
-                if (IsClickedOn(mouseEvent.Position))
-                {
-                    GD.Print("Bacterie geraakt!");
-                    EmitSignal(SignalName.Geklikt);
-                    
-                    // Verwijder de bacterie
-                    QueueFree();
-                }
+                GD.Print("Bacterie geraakt!");
+                // Geef een seintje aan de Minigame Manager
+                EmitSignal(SignalName.Geklikt); 
+                
+                // Verwijder de bacterie uit de scene
+                QueueFree(); 
             }
         }
     }
+
     private bool IsClickedOn(Vector2 mousePos)
     {
         if (_camera == null) return false;
-        // Maak een raycast naar de 3D wereld
+
         var spaceState = GetWorld3D().DirectSpaceState;
         var query = PhysicsRayQueryParameters3D.Create(
             _camera.ProjectRayOrigin(mousePos),
             _camera.ProjectRayOrigin(mousePos) + _camera.ProjectRayNormal(mousePos) * 1000
         );
+        
         var result = spaceState.IntersectRay(query);
-        // Check of we deze bacterie hebben geraakt
+
+        // Als we iets raken, controleer of dit object het is
         if (result.Count > 0)
         {
             Node3D collidedNode = (Node3D)result["collider"];
@@ -50,17 +52,3 @@ public partial class Bacterie : StaticBody3D
         return false;
     }
 }
-/*using Godot;
-using System;
-public partial class Bacterie : StaticBody3D
-{
-    [Signal] public delegate void GekliktEventHandler();
-    public void OnInputEvent(Node camera, InputEvent @event, Vector3 pos, Vector3 norm, long shapeIdx)
-    {
-        if (@event is InputEventMouseButton m && m.Pressed && m.ButtonIndex == MouseButton.Left)
-        {
-            EmitSignal(SignalName.Geklikt);
-            QueueFree();
-        }
-    }
-}*/
