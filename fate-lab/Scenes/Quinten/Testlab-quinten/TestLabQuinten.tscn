@@ -48,6 +48,13 @@
 [ext_resource type="PackedScene" uid="uid://bk4j6d4m64ga3" path="res://Scenes/Leon/poster.tscn" id="46_2kjo2"]
 [ext_resource type="PackedScene" uid="uid://clwfcb3powg0b" path="res://Scenes/Leon/whitebord.tscn" id="47_gl8i4"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_2kjo2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gl8i4"]
+emission_enabled = true
+emission = Color(1, 1, 0.7764706, 1)
+emission_energy_multiplier = 2.89
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vw4h8"]
 sky_top_color = Color(0.64705884, 0.78039217, 0.8392157, 1)
 sky_horizon_color = Color(0.73812234, 0.6793534, 0.5299502, 1)
@@ -58,6 +65,16 @@ sky_material = SubResource("ProceduralSkyMaterial_vw4h8")
 [sub_resource type="Environment" id="Environment_gkh8d"]
 background_mode = 2
 sky = SubResource("Sky_ms1jh")
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.53
+glow_strength = 0.8
+glow_bloom = 0.03
+fog_enabled = true
+fog_light_energy = 1.52
+fog_sun_scatter = 0.12
+fog_density = 0.0018
+fog_aerial_perspective = 0.045
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ajdf"]
 size = Vector3(12.95866, 1.8496704, 0.10961914)
@@ -268,6 +285,48 @@ lung = ExtResource("3_15t0q")
 bloodSample = ExtResource("4_abks3")
 drugSample = ExtResource("5_2kjo2")
 
+[node name="lichten" type="Node3D" parent="." unique_id=1986420878]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="lichten" unique_id=1098543788]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 9.111868, 3.9545333, 0.17978728)
+mesh = SubResource("BoxMesh_2kjo2")
+surface_material_override/0 = SubResource("StandardMaterial3D_gl8i4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="lichten" unique_id=531315607]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 14.278067, 3.9545333, 0.17978728)
+mesh = SubResource("BoxMesh_2kjo2")
+surface_material_override/0 = SubResource("StandardMaterial3D_gl8i4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="lichten" unique_id=970023047]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 19.028593, 3.9545333, 0.17978728)
+mesh = SubResource("BoxMesh_2kjo2")
+surface_material_override/0 = SubResource("StandardMaterial3D_gl8i4")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="lichten" unique_id=940572359]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 4.2722692, 3.9545333, 0.17978728)
+mesh = SubResource("BoxMesh_2kjo2")
+surface_material_override/0 = SubResource("StandardMaterial3D_gl8i4")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="lichten" unique_id=2093100618]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 9.111868, 3.9545333, 6.9789796)
+mesh = SubResource("BoxMesh_2kjo2")
+surface_material_override/0 = SubResource("StandardMaterial3D_gl8i4")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="lichten" unique_id=338259771]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 14.278067, 3.9545333, 6.9789796)
+mesh = SubResource("BoxMesh_2kjo2")
+surface_material_override/0 = SubResource("StandardMaterial3D_gl8i4")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="lichten" unique_id=215180312]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 19.028593, 3.9545333, 6.9789796)
+mesh = SubResource("BoxMesh_2kjo2")
+surface_material_override/0 = SubResource("StandardMaterial3D_gl8i4")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="lichten" unique_id=818285952]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 4.2722692, 3.9545333, 6.9789796)
+mesh = SubResource("BoxMesh_2kjo2")
+surface_material_override/0 = SubResource("StandardMaterial3D_gl8i4")
+
 [node name="Node3D" type="Node3D" parent="." unique_id=198824585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.587529, 0, 0.53773487)
 
@@ -280,7 +339,7 @@ visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D" unique_id=1309370565]
 transform = Transform3D(0.9977759, -0.0029319522, -0.066592716, 0.037848976, -0.79743934, 0.6022107, -0.054869313, -0.6033918, -0.7955548, -0.9901142, 3.5493946, 6.4768066)
-light_energy = 4.439
+light_energy = 4.249
 shadow_enabled = true
 
 [node name="Muren" type="Node" parent="Node3D" unique_id=1278180446]
@@ -448,7 +507,7 @@ uw samples neer"
 font_size = 50
 
 [node name="Vloer" type="MeshInstance3D" parent="Node3D" unique_id=1242698502]
-transform = Transform3D(32.64761, 0, 0, 0, 0.083618194, 0, 0, 0, 26.584747, -0.8690462, -3.325939e-05, 2.1652527)
+transform = Transform3D(32.64761, 0, 0, 0, 0.0836182, 0, 0, 0, 26.584747, -0.8690462, -3.325939e-05, 2.1652527)
 material_override = SubResource("StandardMaterial3D_h4dv2")
 mesh = SubResource("BoxMesh_moydf")
 skeleton = NodePath("../../..")
@@ -460,8 +519,8 @@ script = ExtResource("7_15t0q")
 transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.0042660236, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_o3v75")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=326748918]
-transform = Transform3D(27.92468, 0, 0, 0, -0.280627, 1.4109497e-06, 0, -2.4533193e-08, -16.139383, -3.2786207, 4.128264, 3.5879402)
+[node name="plafond" type="MeshInstance3D" parent="Node3D" unique_id=326748918]
+transform = Transform3D(27.92468, 0, 0, 0, -0.28062698, 1.4109496e-06, 0, -2.4533193e-08, -16.139381, -3.2786207, 4.128264, 3.5879402)
 mesh = SubResource("BoxMesh_34wsw")
 surface_material_override/0 = SubResource("StandardMaterial3D_76ef2")
 
