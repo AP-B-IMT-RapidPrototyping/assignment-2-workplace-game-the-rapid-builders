@@ -422,7 +422,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_abks3")
 [node name="Label3D" type="Label3D" parent="Node3D/microscope_01/MeshInstance3D" unique_id=1124535096]
 transform = Transform3D(-0.43926796, 0.0042808866, -0.0035049159, -0.0024303612, -0.7737398, 0.6334791, -1.8044055e-08, 0.63348883, 0.7737517, 0, 2.4433594, 0)
 text = "Leg hier
-u samples neer"
+uw samples neer"
 font_size = 50
 
 [node name="Test_Machine" parent="Node3D" unique_id=102491177 instance=ExtResource("6_0ajdf")]
@@ -444,7 +444,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_abks3")
 [node name="Label3D" type="Label3D" parent="Node3D/Test_Machine/MeshInstance3D" unique_id=2135214577]
 transform = Transform3D(-0.43926796, 0.0042808866, -0.0035049159, -0.0024303612, -0.7737398, 0.6334791, -1.8044055e-08, 0.63348883, 0.7737517, 0, 2.4433594, 0)
 text = "Leg hier
-u samples neer"
+uw samples neer"
 font_size = 50
 
 [node name="Vloer" type="MeshInstance3D" parent="Node3D" unique_id=1242698502]
