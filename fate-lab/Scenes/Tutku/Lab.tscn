@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://fneft1yrw7el"]
+[gd_scene format=4 uid="uid://cur5p1rtcn0nu"]
 
 [ext_resource type="PackedScene" uid="uid://01y4fahkteje" path="res://Assets/Muur.gltf" id="4_0oif5"]
 [ext_resource type="PackedScene" uid="uid://dav5nc5whb33p" path="res://Scenes/Tutku/player.tscn" id="4_16ejr"]

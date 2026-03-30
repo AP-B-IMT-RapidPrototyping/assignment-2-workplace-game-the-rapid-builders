@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c6pnkjw2jrjv7"]
+
+[ext_resource type="Script" uid="uid://c3fi3t5s5oxc2" path="res://Scenes/Tutku/HUD.cs" id="1_vvmba"]
+
+[node name="MeldingUI" type="CanvasLayer" unique_id=1041801416 node_paths=PackedStringArray("MeldingBox", "MeldingTekst")]
+script = ExtResource("1_vvmba")
+MeldingBox = NodePath("MeldingBox")
+MeldingTekst = NodePath("MeldingBox/Label")
+
+[node name="MeldingBox" type="PanelContainer" parent="." unique_id=1915978889]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -273.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = 117.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="MeldingBox" unique_id=1975406879]
+layout_mode = 2
+text = "Voltooid! 
+ga naar de volgende dossier !"
