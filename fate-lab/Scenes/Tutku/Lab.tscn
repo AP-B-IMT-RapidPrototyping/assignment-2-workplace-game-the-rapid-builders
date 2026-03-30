@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://cur5p1rtcn0nu"]
 
+[ext_resource type="PackedScene" uid="uid://ii4015jmwohs" path="res://Scenes/Tutku/document_scherm.tscn" id="3_oelvc"]
 [ext_resource type="PackedScene" uid="uid://01y4fahkteje" path="res://Assets/Muur.gltf" id="4_0oif5"]
+[ext_resource type="PackedScene" uid="uid://c6pnkjw2jrjv7" path="res://Scenes/Tutku/MeldingUI.tscn" id="4_2qxu7"]
 [ext_resource type="PackedScene" uid="uid://dav5nc5whb33p" path="res://Scenes/Tutku/player.tscn" id="4_16ejr"]
 [ext_resource type="PackedScene" uid="uid://5y34s33dwwwu" path="res://Assets/OnderMuur.gltf" id="5_k2jhu"]
 [ext_resource type="PackedScene" uid="uid://cao22b2ful8sl" path="res://Scenes/Tutku/microscope_01.tscn" id="5_wbc6g"]
@@ -39,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://caloq7d0a3h7g" path="res://Assets/Lab Assets/GLB/Tubes and Flasks/Flasks/bottle_glassware_beaker_small.glb" id="37_e7q4u"]
 [ext_resource type="PackedScene" uid="uid://dje2kfy2klgok" path="res://Assets/Lab Assets/GLB/Tubes and Flasks/Flasks/bottle_glassware_erlenmeyer_flask_large.glb" id="38_wbc6g"]
 [ext_resource type="Script" uid="uid://c6rnqy7f4ui58" path="res://Scenes/Lukas/Movement.cs" id="39_16ejr"]
+[ext_resource type="PackedScene" uid="uid://cchqx40h5tgih" path="res://Assets/Meshes/Meshes/SM_Papers_001.fbx" id="40_7d88d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l0pdq"]
 sky_top_color = Color(0.64705884, 0.78039217, 0.8392157, 1)
@@ -220,6 +223,9 @@ shadow_mesh = SubResource("ArrayMesh_iymle")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swnv8"]
 albedo_color = Color(0.65012825, 0.6501283, 0.65012825, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_oelvc"]
+size = Vector3(1.4755859, 0.19436646, 2.1560059)
+
 [node name="Node3D" type="Node3D" unique_id=1428270883]
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1462475848]
@@ -304,6 +310,10 @@ transform = Transform3D(2, 0, 3.496911e-07, 0, 2, 0, -3.496911e-07, 0, 2, -1.589
 
 [node name="Muur23" parent="Node3D/Muren" unique_id=1548765599 instance=ExtResource("4_0oif5")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2.0111995, 0, 1.7484555e-07, 0, -2, -1.5899405, 2.051, 4.277616)
+
+[node name="DocumentScherm" parent="Node3D/Muren" unique_id=1566181929 instance=ExtResource("3_oelvc")]
+
+[node name="MeldingUI" parent="Node3D/Muren" unique_id=1041801416 instance=ExtResource("4_2qxu7")]
 
 [node name="player" type="CharacterBody3D" parent="Node3D" unique_id=1885679676 node_paths=PackedStringArray("InteractionRay", "HoldPosition") groups=["Player"]]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -9.427654, 0.07295787, 4.573735)
@@ -546,7 +556,7 @@ transform = Transform3D(-0.023760725, 0.007773544, -3.3979242e-10, 1.0587912e-23
 transform = Transform3D(-0.0096479645, 0.0026299763, -1.1495992e-10, 0, -4.371139e-10, -0.01, -0.0026299763, -0.0096479645, 4.2172596e-10, 18.228857, 1.4829326, -2.4887667)
 
 [node name="misc_magnifying_glass2" parent="." unique_id=110642748 instance=ExtResource("27_swnv8")]
-transform = Transform3D(0.006293067, -0.0077715702, 3.397061e-10, 7.744379e-19, -4.3711387e-10, -0.01, 0.0077715702, 0.006293067, -2.7507868e-10, 12.762058, 1.5062066, 11.264719)
+transform = Transform3D(0.006293067, -0.0077715702, 3.397061e-10, 7.744379e-19, -4.3711387e-10, -0.01, 0.0077715702, 0.006293067, -2.7507868e-10, 11.826849, 1.5062066, 11.264719)
 
 [node name="Low Poly - Lab Assets16" parent="." unique_id=1413595875 instance=ExtResource("28_swnv8")]
 transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 10.701154, 1.5181681, -2.6963196)
@@ -659,6 +669,13 @@ transform = Transform3D(0.018282957, 0.008107619, -3.543954e-10, -2.6052573e-17,
 
 [node name="Low Poly - Lab Assets48" parent="." unique_id=1209174857 instance=ExtResource("34_nvqeh")]
 transform = Transform3D(0.019559827, -0.0041729105, 1.8240368e-10, -2.6052573e-17, -8.742278e-10, -0.02, 0.0041729105, 0.019559827, -8.549873e-10, 18.40899, 1.5353402, 3.2054718)
+
+[node name="SM_Papers_001" parent="." unique_id=1863968834 instance=ExtResource("40_7d88d")]
+transform = Transform3D(-0.4, 0, -3.4969112e-08, 0, 0.4, 0, 3.4969112e-08, 0, -0.4, 12.579057, 1.4953473, 11.21895)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_Papers_001" unique_id=1274508472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01855278, -0.00920105, 0.10118866)
+shape = SubResource("BoxShape3D_oelvc")
 
 [editable path="Node3D/microscope_01"]
 [editable path="Node3D/Test_Machine"]
