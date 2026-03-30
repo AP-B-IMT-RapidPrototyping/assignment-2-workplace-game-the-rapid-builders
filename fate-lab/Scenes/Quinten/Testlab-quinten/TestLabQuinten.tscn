@@ -705,7 +705,7 @@ transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, 62.0
 shape = SubResource("BoxShape3D_2kjo2")
 
 [node name="Low Poly - Lab Assets24" parent="." unique_id=1596788545 instance=ExtResource("9_2kjo2")]
-transform = Transform3D(0.02, 0, 3.496911e-09, 0, 0.02, 0, -3.496911e-09, 0, 0.02, 16.209791, 0.77101314, 2.9305506)
+transform = Transform3D(0.019999268, -0.00017104018, 3.4967833e-09, 0.00017104018, 0.019999268, 2.990562e-11, -3.4969112e-09, 0, 0.02, 16.209791, 0.77101314, 2.9305506)
 
 [node name="Low Poly - Lab Assets26" parent="." unique_id=1808594419 instance=ExtResource("10_gl8i4")]
 transform = Transform3D(0.02, 0, 3.496911e-09, 0, 0.02, 0, -3.496911e-09, 0, 0.02, 17.449697, 0.771, 2.9325166)
