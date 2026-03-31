@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class OrganSpawning : Node
+public partial class OrganSpawning : Node3D
 {
 	Random random = new Random();
 	[Export] public PackedScene heart;

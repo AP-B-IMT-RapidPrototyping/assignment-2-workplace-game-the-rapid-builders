@@ -3,16 +3,54 @@ using System;
 
 public partial class BacterieMinigame : Node3D
 {
-    [Export] public PackedScene BacterieScene; // Vergeet niet de .tscn hierin te slepen!
+    [Export] public PackedScene BacterieScene;
     [Export] public int MaxBacterien = 5;
-    
-    private int _overgebleven;
+
+    [Export] public Node3D mainNode;
+    [Export] public Node3D SampleNode;
+    [Export] public Camera3D mainCamera;
+
+    private int _overgebleven = 0;
 
     public override void _Ready()
     {
-        // Maak de muis vrij
+        // Laat _Ready leeg, we starten via de interactie in de tutorial
+    }
+
+    // We halen de _Process weg omdat we het spel handmatig starten 
+    // wanneer de speler bij de machine op E drukt.
+
+    public void startSpel()
+    {
+        GD.Print("Interactie gestart!");
+
+        // 1. Eerst de oude bacteriën van de vorige keer opruimen!
+        RuimOudeBacterienOp();
+
+        // 2. Reset de teller naar 0 voor de nieuwe ronde
+        _overgebleven = 0;
+
+        // 3. Muis zichtbaar maken voor het klikken
         Input.MouseMode = Input.MouseModeEnum.Visible;
+
+        // 4. Nieuwe bacteriën spawnen
         SpawnBacterien();
+        
+        GD.Print("Nieuwe minigame gestart!");
+    }
+
+    private void RuimOudeBacterienOp()
+    {
+        // Zoek alle kinderen in deze scene
+        foreach (Node kind in GetChildren())
+        {
+            // We controleren of het kind een Bacterie is (of check op groep "Bacterie")
+            // zodat we niet per ongeluk de camera of lichten verwijderen.
+            if (kind is Bacterie || kind.IsInGroup("Sample"))
+            {
+                kind.QueueFree(); // Verwijder de node uit de scene
+            }
+        }
     }
 
     private void SpawnBacterien()
@@ -23,12 +61,11 @@ public partial class BacterieMinigame : Node3D
         {
             Bacterie instance = BacterieScene.Instantiate<Bacterie>();
             
-    // Verklein het bereik (bijv. van 4.5 naar 3.5)
-            float x = (float)GD.RandRange(-3.5, 3.5); // Minder breed
-            float y = (float)GD.RandRange(-2.0, 2.0); // Minder hoog
+            float x = (float)GD.RandRange(-3.5, 3.5);
+            float y = (float)GD.RandRange(-2.0, 2.0);
             instance.Position = new Vector3(x, y, 0);
 
-            // Verbind de klik aan de teller
+            // Belangrijk: Verbind het signaal
             instance.Geklikt += OnBacterieGeklikt;
 
             AddChild(instance);
@@ -39,13 +76,31 @@ public partial class BacterieMinigame : Node3D
     private void OnBacterieGeklikt()
     {
         _overgebleven--;
-        GD.Print("Nog " + _overgebleven + " over.");
+        GD.Print($"Nog {_overgebleven} over.");
 
         if (_overgebleven <= 0)
         {
-            // Terug naar het lab
-            GetTree().ChangeSceneToFile("res://Scenes/Quinten/Testlab-quinten/TestLabQuinten.tscn");
+            StopSpel();
         }
+    }
+
+    private void StopSpel()
+    {
+        // 1. De minigame node pauzeren en verbergen
+        SampleNode.ProcessMode = ProcessModeEnum.Disabled;
+        SampleNode.Visible = false;
+
+        // 2. De tutorial weer aanzetten
+        mainNode.ProcessMode = ProcessModeEnum.Inherit; 
+        mainNode.Visible = true;
+
+        // 3. Camera terug naar de speler
+        mainCamera.MakeCurrent();
+
+        // 4. Muis weer verbergen voor de First Person besturing
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+        
+        GD.Print("Minigame voltooid, terug naar lab.");
     }
 }
 
@@ -172,7 +227,7 @@ public partial class BacterieMinigame : Node3D
         if (_geteld <= 0)
         {
             GD.Print("Gewonnen! Terug naar het lab.");
-            GetTree().ChangeSceneToFile("res://Scenes/Tutku/Lab.tscn");
+            GetTree().ChangeSceneToFi²le("res://Scenes/Tutku/Lab.tscn");
         }
     }
 }*/
