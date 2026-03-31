@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class TestMachineInteraction : Node3D
+public partial class InteractionMicroscope : Node3D
 {
     // --- Nodes & UI ---
     private Area3D _interactieZone;
@@ -64,7 +64,7 @@ public partial class TestMachineInteraction : Node3D
         }
         
         // Check of een sample (RigidBody) de zone binnenkomt (Zorg dat sample in groep "Sample" zit)
-        if (body.IsInGroup("Sample"))
+        if (body.IsInGroup("Organ"))
         {
             GD.Print($"Sample gedetecteerd: {body.Name}");
             _sampleInBuurt = true;

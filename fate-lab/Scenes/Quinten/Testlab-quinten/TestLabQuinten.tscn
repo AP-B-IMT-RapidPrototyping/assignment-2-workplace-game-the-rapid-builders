@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://65vnaqbor7ew" path="res://Scenes/Quinten/lungs.tscn" id="3_15t0q"]
 [ext_resource type="Script" uid="uid://c6rnqy7f4ui58" path="res://Scenes/Lukas/Movement.cs" id="3_rw1u6"]
 [ext_resource type="PackedScene" uid="uid://dcmookmcw1gvh" path="res://Scenes/Quinten/bloodSample.tscn" id="4_abks3"]
-[ext_resource type="PackedScene" uid="uid://dav5nc5whb33p" path="res://Scenes/Tutku/player.tscn" id="4_efgag"]
+[ext_resource type="PackedScene" uid="uid://dav5nc5whb33p" path="res://Scenes/Tutku/Player.tscn" id="4_efgag"]
 [ext_resource type="PackedScene" uid="uid://bjjt1pcjvun1s" path="res://Scenes/Quinten/DrugSample.tscn" id="5_2kjo2"]
 [ext_resource type="PackedScene" uid="uid://cao22b2ful8sl" path="res://Scenes/Tutku/microscope_01.tscn" id="5_nwaw4"]
 [ext_resource type="PackedScene" uid="uid://bev1sgh48k88i" path="res://Scenes/Tutku/Test_Machine.tscn" id="6_0ajdf"]
@@ -49,7 +49,6 @@
 [ext_resource type="PackedScene" uid="uid://clwfcb3powg0b" path="res://Scenes/Leon/whitebord.tscn" id="47_gl8i4"]
 [ext_resource type="PackedScene" uid="uid://c8fubniuomwy2" path="res://Scenes/Leon/Tutorial/Tutorial.tscn" id="48_562rx"]
 [ext_resource type="PackedScene" uid="uid://xpar0xtwias0" path="res://Scenes/Tutku/bacterie_3d.tscn" id="49_hch48"]
-[ext_resource type="PackedScene" uid="uid://bkprh1gbsjjqs" path="res://Scenes/Quinten/Result.tscn" id="50_hch48"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ajdf"]
 
@@ -928,13 +927,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 57.151897)
 [node name="ppe_lab_gown" parent="Tutorial/meubels/Low Poly - Lab Assets3" parent_id_path=PackedInt32Array(362549293, 1220036087) index="0" unique_id=314980588]
 surface_material_override/0 = null
 
-[node name="Test_Machine" parent="Tutorial" index="8" unique_id=102491177 node_paths=PackedStringArray("mainNode", "SampleNode")]
-mainNode = NodePath("..")
-SampleNode = NodePath("../../sampleNode")
+[node name="ppe_lab_gown" parent="Tutorial/meubels/Low Poly - Lab Assets3/ppe_lab_gown" index="0" unique_id=947402248]
+surface_material_override/0 = null
 
-[node name="microscope_01" parent="Tutorial" index="9" unique_id=856399162 node_paths=PackedStringArray("mainNode", "SampleNode")]
+[node name="Test_Machine" parent="Tutorial/meubels" parent_id_path=PackedInt32Array(362549293, 682747303) index="57" unique_id=102491177 node_paths=PackedStringArray("mainNode")]
 mainNode = NodePath("..")
-SampleNode = NodePath("../../sampleNode")
+
+[node name="microscope_01" parent="Tutorial/meubels" parent_id_path=PackedInt32Array(362549293, 682747303) index="58" unique_id=856399162 node_paths=PackedStringArray("mainNode")]
+mainNode = NodePath("..")
 
 [node name="BloodSample" parent="Tutorial" unique_id=137161568 instance=ExtResource("4_abks3")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 28.506975, 2.0221045, 1.2932396)
@@ -947,13 +947,9 @@ mainCamera = NodePath("../lab/Node3D/player/Camera3D")
 [node name="Timer" type="Timer" parent="." unique_id=253608171]
 wait_time = 15.0
 
-[node name="Result" parent="." unique_id=1353879620 instance=ExtResource("50_hch48")]
-transform = Transform3D(-4.3711385e-08, -1, 4.3711385e-08, 0, -4.371139e-08, -0.99999994, 0.99999994, -4.371139e-08, 1.9106853e-15, 36.543358, 2.7381272, 63.986958)
-
 [editable path="lab/Node3D/microscope_01"]
 [editable path="lab/Node3D/Test_Machine"]
 [editable path="Tutorial"]
-[editable path="Tutorial/Test_Machine"]
-[editable path="Tutorial/microscope_01"]
-[editable path="Tutorial/Monitor"]
+[editable path="Tutorial/meubels/Test_Machine"]
+[editable path="Tutorial/meubels/microscope_01"]
 [editable path="sampleNode"]
