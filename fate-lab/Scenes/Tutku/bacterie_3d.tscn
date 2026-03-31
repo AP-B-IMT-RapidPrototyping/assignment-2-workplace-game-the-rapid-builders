@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dulyluib2r67d" path="res://Scenes/Tutku/BacterieMinigame.cs" id="1_lgkkk"]
 [ext_resource type="PackedScene" uid="uid://c07u8v4so6e8q" path="res://Scenes/Tutku/bacterie3d.tscn" id="2_7vde5"]
+[ext_resource type="PackedScene" uid="uid://c6pnkjw2jrjv7" path="res://Scenes/Tutku/MeldingUI.tscn" id="3_5aosr"]
 
 [node name="Node3D" type="Node3D" unique_id=1794971909]
 script = ExtResource("1_lgkkk")
@@ -12,3 +13,5 @@ transform = Transform3D(0.95212936, 0, 0.30569533, 0, 1, 0, -0.30569533, 0, 0.95
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1839483423]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.177, 0)
+
+[node name="MeldingUI" parent="." unique_id=1041801416 instance=ExtResource("3_5aosr")]

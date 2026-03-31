@@ -3,6 +3,85 @@ using System;
 
 public partial class MicroscoopInteractie : Node3D
 {
+    // 1. VOEG DEZE EXPORT TOE:
+    // Hiermee kun je in de Godot Editor je 'Papier' node in dit vakje slepen.
+    [Export] public PapierInteractie TafelScript;
+
+    private Area3D _interactieZone;
+    private Label3D _interactieLabel;
+    private bool _spelerInBuurt = false;
+
+    private const string InteractieActie = "interactie-bacterie";
+
+    public override void _Ready()
+    {
+        _interactieZone = GetNode<Area3D>("Area3D");
+        _interactieLabel = GetNode<Label3D>("Label3D");
+
+        _interactieZone.BodyEntered += OnBodyEntered;
+        _interactieZone.BodyExited += OnBodyExited;
+        
+        _interactieLabel.Visible = false;
+    }
+
+    public override void _Process(double delta)
+    {
+        if (_spelerInBuurt && Input.IsActionJustPressed(InteractieActie))
+        {
+            // 2. CHECK HIER DE TOESTEMMING:
+            // We vragen aan het TafelScript: "Is de test geaccepteerd?"
+            if (TafelScript != null && TafelScript.MagMinigameStarten())
+            {
+                StartMiniGame();
+            }
+            else
+            {
+                // Optioneel: Geef feedback aan de speler
+                GD.Print("Toegang geweigerd: Accepteer eerst de test in het medisch dossier.");
+                _interactieLabel.Text = "Accepteer eerst dossier!"; // Verander tijdelijk de tekst
+            }
+        }
+    }
+
+    private void OnBodyEntered(Node3D body)
+    {
+        if (body.IsInGroup("Player"))
+        {
+            _spelerInBuurt = true;
+            
+            // Pas de tekst aan op basis van of de test mag starten
+            if (TafelScript != null && TafelScript.MagMinigameStarten()) {
+                _interactieLabel.Text = "Druk E voor Microscoop";
+            } else {
+                _interactieLabel.Text = "Bekijk eerst dossier";
+            }
+            
+            _interactieLabel.Visible = true;
+        }
+    }
+
+    private void OnBodyExited(Node3D body)
+    {
+        if (body.IsInGroup("Player"))
+        {
+            _spelerInBuurt = false;
+            _interactieLabel.Visible = false;
+        }
+    }
+
+    private void StartMiniGame()
+    {
+        string scenePath = "res://Scenes/Tutku/bacterie_3d.tscn"; 
+        GD.Print("Wisselen naar scene: " + scenePath);
+        GetTree().ChangeSceneToFile(scenePath);
+    }
+}
+
+/*using Godot;
+using System;
+
+public partial class MicroscoopInteractie : Node3D
+{
     // Verwijzingen naar nodes (Caching voorkomt fouten bij herladen)
     private Area3D _interactieZone;
     private Label3D _interactieLabel;
@@ -64,4 +143,4 @@ public partial class MicroscoopInteractie : Node3D
     GetTree().ChangeSceneToFile(scenePath);
 
     }
-}
+}*/

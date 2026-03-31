@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ra2wma750738"
+path="res://.godot/imported/Fern_1.obj-e6d3ebf5fdcd5a3a8a6ee7a42e4cb9fd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Fern_1.obj-e6d3ebf5fdcd5a3a8a6ee7a42e4cb9fd.mesh"]
+
+source_file="res://Assets/NatureKit/OBJ/Fern_1.obj"
+dest_files=["res://.godot/imported/Fern_1.obj-e6d3ebf5fdcd5a3a8a6ee7a42e4cb9fd.mesh", "res://.godot/imported/Fern_1.obj-e6d3ebf5fdcd5a3a8a6ee7a42e4cb9fd.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

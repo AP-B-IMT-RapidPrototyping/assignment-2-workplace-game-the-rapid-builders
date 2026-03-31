@@ -1374,16 +1374,17 @@ shape = SubResource("ConcavePolygonShape3D_goqe6")
 
 [node name="Plafond" type="MeshInstance3D" parent="." unique_id=810739115]
 transform = Transform3D(72.296005, 0, 0, 0, 0.083618194, 0, 0, 0, 16.275677, 10.172523, 4.5482297, 2.1652527)
-visible = false
 material_override = SubResource("StandardMaterial3D_g87vj")
 mesh = SubResource("BoxMesh_68usm")
 skeleton = NodePath("../../..")
 script = ExtResource("1_wrqb4")
 
-[node name="player" type="CharacterBody3D" parent="." unique_id=2045402600 node_paths=PackedStringArray("InteractionRay", "InteractionLabel", "HoldPosition") groups=["Player"]]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 64.16959, 0.07295787, 0.12977362)
+[node name="player" type="CharacterBody3D" parent="." unique_id=1016230425 node_paths=PackedStringArray("InteractionRay", "InteractionLabel", "HoldPosition") groups=["Player"]]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -13.623464, 0.07295787, 1.894176)
 script = ExtResource("2_gmoa7")
-InteractionDistance = 2.0
+InteractionDistance = 3.5
+PullPower = 15.0
+RotationSpeed = 5.0
 InteractionRay = NodePath("Camera3D/RayCast3D")
 InteractionLabel = NodePath("../CanvasLayer/InteractionLabel")
 HoldPosition = NodePath("Camera3D/HoldPosition")
@@ -1404,8 +1405,13 @@ current = true
 transform = Transform3D(1, 0, -1.7763568e-15, 0, 1, 0, 0, 0, 1.8910224, 0, 0, 0)
 target_position = Vector3(0, 0, 2)
 
+<<<<<<< HEAD
 [node name="HoldPosition" type="Marker3D" parent="player/Camera3D" unique_id=254157606]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16009474, -1.7786481)
+=======
+[node name="HoldPosition" type="Marker3D" parent="player/Camera3D" unique_id=861245789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.445549, -1.4011707)
+>>>>>>> 9d0ff34c1958489ae8c2c99705ed82fc1a4c7f31
 
 [node name="Muren" type="Node3D" parent="." unique_id=1585966419]
 
