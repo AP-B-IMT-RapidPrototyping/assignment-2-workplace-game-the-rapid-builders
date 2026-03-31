@@ -78,6 +78,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6lee7")
+_tutorialScenePath = "res://Scenes/Leon/Tutorial/Tutorial.tscn"
 
 [node name="Background" type="TextureRect" parent="." unique_id=2042195992]
 self_modulate = Color(0.5716493, 0.5716493, 0.57164913, 1)
@@ -105,10 +106,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_6lee7")
 theme_override_constants/separation = 10
-
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=140639306]
-layout_mode = 2
-text = "NIEUW SPEL"
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=1429994418]
 layout_mode = 2

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bk104icuou3b2"]
 
+[ext_resource type="Script" uid="uid://cg4ffq2wxh5y3" path="res://Scenes/Leon/ProgressBarUpdate.cs" id="1_4hai4"]
 [ext_resource type="Texture2D" uid="uid://bm6y13s1ny4ak" path="res://Assets/Assets-Leon/hart.webp" id="1_g4q6y"]
-[ext_resource type="Script" uid="uid://da5rianwvj7v3" path="res://Scenes/Leon/ProgressBarAftikken.cs" id="1_yr1ef"]
 [ext_resource type="Script" uid="uid://d4m0hsu4f28oy" path="res://Scenes/Leon/HartScript.cs" id="2_67xc2"]
 [ext_resource type="AudioStream" uid="uid://cy8520oqeys1j" path="res://Scenes/Leon/hartslag-gewoon.mp3" id="4_4hai4"]
 [ext_resource type="AudioStream" uid="uid://bk0hmn24chncb" path="res://Scenes/Leon/hartslag-snel.mp3" id="5_gigca"]
@@ -28,7 +28,7 @@ size_flags_horizontal = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_67xc2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yr1ef")
 value = 100.0
-script = ExtResource("1_yr1ef")
+script = ExtResource("1_4hai4")
 mijnHart = NodePath("../TextureRect")
 GameOverTekst = NodePath("../GameOverLabel")
 metadata/_edit_use_anchors_ = true
