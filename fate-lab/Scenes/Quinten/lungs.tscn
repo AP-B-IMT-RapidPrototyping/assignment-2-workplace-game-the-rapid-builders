@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://65vnaqbor7ew"]
 
 [ext_resource type="Script" uid="uid://b46w1fjumkv28" path="res://Assets/assets-quinten/animationStarter.cs" id="1_mnhu4"]
-[ext_resource type="Animation" uid="uid://bo3m0iw3y2be7" path="res://animations/rottingLung.anim" id="1_revlm"]
+[ext_resource type="Animation" uid="uid://cpip8ohmfs6ip" path="res://animations/rottingLung.anim" id="1_revlm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mnhu4"]
 size = Vector3(4.038849, 4.2147217, 1.4942322)
@@ -55,21 +55,21 @@ _data = {
 }
 
 [node name="Lungs" type="RigidBody3D" unique_id=757043596 node_paths=PackedStringArray("animatie") groups=["Organ", "pickable"]]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 can_sleep = false
 script = ExtResource("1_mnhu4")
-animatie = NodePath("lung/AnimationPlayer")
+animatie = NodePath("CollisionShape3D/lung/AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=517263745]
 transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, 1.549234, 1.6949189, 0.5428073)
 shape = SubResource("BoxShape3D_mnhu4")
 
-[node name="lung" type="Node3D" parent="." unique_id=1662393286]
-transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, 1.549234, 1.6949189, 0.5428073)
+[node name="lung" type="Node3D" parent="CollisionShape3D" unique_id=1662393286]
 
-[node name="lung_Armature" type="Node3D" parent="lung" unique_id=2083837306]
+[node name="lung_Armature" type="Node3D" parent="CollisionShape3D/lung" unique_id=2083837306]
 transform = Transform3D(2.0163846, 0, 0, 0, -2.0163846, 6.5702153e-07, 0, -6.5702153e-07, -2.0163846, 0, 2.0407343, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="lung/lung_Armature" unique_id=26725406]
+[node name="Skeleton3D" type="Skeleton3D" parent="CollisionShape3D/lung/lung_Armature" unique_id=26725406]
 bones/0/name = "stam"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0.99999994, 0, 0, 0, 0.99999994, -1.4618323e-08, 0, 1.4618323e-08, 0.99999994, 0, 0, -2.842171e-14)
@@ -99,12 +99,12 @@ bones/3/position = Vector3(0, 0, 0)
 bones/3/rotation = Quaternion(-0.70710677, 0, 0, 0.70710677)
 bones/3/scale = Vector3(1, 1, 1)
 
-[node name="Lung" type="MeshInstance3D" parent="lung/lung_Armature/Skeleton3D" unique_id=2043410941]
+[node name="Lung" type="MeshInstance3D" parent="CollisionShape3D/lung/lung_Armature/Skeleton3D" unique_id=2043410941]
 mesh = SubResource("ArrayMesh_g174n")
 skin = SubResource("Skin_mxyxw")
 skeleton = NodePath("..")
 surface_material_override/0 = SubResource("StandardMaterial3D_mnhu4")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="lung" unique_id=826918882]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CollisionShape3D/lung" unique_id=826918882]
 libraries/ = SubResource("AnimationLibrary_cew0m")
 speed_scale = 0.087

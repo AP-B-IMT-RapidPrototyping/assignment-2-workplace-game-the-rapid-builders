@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021085113, 0.5138219, 0.03
 text = "Controls
 
 Bewegen: ZQSD (WASD)
-Oppakken: G
+Oppakken/Droppen: G
 Interactie: E"
 font_size = 27
 
