@@ -87,6 +87,9 @@ public partial class MicroscoopInteractie : Node3D
     private Label3D _interactieLabel;
     private bool _spelerInBuurt = false;
 
+    [Export] public Node3D mainNode;
+    [Export] public Node3D SampleNode;
+
     // De naam van je actie in de Input Map
     private const string InteractieActie = "interactie-bacterie";
 
@@ -137,10 +140,11 @@ public partial class MicroscoopInteractie : Node3D
     private void StartMiniGame()
     {
 
-    // Let op: het pad moet EXACT kloppen (hoofdletters/kleine letters)
-    string scenePath = "res://Scenes/Tutku/bacterie_3d.tscn"; 
-    GD.Print("Wisselen naar scene: " + scenePath);
-    GetTree().ChangeSceneToFile(scenePath);
+        // Let op: het pad moet EXACT kloppen (hoofdletters/kleine letters)
+        string scenePath = "res://Scenes/Tutku/bacterie_3d.tscn"; 
+        GD.Print("Wisselen naar scene: " + scenePath);
+        SampleNode.Visible = true;
+        mainNode.Visible = true;
 
     }
 }*/
