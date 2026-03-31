@@ -2133,7 +2133,7 @@ mesh = ExtResource("5_6jbm8")
 [node name="Label3D" type="Label3D" parent="tutorial/Characters/CharacterI8" unique_id=1318142223]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015525818, 3.1142492, 1.5015659)
 text = "Aan de rechterkant zie je de microscoop. 
-Dit wordt alleen gebruikt op bloed en drugstalen!
+Dit wordt alleen gebruikt voor organen!
 "
 
 [node name="StaticBody3D" type="StaticBody3D" parent="tutorial/Characters/CharacterI8" unique_id=1864594047]
