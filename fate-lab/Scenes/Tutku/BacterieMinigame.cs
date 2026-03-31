@@ -133,7 +133,3 @@ public partial class BacterieMinigame : Node3D
             Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 }
-<<<<<<< HEAD
-}*/
-=======
->>>>>>> 80a24bb732f57e18d009a0b67274767698f487c0
