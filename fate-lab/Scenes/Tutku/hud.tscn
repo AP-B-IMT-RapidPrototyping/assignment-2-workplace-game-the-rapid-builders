@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dkkwmnon32a0a"]
+
+[ext_resource type="Texture2D" uid="uid://bbj1adkyp1gkw" path="res://Assets/ui-borders/PNG/Double/Transparent center/panel-transparent-center-015.png" id="1_bhyl6"]
+
+[node name="HUD" type="Control" unique_id=1352021350]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=149089956]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -250.0
+offset_bottom = 150.0
+grow_horizontal = 0
+texture = ExtResource("1_bhyl6")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect" unique_id=2000730065]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -66.5
+offset_right = 158.0
+offset_bottom = 93.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect" unique_id=1462853670]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 326.0
+offset_bottom = 167.0
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/VBoxContainer" unique_id=533953611]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.044862747, 0.36501914, 0.7374296, 1)
+theme_override_font_sizes/font_size = 31
+text = "DAGELIJKSE TAKEN"
+
+[node name="CheckBox" type="CheckBox" parent="NinePatchRect/VBoxContainer" unique_id=734413464]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.111226045, 0.3325803, 0.40144372, 1)
+theme_override_font_sizes/font_size = 20
+text = "Klik [E] voor interactie"
+
+[node name="CheckBox2" type="CheckBox" parent="NinePatchRect/VBoxContainer" unique_id=856389525]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_hover_color = Color(0.10980392, 0.33333334, 0.4, 1)
+theme_override_font_sizes/font_size = 20
+text = "? "
+
+[node name="CheckBox3" type="CheckBox" parent="NinePatchRect/VBoxContainer" unique_id=551147015]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_colors/font_hover_color = Color(0.10980392, 0.33333334, 0.4, 1)
+theme_override_font_sizes/font_size = 20
+text = "?"

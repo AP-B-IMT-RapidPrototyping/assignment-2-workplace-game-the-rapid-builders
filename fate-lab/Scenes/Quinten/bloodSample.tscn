@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dcmookmcw1gvh"]
 
 [ext_resource type="ArrayMesh" uid="uid://6vfvnl6qxit6" path="res://Assets/assets-quinten/bloodSample.obj" id="1_8ff1e"]
-[ext_resource type="Script" uid="uid://b46w1fjumkv28" path="res://Assets/assets-quinten/animationStarter.cs" id="1_nhecm"]
+[ext_resource type="Script" path="res://Assets/assets-quinten/animationStarter.cs" id="1_nhecm"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nhecm"]
 height = 5.913849

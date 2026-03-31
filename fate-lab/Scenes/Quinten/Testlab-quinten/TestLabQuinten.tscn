@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://65vnaqbor7ew" path="res://Scenes/Quinten/lungs.tscn" id="3_15t0q"]
 [ext_resource type="Script" uid="uid://c6rnqy7f4ui58" path="res://Scenes/Lukas/Movement.cs" id="3_rw1u6"]
 [ext_resource type="PackedScene" uid="uid://dcmookmcw1gvh" path="res://Scenes/Quinten/bloodSample.tscn" id="4_abks3"]
-[ext_resource type="PackedScene" uid="uid://dav5nc5whb33p" path="res://Scenes/Tutku/Player.tscn" id="4_efgag"]
+[ext_resource type="PackedScene" uid="uid://dav5nc5whb33p" path="res://Scenes/Tutku/player.tscn" id="4_efgag"]
 [ext_resource type="PackedScene" uid="uid://bjjt1pcjvun1s" path="res://Scenes/Quinten/DrugSample.tscn" id="5_2kjo2"]
 [ext_resource type="PackedScene" uid="uid://cao22b2ful8sl" path="res://Scenes/Tutku/microscope_01.tscn" id="5_nwaw4"]
 [ext_resource type="PackedScene" uid="uid://bev1sgh48k88i" path="res://Scenes/Tutku/Test_Machine.tscn" id="6_0ajdf"]

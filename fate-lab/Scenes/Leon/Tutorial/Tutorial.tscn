@@ -33,11 +33,15 @@
 [ext_resource type="PackedScene" uid="uid://bev1sgh48k88i" path="res://Scenes/Tutku/Test_Machine.tscn" id="31_4wovr"]
 [ext_resource type="Script" uid="uid://dgc2d2wl0e70e" path="res://Scenes/Quinten/TestMachineInteraction.cs" id="32_b2d6g"]
 [ext_resource type="PackedScene" uid="uid://cao22b2ful8sl" path="res://Scenes/Tutku/microscope_01.tscn" id="33_b2d6g"]
+[ext_resource type="PackedScene" uid="uid://bjjt1pcjvun1s" path="res://Scenes/Quinten/DrugSample.tscn" id="34_ow2ex"]
+[ext_resource type="PackedScene" uid="uid://dcmookmcw1gvh" path="res://Scenes/Quinten/bloodSample.tscn" id="35_bbqkd"]
+[ext_resource type="PackedScene" uid="uid://65vnaqbor7ew" path="res://Scenes/Quinten/lungs.tscn" id="36_1uei2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t5qyo"]
 sky_top_color = Color(0.23916826, 0.34763762, 1, 1)
 sky_horizon_color = Color(0.40703648, 0.6757012, 0.9412272, 1)
-ground_bottom_color = Color(0.19966345, 0.74125385, 0.13335153, 1)
+ground_bottom_color = Color(0.6285839, 0.6183963, 0.6015514, 1)
+ground_energy_multiplier = 0.8
 sun_angle_max = 46.27
 
 [sub_resource type="Sky" id="Sky_6mm4m"]
@@ -66,7 +70,7 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 height = 2.9956055
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6jbm8"]
-size = Vector3(2.5080566, 1.9395142, 0.17077637)
+size = Vector3(2.1600647, 1.9023743, 0.17077637)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k4sst"]
 transparency = 1
@@ -538,8 +542,11 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_b2d6g"]
 size = Vector3(1.6153564, 3.293457, 0.90478516)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ow2ex"]
+size = Vector3(1.5842285, 3.2182007, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_e61xf"]
-size = Vector3(182.72266, 79.077896, 68.635284)
+size = Vector3(182.72266, 71.30067, 68.635284)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ntssm"]
 height = 11.9609375
@@ -788,7 +795,7 @@ albedo_texture = SubResource("GradientTexture2D_ow2ex")
 size = Vector3(64.781555, 71.774536, 79.356445)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tjw18"]
-size = Vector3(189.87836, 118.35803, 76.42459)
+size = Vector3(189.87836, 79.069244, 76.42459)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2d6g"]
 albedo_color = Color(1, 1, 0, 1)
@@ -806,8 +813,16 @@ albedo_color = Color(1, 1, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpoxt"]
 albedo_color = Color(1, 1, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ow2ex"]
-size = Vector3(1.5842285, 3.2182007, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_b2d6g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1uei2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unpo3"]
+emission_enabled = true
+emission = Color(1, 1, 0.7764706, 1)
+emission_energy_multiplier = 2.89
+
+[sub_resource type="LabelSettings" id="LabelSettings_b2d6g"]
 
 [node name="Tutorial" type="Node3D" unique_id=362549293]
 
@@ -827,11 +842,21 @@ script = ExtResource("1_wrqb4")
 transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0.0042660236, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_goqe6")
 
-[node name="player" type="CharacterBody3D" parent="." unique_id=1016230425 node_paths=PackedStringArray("InteractionRay", "HoldPosition") groups=["Player"]]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -14.364573, 0.07295787, 1.894176)
+[node name="Plafond" type="MeshInstance3D" parent="." unique_id=810739115]
+transform = Transform3D(72.296005, 0, 0, 0, 0.083618194, 0, 0, 0, 16.275677, 10.172523, 4.5482297, 2.1652527)
+material_override = SubResource("StandardMaterial3D_g87vj")
+mesh = SubResource("BoxMesh_68usm")
+skeleton = NodePath("../../..")
+script = ExtResource("1_wrqb4")
+
+[node name="player" type="CharacterBody3D" parent="." unique_id=1016230425 node_paths=PackedStringArray("InteractionRay", "InteractionLabel", "HoldPosition") groups=["Player"]]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -13.623464, 0.07295787, 1.894176)
 script = ExtResource("2_gmoa7")
-InteractionDistance = 2.0
+InteractionDistance = 3.5
+PullPower = 15.0
+RotationSpeed = 5.0
 InteractionRay = NodePath("Camera3D/RayCast3D")
+InteractionLabel = NodePath("../CanvasLayer/InteractionLabel")
 HoldPosition = NodePath("Camera3D/HoldPosition")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player" unique_id=1436328640]
@@ -851,7 +876,7 @@ transform = Transform3D(1, 0, -1.7763568e-15, 0, 1, 0, 0, 0, 1.8910224, 0, 0, 0)
 target_position = Vector3(0, 0, 2)
 
 [node name="HoldPosition" type="Marker3D" parent="player/Camera3D" unique_id=861245789]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16009474, -1.7786481)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.445549, -1.4011707)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1480392915]
 transform = Transform3D(-0.9986519, 0.04637958, 0.023309786, 0.03227285, 0.20305404, 0.9786355, 0.04065556, 0.97806853, -0.20427711, 0, 30.829903, 0)
@@ -914,7 +939,7 @@ transform = Transform3D(-1.4600221e-07, 0, 1, 0, 2.2770178, 0, -3.340141, 0, -4.
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Muren/Muur8/StaticBody3D" unique_id=998387248]
-transform = Transform3D(1.0000002, 0, 1.7763568e-15, 0, 1.0000001, 0, 0, 0, 1, 0.016967058, 0.05868578, -0.38892174)
+transform = Transform3D(1.0000002, 0, 2.2559732e-13, 0, 1.0000001, 0, 0, 0, 1, -0.08839488, 0.077255726, 0.038671017)
 shape = SubResource("BoxShape3D_6jbm8")
 
 [node name="Muur10" parent="Muren" unique_id=197880532 instance=ExtResource("3_wrqb4")]
@@ -958,7 +983,7 @@ transform = Transform3D(-2.011717e-07, 0, 1, 0, 2.2770178, 0, -4.602272, 0, -4.3
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Muren/Muur9/StaticBody3D" unique_id=180767427]
-transform = Transform3D(1.0000002, 0, 1.7763568e-15, 0, 1.0000001, 0, 0, 0, 1, -0.02111888, 0.05868578, 0.01184845)
+transform = Transform3D(1.0000002, 0, 1.7763568e-15, 0, 1.0000001, 0, 0, 0, 1, 0.047515154, 0.05868578, 0.01184845)
 shape = SubResource("BoxShape3D_6jbm8")
 
 [node name="Muur12" parent="Muren" unique_id=1838682280 instance=ExtResource("3_wrqb4")]
@@ -1231,7 +1256,7 @@ mesh = ExtResource("5_6jbm8")
 
 [node name="Label3D" type="Label3D" parent="Characters/CharacterI2" unique_id=1992610870]
 transform = Transform3D(0.9999998, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, 0.9999998, -0.06827009, 3.0400057, 0.28131288)
-text = "Welkom bij de tutorial van FatLab. 
+text = "Welkom bij de tutorial van FateLab. 
 Durf jij als laborant de testen aan te gaan?"
 
 [node name="Label3D" type="Label3D" parent="Characters/CharacterI2/Label3D" unique_id=1028068513]
@@ -1314,7 +1339,7 @@ Aan de linkerkant zie je de organenkuiser. Dit wordt alleen gebruikt op organen!
 [node name="Label3D2" type="Label3D" parent="Characters/CharacterI7" unique_id=1751093941]
 transform = Transform3D(0.43845025, 0, -0.8987565, 0, 1, 0, 0.8987565, 0, 0.43845025, 5.65131, 2.3917584, 3.9885492)
 modulate = Color(0, 1, 1, 1)
-text = "Plaats een orgaan of staal op juiste  gele vlak om de machine of microscoop te activeren. 
+text = "Plaats een orgaan of staalje op het juiste gele vlak om de machine of microscoop te activeren. 
 Druk op E om het onderzoek te starten en vernietig de infectie 
 door er op tijd op te klikken!"
 
@@ -1323,6 +1348,22 @@ door er op tijd op te klikken!"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/CharacterI7/StaticBody3D" unique_id=1087725195]
 transform = Transform3D(1.0000004, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, 1.0000004, 0.02618599, 1.1467285, 0.047610283)
 shape = SubResource("BoxShape3D_b2d6g")
+
+[node name="CharacterI8" type="MeshInstance3D" parent="Characters" unique_id=146718601]
+transform = Transform3D(-0.5020391, 0, -0.8648449, 0, 1, 0, 0.8648449, 0, -0.5020391, 29.753035, 0, 8.380487)
+mesh = ExtResource("5_6jbm8")
+
+[node name="Label3D" type="Label3D" parent="Characters/CharacterI8" unique_id=1318142223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015525818, 3.1142492, 1.5015659)
+text = "Aan de rechterkant zie je de microscoop. 
+Dit wordt alleen gebruikt op bloed en drugstalen!
+"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Characters/CharacterI8" unique_id=1864594047]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Characters/CharacterI8/StaticBody3D" unique_id=1511701456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0277071, 1.1091003, -3.8146973e-06)
+shape = SubResource("BoxShape3D_ow2ex")
 
 [node name="meubels" type="Node3D" parent="." unique_id=682747303]
 
@@ -1500,7 +1541,7 @@ transform = Transform3D(-0.005183798, 0, 0.019316528, 0, 0.02, 0, -0.019316528, 
 transform = Transform3D(-0.005183798, 0, 0.019316528, 0, 0.02, 0, -0.019316528, 0, -0.005183798, -7.141434, 1.5786693, 8.536991)
 
 [node name="Low Poly - Lab Assets17" parent="meubels" unique_id=225936636 instance=ExtResource("7_51ktt")]
-transform = Transform3D(2.384976e-10, 0, -0.02, 0, 0.02, 0, 0.02, 0, 2.384976e-10, -6.8799524, 0.7500948, 8.768624)
+transform = Transform3D(2.384976e-10, 0, -0.02, 0, 0.02, 0, 0.02, 0, 2.384976e-10, -6.7686615, 0.7500948, 8.768624)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="meubels/Low Poly - Lab Assets17" unique_id=655324131]
 
@@ -1529,7 +1570,7 @@ transform = Transform3D(-4.37114e-09, 0, 0.02, 0, 0.02, 0, -0.02, 0, -4.37114e-0
 [node name="StaticBody3D" type="StaticBody3D" parent="meubels/Low Poly - Lab Assets34" unique_id=197352363]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="meubels/Low Poly - Lab Assets34/StaticBody3D" unique_id=2055879672]
-transform = Transform3D(1, 0, 2.842171e-14, 0, 1, 0, -2.842171e-14, 0, 1, 61.77664, 4.62088, -1.4673462)
+transform = Transform3D(1, 0, 2.842171e-14, 0, 1, 0, -2.842171e-14, 0, 1, 61.77664, 0.7322655, -1.4673462)
 shape = SubResource("BoxShape3D_e61xf")
 
 [node name="Low Poly - Lab Assets35" parent="meubels" unique_id=204526245 instance=ExtResource("6_deobm")]
@@ -1544,7 +1585,7 @@ transform = Transform3D(-4.37114e-09, 0, 0.02, 0, 0.02, 0, -0.02, 0, -4.37114e-0
 [node name="StaticBody3D" type="StaticBody3D" parent="meubels/Low Poly - Lab Assets37" unique_id=651564497]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="meubels/Low Poly - Lab Assets37/StaticBody3D" unique_id=525612631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.939262, 14.755062, 1.1813354)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.939262, -4.8893394, 1.1813354)
 shape = SubResource("BoxShape3D_tjw18")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="meubels" unique_id=831116153]
@@ -1612,74 +1653,234 @@ surface_material_override/3 = SubResource("StandardMaterial3D_rosh5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022888184, 1.8298342, -0.047721863)
 shape = SubResource("BoxShape3D_uell1")
 
-[node name="Test_Machine" parent="." unique_id=102491177 instance=ExtResource("31_4wovr")]
+[node name="Test_Machine" parent="meubels" unique_id=102491177 instance=ExtResource("31_4wovr")]
 transform = Transform3D(-8.7422775e-10, 0, 0.02, 0, 0.02, 0, -0.02, 0, -8.7422775e-10, 29.392738, 1.5588735, 0.9152727)
 script = ExtResource("32_b2d6g")
 
-[node name="CollisionShape3D" parent="Test_Machine/Area3D" parent_id_path=PackedInt32Array(102491177, 1430372005) index="0" unique_id=1024499878]
+[node name="CollisionShape3D" parent="meubels/Test_Machine/Area3D" parent_id_path=PackedInt32Array(102491177, 1430372005) index="0" unique_id=1024499878]
 transform = Transform3D(1, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 1, 0, 6.9029922, -8.825562)
 
-[node name="Label3D" parent="Test_Machine" index="2" unique_id=88920277]
-transform = Transform3D(-1.1386672, -2.1239725e-08, -9.292998e-08, -7.255493e-08, 0.8740097, 0.48590833, 8.073282e-08, 0.48590833, -0.8740097, 2.8528442, 12.577873, -25.950073)
+[node name="Label3D" parent="meubels/Test_Machine" index="2" unique_id=88920277]
+transform = Transform3D(-1.1386672, -2.1239723e-08, -9.292998e-08, -7.2554926e-08, 0.8740097, 0.48590833, 8.073282e-08, 0.48590833, -0.8740097, 2.8528328, 9.869171, -19.850464)
 visible = true
 font_size = 40
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Test_Machine" unique_id=889203098]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="meubels/Test_Machine" unique_id=889203098]
 transform = Transform3D(20.96269, 0, 6.82121e-13, 0, 1, 0, -4.5474735e-13, 0, 32.490147, -31.887405, 0, 0)
 mesh = SubResource("BoxMesh_ow2ex")
 surface_material_override/0 = SubResource("StandardMaterial3D_1uei2")
 
-[node name="Sprite3D" type="Sprite3D" parent="Test_Machine/MeshInstance3D" unique_id=1702039178]
+[node name="Sprite3D" type="Sprite3D" parent="meubels/Test_Machine/MeshInstance3D" unique_id=1702039178]
 transform = Transform3D(0.2386894, -1.284415e-08, 1.1346158e-07, 1.1434511e-08, -0.18958604, -0.69370323, 2.7605354e-08, 0.18958609, -0.6937033, 0.0056524277, 0.6473465, 0.04219818)
 texture = ExtResource("26_ebd4u")
 
-[node name="microscope_01" parent="." unique_id=856399162 instance=ExtResource("33_b2d6g")]
+[node name="microscope_01" parent="meubels" unique_id=856399162 instance=ExtResource("33_b2d6g")]
 transform = Transform3D(-2.145688e-09, 0, 0.02, 0, 0.02, 0, -0.02, 0, -2.145688e-09, 29.71977, 1.5010462, 5.224681)
 
-[node name="machine_microscope" parent="microscope_01" index="0" unique_id=22363550]
+[node name="machine_microscope" parent="meubels/microscope_01" index="0" unique_id=22363550]
 surface_material_override/0 = null
 
-[node name="machine_microscope_arm" parent="microscope_01/machine_microscope" index="1" unique_id=267788328]
+[node name="machine_microscope_arm" parent="meubels/microscope_01/machine_microscope" index="1" unique_id=267788328]
 surface_material_override/0 = null
 
-[node name="machine_microscope_eye_piece" parent="microscope_01/machine_microscope/machine_microscope_arm" index="0" unique_id=885224689]
+[node name="machine_microscope_eye_piece" parent="meubels/microscope_01/machine_microscope/machine_microscope_arm" index="0" unique_id=885224689]
 surface_material_override/0 = null
 
-[node name="machine_microscope_revolving_nosepiece" parent="microscope_01/machine_microscope/machine_microscope_arm/machine_microscope_eye_piece" index="0" unique_id=156193817]
+[node name="machine_microscope_revolving_nosepiece" parent="meubels/microscope_01/machine_microscope/machine_microscope_arm/machine_microscope_eye_piece" index="0" unique_id=156193817]
 surface_material_override/0 = null
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="microscope_01" unique_id=1990277509]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="meubels/microscope_01" unique_id=1990277509]
 transform = Transform3D(20.96269, 0, 1.8189894e-12, 0, 1, 0, -4.5474735e-13, 0, 32.490147, 20.168457, -0.79164886, -9.63739)
 mesh = SubResource("BoxMesh_bbqkd")
 surface_material_override/0 = SubResource("StandardMaterial3D_rpoxt")
 
-[node name="Sprite3D" type="Sprite3D" parent="microscope_01/MeshInstance3D" unique_id=1841055764]
+[node name="Sprite3D" type="Sprite3D" parent="meubels/microscope_01/MeshInstance3D" unique_id=1841055764]
 transform = Transform3D(0.13112138, -0.0020228964, 0.028990937, 0.004176688, 0.0061023505, -0.9467232, 0.0025057779, 0.09568194, 0.060992654, -0.032473564, 1.0458679, 0.22851181)
 texture = ExtResource("26_17wr1")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1721451500]
+[node name="Sprite3D7" type="Sprite3D" parent="meubels" unique_id=1721451500]
 transform = Transform3D(-0.0016379841, 0.056011833, -0.01936415, 0.001964822, -0.001108624, -0.94206196, -0.06516465, -0.0014413464, -0.027917946, 29.373905, 1.5027992, 4.8210974)
 texture = ExtResource("27_efrfb")
 
-[node name="CharacterI7" type="MeshInstance3D" parent="." unique_id=146718601]
-transform = Transform3D(-0.5020391, 0, -0.8648449, 0, 1, 0, 0.8648449, 0, -0.5020391, 29.753035, 0, 8.380487)
-mesh = ExtResource("5_6jbm8")
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="meubels" unique_id=1495860982]
+transform = Transform3D(0.0603199, 0, 0, 0, 0.41104877, 0, 0, 0, 1.935709, 16.270502, 1.8278909, 4.70631)
+mesh = SubResource("BoxMesh_b2d6g")
 
-[node name="Label3D" type="Label3D" parent="CharacterI7" unique_id=1318142223]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015525818, 3.1142492, 1.5015659)
-text = "Aan de rechterkant zie je de microscoop. 
-Dit wordt alleen gebruikt op bloed en drugstalen!
-"
+[node name="Whitebord2" parent="meubels" unique_id=1059743500 instance=ExtResource("25_tjw18")]
+transform = Transform3D(-1.4102095, 0, 1.4182063, 0, 2, 0, -1.4182063, 0, -1.4102095, 23.006088, 1.4112186, 9.008121)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="CharacterI7" unique_id=1864594047]
+[node name="Lichten" type="Node3D" parent="." unique_id=718880442]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterI7/StaticBody3D" unique_id=1511701456]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0277071, 1.1091003, -3.8146973e-06)
-shape = SubResource("BoxShape3D_ow2ex")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lichten" unique_id=1120124660]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, -15.005686, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Lichten" unique_id=1152563906]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, -9.839487, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Lichten" unique_id=1979215989]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, -19.845285, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Lichten" unique_id=852184262]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, -15.005686, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Lichten" unique_id=2108571613]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, -9.839487, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Lichten" unique_id=739409403]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, -20.019577, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Lichten" unique_id=941512823]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 0.5735295, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Lichten" unique_id=928922016]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 5.739728, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Lichten" unique_id=1434355047]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, -4.2660694, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Lichten" unique_id=1599113981]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 0.5735295, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Lichten" unique_id=2121810879]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 5.739728, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Lichten" unique_id=1885558504]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, -4.440361, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Lichten" unique_id=1625376767]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 15.39489, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Lichten" unique_id=1660090425]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 20.561089, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Lichten" unique_id=403306191]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 10.55529, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Lichten" unique_id=1760184015]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 15.39489, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Lichten" unique_id=516645132]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 20.561089, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Lichten" unique_id=1300317931]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 10.380999, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Lichten" unique_id=652463505]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 29.86495, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Lichten" unique_id=465842958]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 35.03115, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="Lichten" unique_id=1617854083]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 25.02535, 4.445732, -1.460172)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="Lichten" unique_id=1298011272]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 29.86495, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="Lichten" unique_id=1255172344]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 35.03115, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="Lichten" unique_id=1589243887]
+transform = Transform3D(2.0335724, 0, 0, 0, 0.13220315, 0, 0, 0, 0.42980444, 24.851059, 4.445732, 5.3390203)
+mesh = SubResource("BoxMesh_1uei2")
+surface_material_override/0 = SubResource("StandardMaterial3D_unpo3")
+
+[node name="Objecten" type="Node3D" parent="." unique_id=123907021]
+
+[node name="DrugSample" parent="Objecten" unique_id=1192594390 instance=ExtResource("34_ow2ex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.79057, 1.5499742, 0.26626438)
+script = null
+
+[node name="BloodSample" parent="Objecten" unique_id=137161568 instance=ExtResource("35_bbqkd")]
+transform = Transform3D(0.021889819, 0, 0, 0, 0.02023422, 0, 0, 0, 0.021790424, 15.770081, 1.5362657, -0.5220243)
+script = null
+
+[node name="Lungs" parent="Objecten" unique_id=757043596 instance=ExtResource("36_1uei2")]
+transform = Transform3D(-6.4201373e-09, 0, -0.23700932, 0, 0.19801587, 0, 0.14687562, 0, -1.0360006e-08, 15.957684, 1.428644, -1.546995)
+script = null
+
+[node name="Control" type="Control" parent="." unique_id=1968888218]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1937291, 0.1937291)
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1688139935]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1874678745]
+
+[node name="InteractionLabel" type="Label" parent="CanvasLayer" unique_id=1962392286]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 15.0
+offset_right = 20.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_b2d6g")
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="Deuren/SensorDeuren/Area3D" to="Deuren/SensorDeuren" method="OnArea3DBodyEntered"]
 [connection signal="body_entered" from="Deuren/SensorDeuren2/Area3D" to="Deuren/SensorDeuren2" method="OnArea3DBodyEntered"]
 [connection signal="body_entered" from="Deuren/SensorDeuren3/Area3D" to="Deuren/SensorDeuren3" method="OnArea3DBodyEntered"]
 
-[editable path="Test_Machine"]
-[editable path="microscope_01"]
+[editable path="meubels/Test_Machine"]
+[editable path="meubels/microscope_01"]
