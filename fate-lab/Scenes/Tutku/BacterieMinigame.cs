@@ -10,6 +10,11 @@ public partial class BacterieMinigame : Node3D
     [Export] public Node3D SampleNode;
     [Export] public Camera3D mainCamera;
     [Export] public PapierInteractie TafelScript; // Sleep hier je Area3D (Tafel) in!
+// Verander dit als het nog op 'ProgressBarAftikken' stond
+    [Export] public ProgressBarUpdate HartslagMeter;
+    
+    // Voeg dit toe voor een tijdslimiet:
+    [Export] public float Tijdslimiet = 10.0f; // 10 seconden om te winnen
 
     private int _overgebleven = 0;
 
