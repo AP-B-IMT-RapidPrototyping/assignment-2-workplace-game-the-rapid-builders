@@ -1,72 +1,66 @@
+[gd_scene format=3 uid="uid://5b8ijxfgix0"]
 
-[gd_scene format=3 uid="uid://bk104icuou3b2"]
+[ext_resource type="AudioStream" uid="uid://d1bnuq3gsth5h" path="res://Scenes/Leon/hartslag-dood.mp3" id="1_fpdua"]
+[ext_resource type="AudioStream" uid="uid://cy8520oqeys1j" path="res://Scenes/Leon/hartslag-gewoon.mp3" id="2_n1i8y"]
+[ext_resource type="AudioStream" uid="uid://bk0hmn24chncb" path="res://Scenes/Leon/hartslag-snel.mp3" id="3_mge4n"]
+[ext_resource type="Texture2D" uid="uid://bm6y13s1ny4ak" path="res://Assets/Assets-Leon/hart.webp" id="4_ymdvq"]
+[ext_resource type="Script" uid="uid://d4m0hsu4f28oy" path="res://Scenes/Leon/HartScript.cs" id="5_cou8t"]
+[ext_resource type="Script" uid="uid://da5rianwvj7v3" path="res://Scenes/Leon/ProgressBarAftikken.cs" id="6_sgsgj"]
 
-[ext_resource type="Script" uid="uid://cg4ffq2wxh5y3" path="res://Scenes/Leon/ProgressBarUpdate.cs" id="1_4hai4"]
-[ext_resource type="Texture2D" uid="uid://bm6y13s1ny4ak" path="res://Assets/Assets-Leon/hart.webp" id="1_g4q6y"]
-[ext_resource type="Script" uid="uid://d4m0hsu4f28oy" path="res://Scenes/Leon/HartScript.cs" id="2_67xc2"]
-[ext_resource type="AudioStream" uid="uid://cy8520oqeys1j" path="res://Scenes/Leon/hartslag-gewoon.mp3" id="4_4hai4"]
-[ext_resource type="AudioStream" uid="uid://bk0hmn24chncb" path="res://Scenes/Leon/hartslag-snel.mp3" id="5_gigca"]
-[ext_resource type="AudioStream" uid="uid://d1bnuq3gsth5h" path="res://Scenes/Leon/hartslag-dood.mp3" id="6_fs7ip"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpdua"]
+bg_color = Color(0.5415741, 0.5320886, 0.53446025, 1)
+border_color = Color(0, 0, 0, 1)
+corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67xc2"]
-bg_color = Color(0.19219694, 0.192197, 0.19219688, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1i8y"]
+bg_color = Color(1, 0, 0, 1)
+corner_detail = 19
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yr1ef"]
-bg_color = Color(0.9999998, 0.16541186, 0.11993807, 1)
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
+[sub_resource type="LabelSettings" id="LabelSettings_n1i8y"]
+font_size = 100
+font_color = Color(1, 0, 0, 1)
 
-[node name="Node2D" type="Node2D" unique_id=1036501218]
-position = Vector2(1002, 122)
+[node name="V2Hartslag" type="Node2D" unique_id=1933339560]
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=738577570 node_paths=PackedStringArray("mijnHart", "GameOverTekst")]
-custom_minimum_size = Vector2(200, 20)
-offset_left = -82.0
-offset_top = -57.0
-offset_right = 118.0
-offset_bottom = -34.0
-size_flags_horizontal = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_67xc2")
-theme_override_styles/fill = SubResource("StyleBoxFlat_yr1ef")
-value = 100.0
-show_percentage = false
-script = ExtResource("1_yr1ef")
-mijnHart = NodePath("../TextureRect")
-GameOverTekst = NodePath("../GameOverLabel")
-metadata/_edit_use_anchors_ = true
+[node name="HartslagDood" type="AudioStreamPlayer" parent="." unique_id=985300471]
+stream = ExtResource("1_fpdua")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=992086871 node_paths=PackedStringArray("HartslagGewoon", "HartslagSnel", "HartslagDood")]
-custom_minimum_size = Vector2(40, 10)
-offset_left = -137.0
-offset_top = -68.0
-offset_right = -97.0
-offset_bottom = -22.0
-scale = Vector2(1.0431556, 0.92)
-pivot_offset = Vector2(20, 20)
-texture = ExtResource("1_g4q6y")
+[node name="HartslagGewoon" type="AudioStreamPlayer" parent="." unique_id=1066171185]
+stream = ExtResource("2_n1i8y")
+
+[node name="HartslagSnel" type="AudioStreamPlayer" parent="." unique_id=1331628740]
+stream = ExtResource("3_mge4n")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=782213461 node_paths=PackedStringArray("HartslagGewoon", "HartslagSnel", "HartslagDood")]
+offset_left = 811.0
+offset_top = 33.0
+offset_right = 867.0
+offset_bottom = 85.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_ymdvq")
 expand_mode = 1
-script = ExtResource("2_67xc2")
-HartslagGewoon = NodePath("../hartslag-gewoon")
-HartslagSnel = NodePath("../Hartslag-snel")
-HartslagDood = NodePath("../hartslag-dood")
-metadata/_edit_use_anchors_ = true
+script = ExtResource("5_cou8t")
+HartslagGewoon = NodePath("../HartslagGewoon")
+HartslagSnel = NodePath("../HartslagSnel")
+HartslagDood = NodePath("../HartslagDood")
 
-[node name="Hartslag-snel" type="AudioStreamPlayer" parent="." unique_id=23983446]
-stream = ExtResource("5_gigca")
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1092291109 node_paths=PackedStringArray("mijnHart", "GameOverTekst")]
+offset_left = 888.0
+offset_top = 44.0
+offset_right = 1137.0
+offset_bottom = 71.0
+theme_override_styles/background = SubResource("StyleBoxFlat_fpdua")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n1i8y")
+value = 100.0
+script = ExtResource("6_sgsgj")
+mijnHart = NodePath("../TextureRect")
+GameOverTekst = NodePath("../Label")
 
-[node name="hartslag-dood" type="AudioStreamPlayer" parent="." unique_id=2137811873]
-stream = ExtResource("6_fs7ip")
-
-[node name="hartslag-gewoon" type="AudioStreamPlayer" parent="." unique_id=1809518147]
-stream = ExtResource("4_4hai4")
-
-[node name="GameOverLabel" type="Label" parent="." unique_id=1232682286]
-visible = false
-offset_left = -658.0
-offset_top = 137.0
-offset_right = -200.0
-offset_bottom = 247.0
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 80
-text = "GAME OVER"
+[node name="Label" type="Label" parent="." unique_id=358549234]
+offset_left = 285.0
+offset_top = 240.0
+offset_right = 810.0
+offset_bottom = 377.0
+text = "Game over"
+label_settings = SubResource("LabelSettings_n1i8y")
+horizontal_alignment = 1

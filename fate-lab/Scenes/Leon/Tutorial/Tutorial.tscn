@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://bmbnqiur28gn8" path="res://Assets/Lab Assets/GLB/Furniture/Counters/counter_counter_sink.glb" id="8_ntssm"]
 [ext_resource type="PackedScene" uid="uid://ceraqba6xuss0" path="res://Assets/Lab Assets/GLB/Clamps/clamp_tube_clamp.glb" id="9_t5qyo"]
 [ext_resource type="PackedScene" uid="uid://cst61ygv146b4" path="res://Assets/Lab Assets/GLB/Machines/machine_electronic_scale.glb" id="10_6mm4m"]
+[ext_resource type="Script" uid="uid://cv1fhxm856ot4" path="res://Scenes/Leon/Tutorial/SceneWisselaar.cs" id="10_o0ree"]
 [ext_resource type="PackedScene" uid="uid://c23j7t5smrltt" path="res://Assets/DNA-glas.gltf" id="11_51ktt"]
+[ext_resource type="PackedScene" uid="uid://cur5p1rtcn0nu" path="res://Scenes/Tutku/Lab.tscn" id="11_saluk"]
 [ext_resource type="ArrayMesh" uid="uid://duxm83vlprw50" path="res://Assets/table.obj" id="13_k4sst"]
 [ext_resource type="ArrayMesh" uid="uid://dqjurg75vqtgw" path="res://Assets/doctorChair.obj" id="14_22io5"]
 [ext_resource type="PackedScene" uid="uid://d0jee3gnq70f0" path="res://Assets/Lab Assets/FBX/Misc/misc_magnifying_glass.fbx" id="15_1pe8c"]
@@ -523,6 +525,9 @@ _data = {
 &"rechts4": SubResource("Animation_yk4ja"),
 &"rechts5": SubResource("Animation_7sai0")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_saluk"]
+size = Vector3(1, 4.7637024, 8.940659)
 
 [sub_resource type="Animation" id="Animation_ebd4u"]
 length = 0.001
@@ -2003,6 +2008,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -9.536743e-07, 0, 3.8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial/Deuren/SensorDeuren5/DeurRechts/StaticBody3D" unique_id=68236390]
 transform = Transform3D(1, 0, 1.0658141e-13, 0, 0.9999997, 0, -4.973799e-14, 0, 1, 0.02240181, 1.6619866, 0.6049628)
 shape = SubResource("BoxShape3D_05bs6")
+
+[node name="Area3D2" type="Area3D" parent="tutorial/Deuren/SensorDeuren5" unique_id=191550534]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.99999976, 0, 2.1316282e-14, 0, 1, -1.2743683, 0, 3.2771401)
+script = ExtResource("10_o0ree")
+NieuweScene = ExtResource("11_saluk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial/Deuren/SensorDeuren5/Area3D2" unique_id=12025876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 2.3305802e-12, 0, 1, -0.56890106, 0.9590303, 0.42580438)
+shape = SubResource("BoxShape3D_saluk")
 
 [node name="Characters" type="Node3D" parent="tutorial" unique_id=684409667]
 

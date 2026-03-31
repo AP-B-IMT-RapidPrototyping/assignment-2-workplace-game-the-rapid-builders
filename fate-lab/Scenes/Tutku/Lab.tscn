@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cur5p1rtcn0nu"]
 
 [ext_resource type="PackedScene" uid="uid://01y4fahkteje" path="res://Assets/Muur.gltf" id="4_0oif5"]
-[ext_resource type="PackedScene" uid="uid://dav5nc5whb33p" path="res://Scenes/Tutku/player.tscn" id="4_16ejr"]
+[ext_resource type="PackedScene" uid="uid://dav5nc5whb33p" path="res://Scenes/Tutku/Player.tscn" id="4_16ejr"]
 [ext_resource type="PackedScene" uid="uid://becoyudxugtmh" path="res://Assets/NatureKit/glTF/Rock_Medium_3.gltf" id="5_jxhwa"]
 [ext_resource type="PackedScene" uid="uid://5y34s33dwwwu" path="res://Assets/OnderMuur.gltf" id="5_k2jhu"]
 [ext_resource type="PackedScene" uid="uid://cao22b2ful8sl" path="res://Scenes/Tutku/microscope_01.tscn" id="5_wbc6g"]
