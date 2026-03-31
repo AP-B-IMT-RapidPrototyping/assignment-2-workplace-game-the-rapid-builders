@@ -28,7 +28,12 @@ size_flags_horizontal = 4
 theme_override_styles/background = SubResource("StyleBoxFlat_67xc2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yr1ef")
 value = 100.0
+<<<<<<< HEAD
 script = ExtResource("1_4hai4")
+=======
+show_percentage = false
+script = ExtResource("1_yr1ef")
+>>>>>>> 80a24bb732f57e18d009a0b67274767698f487c0
 mijnHart = NodePath("../TextureRect")
 GameOverTekst = NodePath("../GameOverLabel")
 metadata/_edit_use_anchors_ = true

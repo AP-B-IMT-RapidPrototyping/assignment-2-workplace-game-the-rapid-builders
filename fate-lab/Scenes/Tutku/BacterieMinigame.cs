@@ -3,8 +3,12 @@ using System;
 
 public partial class BacterieMinigame : Node3D
 {
-    [Export] public PackedScene BacterieScene; // Sleep hier je bacterie_3d.tscn in!
+    [Export] public PackedScene BacterieScene;
     [Export] public int MaxBacterien = 5;
+
+    [Export] public Node3D mainNode;
+    [Export] public Node3D SampleNode;
+    [Export] public Camera3D mainCamera;
     [Export] public PapierInteractie TafelScript; // Sleep hier je Area3D (Tafel) in!
 // Verander dit als het nog op 'ProgressBarAftikken' stond
     [Export] public ProgressBarUpdate HartslagMeter;
@@ -12,28 +16,46 @@ public partial class BacterieMinigame : Node3D
     // Voeg dit toe voor een tijdslimiet:
     [Export] public float Tijdslimiet = 10.0f; // 10 seconden om te winnen
 
-    private int _overgebleven;
-    private SceneTreeTimer _minigameTimer;
+    private int _overgebleven = 0;
 
     public override void _Ready()
     {
-        // Maak de muis zichtbaar voor de minigame
-        Input.MouseMode = Input.MouseModeEnum.Visible;
-        
-        _overgebleven = 0; // Reset teller
-        SpawnBacterien();
-
-        // Start de timer voor de minigame
-        _minigameTimer = GetTree().CreateTimer(Tijdslimiet);
-        _minigameTimer.Timeout += OnMinigameTimeout;
+        // Laat _Ready leeg, we starten via de interactie in de tutorial
     }
 
-    private void OnMinigameTimeout()
+    // We halen de _Process weg omdat we het spel handmatig starten 
+    // wanneer de speler bij de machine op E drukt.
+
+    public void startSpel()
     {
-        if (_overgebleven > 0)
+        GD.Print("Interactie gestart!");
+
+        // 1. Eerst de oude bacteriën van de vorige keer opruimen!
+        RuimOudeBacterienOp();
+
+        // 2. Reset de teller naar 0 voor de nieuwe ronde
+        _overgebleven = 0;
+
+        // 3. Muis zichtbaar maken voor het klikken
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+
+        // 4. Nieuwe bacteriën spawnen
+        SpawnBacterien();
+        
+        GD.Print("Nieuwe minigame gestart!");
+    }
+
+    private void RuimOudeBacterienOp()
+    {
+        // Zoek alle kinderen in deze scene
+        foreach (Node kind in GetChildren())
         {
-            GD.Print("Tijd is om! Minigame mislukt.");
-            StopDeGame(false); // Je hebt niet gewonnen
+            // We controleren of het kind een Bacterie is (of check op groep "Bacterie")
+            // zodat we niet per ongeluk de camera of lichten verwijderen.
+            if (kind is Bacterie || kind.IsInGroup("Sample"))
+            {
+                kind.QueueFree(); // Verwijder de node uit de scene
+            }
         }
     }
 
@@ -65,15 +87,12 @@ public partial class BacterieMinigame : Node3D
 
     private void OnBacterieGeklikt()
     {
-        if (_minigameTimer.TimeLeft <= 0) return; // Geen actie na timeout
-
         _overgebleven--;
         GD.Print("Bacterie vernietigd. Nog " + _overgebleven + " over.");
 
         if (_overgebleven <= 0)
         {
             GD.Print("Alle bacteriën zijn weg! Minigame gewonnen.");
-            _minigameTimer.Timeout -= OnMinigameTimeout; // Ontkoppel de timeout event
             StopDeGame(true);
         }
     }
@@ -86,16 +105,6 @@ public partial class BacterieMinigame : Node3D
             TafelScript.UpdateStatus(isGewonnen);
         }
 
-        // --- DIT IS DE NIEUWE CODE VOOR DE HARTSLAG ---
-        // Als de speler niet gewonnen heeft, is het GAME OVER voor de hartslagmeter
-        if (!isGewonnen && HartslagMeter != null)
-        {
-            // Je hebt de meter al in de Inspector, nu zeggen we: Ga Dood!
-            // Of gebruik HartslagMeter.DoeSchade(); als er alleen leven af moet
-            HartslagMeter.GaDood(); 
-        }
-        // ----------------------------------------------
-
         // Zoek de HUD die je net hebt toegevoegd
         var hud = GetTree().Root.FindChild("MeldingUI", true, false) as HUD;
         
@@ -105,93 +114,26 @@ public partial class BacterieMinigame : Node3D
             hud.ToonMelding(bericht);
             
             // Wacht 3 seconden zodat de speler het kan lezen
-            await ToSignal(GetTree().CreateTimer(3.0f), "timeout");
+            await ToSignal(GetTree().CreateTimer(3.0f), SceneTreeTimer.SignalName.Timeout);
         }
 
         // Nu pas terug naar het lab
-        GetTree().ChangeSceneToFile("res://Scenes/Tutku/Lab.tscn");
+        // 1. De minigame node pauzeren en verbergen
+            SampleNode.ProcessMode = ProcessModeEnum.Disabled;
+            SampleNode.Visible = false;
+
+            // 2. De tutorial weer aanzetten
+            mainNode.ProcessMode = ProcessModeEnum.Inherit; 
+            mainNode.Visible = true;
+
+            // 3. Camera terug naar de speler
+            mainCamera.MakeCurrent();
+
+            // 4. Muis weer verbergen voor de First Person besturing
+            Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 }
-
-/*using Godot;
-using System;
-
-public partial class BacterieMinigame : Node3D
-{
-    [Export] public PackedScene BacterieScene; // Sleep hier je bacterie_3d.tscn in!
-    [Export] public int MaxBacterien = 5;
-    [Export] public PapierInteractie TafelScript; // Sleep hier je Area3D (Tafel) in!
-    [Export] public ProgressBarAftikken HartslagMeter;
-    private int _overgebleven;
-
-    public override void _Ready()
-    {
-        // Maak de muis zichtbaar voor de minigame
-        Input.MouseMode = Input.MouseModeEnum.Visible;
-        
-        _overgebleven = 0; // Reset teller
-        SpawnBacterien();
-    }
-
-    private void SpawnBacterien()
-    {
-        if (BacterieScene == null)
-        {
-            GD.PrintErr("FOUT: Geen BacterieScene toegewezen in de Inspector!");
-            return;
-        }
-
-        for (int i = 0; i < MaxBacterien; i++)
-        {
-            Bacterie instance = BacterieScene.Instantiate<Bacterie>();
-
-            // Bepaal een willekeurige positie voor de bacteriën
-            float x = (float)GD.RandRange(-3.5, 3.5);
-            float y = (float)GD.RandRange(-2.0, 2.0);
-            instance.Position = new Vector3(x, y, 0);
-
-            // Verbind het signaal van de bacterie aan de teller-functie
-            instance.Geklikt += OnBacterieGeklikt;
-
-            AddChild(instance);
-            _overgebleven++;
-        }
-        GD.Print("Minigame gestart met " + _overgebleven + " bacteriën.");
-    }
-
-    private void OnBacterieGeklikt()
-    {
-        _overgebleven--;
-        GD.Print("Bacterie vernietigd. Nog " + _overgebleven + " over.");
-
-        if (_overgebleven <= 0)
-        {
-            GD.Print("Alle bacteriën zijn weg! Minigame gewonnen.");
-            StopDeGame(true);
-        }
-    }
-
-// Voeg 'async' toe aan de functie
-public async void StopDeGame(bool isGewonnen)
-{
-    if (TafelScript != null)
-    {
-        TafelScript.UpdateStatus(isGewonnen);
-    }
-
-    // Zoek de HUD die je net hebt toegevoegd
-    var hud = GetTree().Root.FindChild("MeldingUI", true, false) as HUD;
-    
-    if (hud != null)
-    {
-        string bericht = isGewonnen ? "Test voltooid! Ga terug naar het dossier." : "Test mislukt!";
-        hud.ToonMelding(bericht);
-        
-        // Wacht 3 seconden zodat de speler het kan lezen
-        await ToSignal(GetTree().CreateTimer(3.0f), "timeout");
-    }
-
-    // Nu pas terug naar het lab
-    GetTree().ChangeSceneToFile("res://Scenes/Tutku/Lab.tscn");
-}
+<<<<<<< HEAD
 }*/
+=======
+>>>>>>> 80a24bb732f57e18d009a0b67274767698f487c0
