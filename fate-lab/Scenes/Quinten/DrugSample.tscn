@@ -122,6 +122,7 @@ _data = {
 }
 
 [node name="DrugSample" type="RigidBody3D" unique_id=1192594390 node_paths=PackedStringArray("animatie") groups=["Sample", "pickable"]]
+transform = Transform3D(0.6068988, 0, 0, 0, 0.63212883, 0, 0, 0, 0.6619805, 0, 0, 0)
 can_sleep = false
 script = ExtResource("1_tdlsi")
 animatie = NodePath("MeshInstance3D/AnimationPlayer")

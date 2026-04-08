@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dsxi2rhdtj82b" path="res://Scenes/Quinten/RottingAnimation.cs" id="1_itko0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f4m43"]
-size = Vector3(3.217041, 2.6166992, 2.0975342)
+size = Vector3(1.7525635, 2.2728882, 2.0975342)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5ybx"]
 resource_name = "color ramp"
@@ -211,7 +211,7 @@ script = ExtResource("1_f4m43")
 animatie = NodePath("CollisionShape3D/heart/AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=86954956]
-transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, -0.007326126, 1.0557098, 0.08901024)
+transform = Transform3D(0.8000001, 0, 0, 0, 0.8000001, 0, 0, 0, 0.8000001, -0.5931172, 1.2296773, 0.08901024)
 shape = SubResource("BoxShape3D_f4m43")
 
 [node name="heart" type="Node3D" parent="CollisionShape3D" unique_id=426862889]
@@ -265,6 +265,7 @@ bones/5/rotation = Quaternion(-0.70710677, 0, 0, 0.70710677)
 bones/5/scale = Vector3(1, 1, 1)
 
 [node name="Cube_Cube_003" type="MeshInstance3D" parent="CollisionShape3D/heart/Armature/Skeleton3D" unique_id=207897135]
+transform = Transform3D(0.5458599, 0, 0, 0, 0.5061605, 0, 0, 0, 0.5779916, 0, 0.21642578, 0)
 mesh = SubResource("ArrayMesh_pnixv")
 skin = SubResource("Skin_15lj6")
 skeleton = NodePath("..")

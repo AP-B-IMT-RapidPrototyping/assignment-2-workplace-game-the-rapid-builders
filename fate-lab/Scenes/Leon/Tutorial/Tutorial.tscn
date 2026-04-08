@@ -67,10 +67,6 @@
 [ext_resource type="PackedScene" uid="uid://caloq7d0a3h7g" path="res://Assets/Lab Assets/GLB/Tubes and Flasks/Flasks/bottle_glassware_beaker_small.glb" id="61_28jy2"]
 [ext_resource type="PackedScene" uid="uid://cxrcxtrapobo5" path="res://Assets/Lab Assets/GLB/Machines/machine_centrifuge_tube.glb" id="62_gx2nj"]
 [ext_resource type="PackedScene" uid="uid://yy4hrwgoiu5v" path="res://Assets/Lab Assets/GLB/Machines/machine_desiccator.glb" id="63_cq7iq"]
-[ext_resource type="Script" uid="uid://ml6gb1kc8g8v" path="res://Scenes/Tutku/PapierInteractie.cs" id="65_m26js"]
-[ext_resource type="Texture2D" uid="uid://ddvh4dpc8w1o6" path="res://Assets/Patient_01.png" id="66_xog1l"]
-[ext_resource type="Texture2D" uid="uid://bqiam7r6ms7nb" path="res://Assets/Patient_02.png" id="67_o0ree"]
-[ext_resource type="PackedScene" uid="uid://ii4015jmwohs" path="res://Scenes/Tutku/document_scherm.tscn" id="68_saluk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xog1l"]
 sky_top_color = Color(0.64705884, 0.78039217, 0.8392157, 1)
@@ -1357,11 +1353,11 @@ size = Vector3(1.2588501, 1.3498535, 1.2375488)
 [sub_resource type="BoxShape3D" id="BoxShape3D_yk4ja"]
 size = Vector3(1.3554688, 1.4628906, 1.3041992)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kidde"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cq7iq"]
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nbbdi"]
-material = SubResource("StandardMaterial3D_kidde")
+material = SubResource("StandardMaterial3D_cq7iq")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kidde"]
 size = Vector3(1, 1.1342773, 1.0178833)
@@ -1398,41 +1394,6 @@ material = SubResource("StandardMaterial3D_4gy2k")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8fl8i"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3d015"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_ayxig"]
-_surfaces = [{
-"aabb": AABB(-0.014453504, -0.011457559, 0, 0.029029198, 0.022915117, 0.00055559183),
-"format": 34359742465,
-"index_count": 18,
-"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 12,
-"vertex_data": PackedByteArray("SdckPArXIzwAAAAASdckPArXI7wAAAAAy9YivArXI7wAAAAAy9YivArXIzwAAAAAO84OPHawKzwy+18528U5PCPjGrwy+185vM0MvHawK7wy+185XMU3vCPjGjwy+185IJ2Qu324OzwjpRE6485uPOzJ9jsjpRE6HJ6UO3y4O7wjpRE6ZM5svOzJ9rsjpRE6")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_8fl8i"]
-resource_name = "Plane"
-_surfaces = [{
-"aabb": AABB(-0.014453504, -0.011457559, 0, 0.029029198, 0.022915117, 0.00055559183),
-"attribute_data": PackedByteArray("AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAgD8AAIA/AAAAAAAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAIA/AACAPwAAAAAAAIA/"),
-"format": 34359742487,
-"index_count": 18,
-"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgA"),
-"material": SubResource("StandardMaterial3D_3d015"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 12,
-"vertex_data": PackedByteArray("SdckPArXIzwAAAAASdckPArXI7wAAAAAy9YivArXI7wAAAAAy9YivArXIzwAAAAAO84OPHawKzwy+18528U5PCPjGrwy+185vM0MvHawK7wy+185XMU3vCPjGjwy+185IJ2Qu324OzwjpRE6485uPOzJ9jsjpRE6HJ6UO3y4O7wjpRE6ZM5svOzJ9rsjpRE6/3//f////7//f/9/////v/9//3////+//3//f////7//f/9/u/kgw/9//3+7+SDD/3//f7v5IMP/f/9/u/kgw/9//38Q6gi1/3//fxDqCLX/f/9/EOoItf9//38Q6gi1")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ayxig")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_37vi0"]
-size = Vector3(1.8380737, 0.4343567, 3.2144642)
 
 [node name="Tutorial" type="Node3D" unique_id=362549293]
 
@@ -3385,25 +3346,6 @@ transform = Transform3D(2.6226832e-07, 0, -2, 0, 2, 0, 2, 0, 2.6226832e-07, 16.3
 transform = Transform3D(0.0603199, 0, 0, 0, 0.41104877, 0, 0, 0, 1.935709, 21.851746, 1.8278909, 6.4261994)
 mesh = SubResource("BoxMesh_b2d6g")
 
-[node name="SM_Papers_002" type="Node3D" parent="tutorial" unique_id=71806578]
-transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 46.65845, 1.4992766, 3.0223784)
-
-[node name="Plane" type="MeshInstance3D" parent="tutorial/SM_Papers_002" unique_id=1862267593]
-transform = Transform3D(62, 0, 0, 0, -4.333897e-06, 99.148, 0, -99.148, -4.333897e-06, -2.3283064e-10, 0, 0)
-mesh = SubResource("ArrayMesh_8fl8i")
-
-[node name="Area3D" type="Area3D" parent="tutorial/SM_Papers_002" unique_id=1118025513 node_paths=PackedStringArray("MijnDocumentUI")]
-script = ExtResource("65_m26js")
-MijnDocumentUI = NodePath("../DocumentScherm")
-Foto1 = ExtResource("66_xog1l")
-Foto2 = ExtResource("67_o0ree")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tutorial/SM_Papers_002/Area3D" unique_id=1940581633]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010940552, -0.111312866, -0.46874237)
-shape = SubResource("BoxShape3D_37vi0")
-
-[node name="DocumentScherm" parent="tutorial/SM_Papers_002" unique_id=1566181929 instance=ExtResource("68_saluk")]
-
 [connection signal="body_entered" from="tutorial/Deuren/SensorDeuren/Area3D" to="tutorial/Deuren/SensorDeuren" method="OnArea3DBodyEntered"]
 [connection signal="body_entered" from="tutorial/Deuren/SensorDeuren2/Area3D" to="tutorial/Deuren/SensorDeuren2" method="OnArea3DBodyEntered"]
 [connection signal="body_entered" from="tutorial/Deuren/SensorDeuren3/Area3D" to="tutorial/Deuren/SensorDeuren3" method="OnArea3DBodyEntered"]
@@ -3413,4 +3355,3 @@ shape = SubResource("BoxShape3D_37vi0")
 [editable path="bacterie"]
 [editable path="tutorial/meubels/Test_Machine"]
 [editable path="tutorial/meubels/microscope_01"]
-[editable path="tutorial/SM_Papers_002/DocumentScherm"]
