@@ -3,7 +3,7 @@ using System;
 
 public partial class ProgressBarAftikken : ProgressBar
 {
-	[Export] public double MaxTijd = 15.0; //Tijd in seconde
+	[Export] public double MaxTijd = 120.0; //Tijd in seconde
 	[Export] public HartScript mijnHart;
     [Export] public Label GameOverTekst;
 	private bool _HartSnel = false;

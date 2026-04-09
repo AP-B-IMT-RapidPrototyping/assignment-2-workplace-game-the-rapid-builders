@@ -76,10 +76,8 @@
 [ext_resource type="PackedScene" uid="uid://dp4po3lb7j2pa" path="res://Assets/NatureKit/glTF/CommonTree_2.gltf" id="78_t7mhg"]
 [ext_resource type="PackedScene" uid="uid://dcmookmcw1gvh" path="res://Scenes/Quinten/bloodSample.tscn" id="79_8w1oq"]
 [ext_resource type="PackedScene" uid="uid://bjjt1pcjvun1s" path="res://Scenes/Quinten/DrugSample.tscn" id="80_t7mhg"]
-[ext_resource type="PackedScene" uid="uid://5b8ijxfgix0" path="res://Scenes/Leon/Hartslagmeter.tscn" id="84_1ill7"]
 [ext_resource type="PackedScene" uid="uid://clwfcb3powg0b" path="res://Scenes/Leon/whitebord.tscn" id="84_6smuy"]
 [ext_resource type="Texture2D" uid="uid://cllmr0am7bl6i" path="res://Assets/LabMenu2.png" id="84_xxook"]
-[ext_resource type="PackedScene" uid="uid://bk4j6d4m64ga3" path="res://Scenes/Leon/poster.tscn" id="86_j85q8"]
 [ext_resource type="PackedScene" uid="uid://doiy4mcwchlfk" path="res://Assets/NatureKit/glTF/Flower_3_Single.gltf" id="86_xxook"]
 [ext_resource type="PackedScene" uid="uid://bnb5ij3q7fr83" path="res://Assets/NatureKit/glTF/Flower_3_Group.gltf" id="87_j85q8"]
 [ext_resource type="PackedScene" uid="uid://dhd3333q8m8rc" path="res://Assets/NatureKit/glTF/Pebble_Square_4.gltf" id="88_n4k3u"]
@@ -96,8 +94,16 @@
 [ext_resource type="AudioStream" uid="uid://bn5uyb4a0flt1" path="res://Scenes/Leon/Tutorial/True.mp3" id="95_c5g0k"]
 [ext_resource type="Script" uid="uid://do17ks0k8f7hb" path="res://Scenes/Tutku/main_orgaanspawner.cs" id="95_si5i6"]
 [ext_resource type="PackedScene" uid="uid://otab50fua4ma" path="res://Scenes/Quinten/heart.tscn" id="96_c5g0k"]
+[ext_resource type="Script" uid="uid://lwsohmwpmyku" path="res://Scenes/Tutku/ScoreManager.cs" id="97_ngfit"]
 [ext_resource type="PackedScene" uid="uid://65vnaqbor7ew" path="res://Scenes/Quinten/lungs.tscn" id="97_qoytd"]
 [ext_resource type="Texture2D" uid="uid://bod56qaulb0kf" path="res://Assets/Assets-Leon/long.png" id="98_qoytd"]
+[ext_resource type="AudioStream" uid="uid://d1bnuq3gsth5h" path="res://Scenes/Leon/hartslag-dood.mp3" id="98_vqd8d"]
+[ext_resource type="AudioStream" uid="uid://cy8520oqeys1j" path="res://Scenes/Leon/hartslag-gewoon.mp3" id="99_lkv3o"]
+[ext_resource type="ArrayMesh" uid="uid://drr4tdrjcc2jt" path="res://Assets/Assets-Leon/people/Models/OBJ format/character-i.obj" id="99_xy3ac"]
+[ext_resource type="AudioStream" uid="uid://bk0hmn24chncb" path="res://Scenes/Leon/hartslag-snel.mp3" id="100_rb2ri"]
+[ext_resource type="Texture2D" uid="uid://bm6y13s1ny4ak" path="res://Assets/Assets-Leon/hart.webp" id="101_hdkv3"]
+[ext_resource type="Script" uid="uid://d4m0hsu4f28oy" path="res://Scenes/Leon/HartScript.cs" id="102_xxrnp"]
+[ext_resource type="Script" uid="uid://da5rianwvj7v3" path="res://Scenes/Leon/ProgressBarAftikken.cs" id="103_b2pfw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l0pdq"]
 sky_top_color = Color(0.64705884, 0.78039217, 0.8392157, 1)
@@ -281,7 +287,7 @@ albedo_color = Color(0.65012825, 0.6501283, 0.65012825, 1)
 size = Vector3(8.82959, 1.6064758, 1.6920471)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vqd8d"]
-size = Vector3(15.948029, 4.7944336, 4.459961)
+size = Vector3(15.9737625, 4.5650635, 4.459961)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lkv3o"]
 height = 46.075684
@@ -615,6 +621,10 @@ shadow_mesh = SubResource("ArrayMesh_h4jp7")
 
 [sub_resource type="BoxMesh" id="BoxMesh_w8vlp"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_a7i26"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hdkv3"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_wbc6g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16ejr"]
@@ -751,6 +761,140 @@ albedo_color = Color(0, 0.9955913, 1, 1)
 material = SubResource("StandardMaterial3D_a7i26")
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5g0k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpdua"]
+bg_color = Color(0.5415741, 0.5320886, 0.53446025, 1)
+border_color = Color(0, 0, 0, 1)
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1i8y"]
+bg_color = Color(1, 0, 0, 1)
+corner_detail = 19
+
+[sub_resource type="LabelSettings" id="LabelSettings_n1i8y"]
+font_size = 100
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ebd4u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(74.45809, 0, -3.0052435)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w8vlp"]
+resource_name = "animatie1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.2749374, 0, 1.3410676)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 7.8539815, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xy3ac"]
+resource_name = "animatie2"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(4.787899, 4.464525, -4.2585955), Vector3(19.371628, 4.464525, -4.2585955)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.3027009e-15, -1.4901161e-08, 3.1415925), Vector3(-1.3027009e-15, 0, 3.1415925)]
+}
+
+[sub_resource type="Animation" id="Animation_4wovr"]
+resource_name = "animatieman2"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-19.228998, 0, 1.7859805)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 0, 0), Vector3(0, -1.5707964, 0), Vector3(0, -3.1415927, 0), Vector3(0, -4.712389, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p88ly"]
+_data = {
+&"RESET": SubResource("Animation_ebd4u"),
+&"animatie1": SubResource("Animation_w8vlp"),
+&"animatie2": SubResource("Animation_xy3ac"),
+&"animatieman2": SubResource("Animation_4wovr")
+}
 
 [node name="Node3D" type="Node3D" unique_id=1428270883]
 
@@ -1011,7 +1155,7 @@ surface_material_override/3 = SubResource("StandardMaterial3D_y30vd")
 [node name="StaticBody3D" type="StaticBody3D" parent="Meubels/Table2" unique_id=1439112275]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Meubels/Table2/StaticBody3D" unique_id=1656958579]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.042648315, 1.8972167, -0.063957214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055516243, 1.7825316, -0.063957214)
 shape = SubResource("BoxShape3D_vqd8d")
 
 [node name="DoctorChair3" type="MeshInstance3D" parent="Meubels" unique_id=647935038]
@@ -1153,9 +1297,6 @@ mesh = SubResource("ArrayMesh_jp54f")
 [node name="Monitor_32_Stand_Vesa" type="MeshInstance3D" parent="Meubels/Monitor_32_grp2" unique_id=843262944]
 mesh = SubResource("ArrayMesh_nbdtx")
 
-[node name="Poster2" parent="Meubels" unique_id=137397390 instance=ExtResource("86_j85q8")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 19.516903, 1.1769148, 12.096328)
-
 [node name="Whitebord2" parent="Meubels" unique_id=1759258236 instance=ExtResource("84_6smuy")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 5.0159645, 1.177, 12.012348)
 
@@ -1182,6 +1323,41 @@ text = "Staaltjeskuiser"
 [node name="Microscoop-label" type="Label3D" parent="Meubels" unique_id=1878653288]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.958435, 2.5163302, -2.6829603)
 text = "Microscoop"
+
+[node name="Whitebord3" parent="Meubels" unique_id=1602993350 instance=ExtResource("84_6smuy")]
+transform = Transform3D(-2, 0, -5.2453663e-07, 0, 2, 0, 5.2453663e-07, 0, -2, 19.788208, 1.3983481, 12.118805)
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Meubels/Whitebord3" unique_id=1432572939]
+transform = Transform3D(-6.5916663e-09, 0, -1.6496291, 0, 1.0019037, 0, 0.03015995, 0, -3.6053788e-07, -0.011719227, 0.53020704, 0.025068283)
+mesh = SubResource("BoxMesh_a7i26")
+
+[node name="Label3D" type="Label3D" parent="Meubels/Whitebord3/MeshInstance3D7" unique_id=1968472148]
+transform = Transform3D(-4.3711402e-08, 0, 1.0000001, 0, 1.0000006, 0, -1.0000005, 0, -4.371141e-08, 0.5444641, 0.32097244, 0)
+modulate = Color(0, 0.99470645, 0, 1)
+text = "Is het  resultaat GOED, 
+gooi het orgaan/staaltje dan in 
+de groene bak"
+font_size = 11
+
+[node name="Label3D2" type="Label3D" parent="Meubels/Whitebord3/MeshInstance3D7" unique_id=1615011297]
+transform = Transform3D(-1.6791429e-06, 0, 16.57828, 0, 1.109727, 0, -0.7023252, 0, -1.3248886e-08, 1.488617, -0.01674807, -0.011276841)
+modulate = Color(0.98937523, 0.99470645, 0, 1)
+text = "Is het  resultaat GEEL, 
+dan moet het gereinigd worden en vervolgens in de 
+groene bak gegooid worden
+(In de volgende kamer wordt dit uitgelegd)"
+font_size = 11
+
+[node name="Label3D3" type="Label3D" parent="Meubels/Whitebord3/MeshInstance3D7" unique_id=2000276572]
+transform = Transform3D(-7.5404845e-05, 0, 274.84036, 0, 1.1623541, 0, -0.57662594, 0, -4.0157033e-09, 2.2952118, -0.32603723, -0.004107952)
+modulate = Color(0.98937523, 0, 0, 1)
+text = "Is het  resultaat ROOD, 
+gooi het orgaan/ staaltje dan onmiddellijk in de rode bak"
+font_size = 11
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Meubels" unique_id=1478304335]
+transform = Transform3D(0.6, 0, 0, 0, 0.028, 0, 0, 0, 0.6, 22.929396, 1.4861901, 2.1719234)
+mesh = SubResource("CylinderMesh_hdkv3")
 
 [node name="Muren" type="Node3D" parent="." unique_id=1963934434]
 
@@ -1895,11 +2071,12 @@ shape = SubResource("BoxShape3D_w8vlp")
 transform = Transform3D(-7.138398e-09, 0, 1.421098, -0.1633075, -5.591417e-08, -6.211817e-08, 7.138398e-09, -1.2791672, 7.764026e-15, 26.298388, 0.012902319, 7.32855)
 mesh = SubResource("BoxMesh_qoytd")
 
-[node name="Area3D" type="Area3D" parent="Dozen/DoosSlecht" unique_id=560038617 node_paths=PackedStringArray("GeluidTrue", "GeluidFalse")]
+[node name="Area3D" type="Area3D" parent="Dozen/DoosSlecht" unique_id=560038617 node_paths=PackedStringArray("GeluidTrue", "GeluidFalse", "ScoreLabel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.11918, 0, 7.329539)
 script = ExtResource("88_xy3ac")
 GeluidTrue = NodePath("True")
 GeluidFalse = NodePath("False")
+ScoreLabel = NodePath("../../../HUD/Score")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dozen/DoosSlecht/Area3D" unique_id=1062814536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20991898, 0.13537598, 0.01977539)
@@ -1958,11 +2135,12 @@ mesh = SubResource("BoxMesh_si5i6")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 24.332148, 0.48843837, 6.67961)
 text = "Goed"
 
-[node name="Area3D" type="Area3D" parent="Dozen/DoosGoed" unique_id=2139394452 node_paths=PackedStringArray("GeluidTrue", "GeluidFalse")]
+[node name="Area3D" type="Area3D" parent="Dozen/DoosGoed" unique_id=2139394452 node_paths=PackedStringArray("GeluidTrue", "GeluidFalse", "ScoreLabel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.281368, 0, 7.392736)
 script = ExtResource("91_xy3ac")
 GeluidTrue = NodePath("True")
 GeluidFalse = NodePath("False")
+ScoreLabel = NodePath("../../../HUD/Score")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dozen/DoosGoed/Area3D" unique_id=923968275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0093688965, 0.17492676, -0.013793945)
@@ -1995,6 +2173,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4951565, -0.18426031)
 current = true
 
 [node name="RayCast3D" type="RayCast3D" parent="player/Camera3D" unique_id=379781249]
+transform = Transform3D(1.2773793, 0, 0, 0, 1, 0, 0, 0, 1.4005269, 0, 0, 0)
 target_position = Vector3(0, 0, 2)
 
 [node name="HoldPosition" type="Marker3D" parent="player/Camera3D" unique_id=504454719]
@@ -2053,9 +2232,6 @@ texture = ExtResource("91_as5rd")
 [node name="Sprite3D7" type="Sprite3D" parent="Test_Machine/M-Geelvlak-Machine" unique_id=970264870]
 transform = Transform3D(-0.0007839221, -0.08241687, 0.018356623, 0.0023098905, -0.0016307851, -0.94162863, 0.07662933, -0.0007939693, 0.02857192, -0.022125244, 0.792717, -0.17616725)
 texture = ExtResource("92_stxhh")
-
-[node name="Node2D" parent="." unique_id=1036501218 instance=ExtResource("84_1ill7")]
-position = Vector2(1019, 68)
 
 [node name="PC" type="Node3D" parent="." unique_id=885940944]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 41.46441, 0, 10.32044)
@@ -2150,6 +2326,103 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_c5g0k")
 horizontal_alignment = 1
+
+[node name="HUD" type="Control" parent="." unique_id=1968364421]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="HUD" unique_id=1940829434]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -147.0
+offset_top = 107.0
+offset_right = -15.0
+offset_bottom = 156.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 35
+text = "Score: 0"
+script = ExtResource("97_ngfit")
+
+[node name="V2Hartslag" type="Node2D" parent="HUD" unique_id=1933339560]
+
+[node name="HartslagDood" type="AudioStreamPlayer" parent="HUD/V2Hartslag" unique_id=985300471]
+stream = ExtResource("98_vqd8d")
+
+[node name="HartslagGewoon" type="AudioStreamPlayer" parent="HUD/V2Hartslag" unique_id=1066171185]
+stream = ExtResource("99_lkv3o")
+
+[node name="HartslagSnel" type="AudioStreamPlayer" parent="HUD/V2Hartslag" unique_id=1331628740]
+stream = ExtResource("100_rb2ri")
+
+[node name="TextureRect" type="TextureRect" parent="HUD/V2Hartslag" unique_id=782213461 node_paths=PackedStringArray("HartslagGewoon", "HartslagSnel", "HartslagDood")]
+offset_left = 811.0
+offset_top = 33.0
+offset_right = 867.0
+offset_bottom = 85.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("101_hdkv3")
+expand_mode = 1
+script = ExtResource("102_xxrnp")
+HartslagGewoon = NodePath("../HartslagGewoon")
+HartslagSnel = NodePath("../HartslagSnel")
+HartslagDood = NodePath("../HartslagDood")
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD/V2Hartslag" unique_id=1092291109 node_paths=PackedStringArray("mijnHart", "GameOverTekst")]
+offset_left = 888.0
+offset_top = 44.0
+offset_right = 1137.0
+offset_bottom = 71.0
+theme_override_styles/background = SubResource("StyleBoxFlat_fpdua")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n1i8y")
+value = 100.0
+script = ExtResource("103_b2pfw")
+mijnHart = NodePath("../TextureRect")
+GameOverTekst = NodePath("../Label")
+
+[node name="Label" type="Label" parent="HUD/V2Hartslag" unique_id=358549234]
+offset_left = 285.0
+offset_top = 240.0
+offset_right = 810.0
+offset_bottom = 377.0
+text = "Game over"
+label_settings = SubResource("LabelSettings_n1i8y")
+horizontal_alignment = 1
+
+[node name="Character" type="Node3D" parent="." unique_id=1626000068]
+
+[node name="CharacterI" type="MeshInstance3D" parent="Character" unique_id=1025783743]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 74.45809, 0, -3.0052435)
+mesh = ExtResource("99_xy3ac")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character/CharacterI" unique_id=1945960169]
+libraries/ = SubResource("AnimationLibrary_p88ly")
+autoplay = &"animatie1"
+
+[node name="CharacterI2" type="MeshInstance3D" parent="Character" unique_id=454181359]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 74.45809, 0, -3.0052435)
+mesh = ExtResource("99_xy3ac")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character/CharacterI2" unique_id=1812277376]
+libraries/ = SubResource("AnimationLibrary_p88ly")
+autoplay = &"animatie2"
+
+[node name="CharacterI3" type="MeshInstance3D" parent="Character" unique_id=2099679451]
+transform = Transform3D(-0.2818559, 0, 0.95945674, 0, 1, 0, -0.95945674, 0, -0.2818559, 31.458092, 0, 2.5278387)
+mesh = ExtResource("99_xy3ac")
+
+[node name="CharacterI4" type="MeshInstance3D" parent="Character" unique_id=709316983]
+transform = Transform3D(-0.92011565, 0, -0.39164668, 0, 1, 0, 0.39164668, 0, -0.92011565, 31.458092, 0, 14.755925)
+mesh = ExtResource("99_xy3ac")
+
+[node name="CharacterI5" type="MeshInstance3D" parent="Character" unique_id=1316957599]
+transform = Transform3D(-0.6424132, 0, -0.7663585, 0, 1, 0, 0.7663585, 0, -0.6424132, 45.537735, 0, 6.7448916)
+mesh = ExtResource("99_xy3ac")
 
 [editable path="microscope_01"]
 [editable path="Test_Machine"]

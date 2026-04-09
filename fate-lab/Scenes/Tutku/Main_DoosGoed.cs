@@ -5,6 +5,7 @@ public partial class Main_DoosGoed : Area3D
 {
 	[Export] public AudioStreamPlayer3D GeluidTrue;  // Het 'Goed gedaan' geluid
     [Export] public AudioStreamPlayer3D GeluidFalse; // Het 'Foute bak' geluid
+    [Export] public ScoreManager ScoreLabel;
 
     public override void _Ready()
     {
@@ -22,11 +23,15 @@ public partial class Main_DoosGoed : Area3D
             if (waarde == "Goed")
             {
                 GD.Print("DOOS GOED: Match! Punten erbij.");
+                GD.Print("MATCH! +10 punten");
+                if (ScoreLabel != null) ScoreLabel.VoegPuntenToe(10);
                 if (GeluidTrue != null) GeluidTrue.Play();
             }
             else
             {
                 GD.Print($"DOOS GOED: Fout! Dit orgaan was '{waarde}' en hoort hier niet.");
+                GD.Print($"DOOS GOED: Foutief orgaan ({waarde})! -5");
+                if (ScoreLabel != null) ScoreLabel.VoegPuntenToe(-5);
                 if (GeluidFalse != null) GeluidFalse.Play();
             }
 

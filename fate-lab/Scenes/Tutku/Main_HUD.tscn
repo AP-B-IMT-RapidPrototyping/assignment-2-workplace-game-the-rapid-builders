@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://jjtq86dbasrq"]
+
+[ext_resource type="PackedScene" uid="uid://5b8ijxfgix0" path="res://Scenes/Leon/Hartslagmeter.tscn" id="1_ivl78"]
+[ext_resource type="Script" uid="uid://lwsohmwpmyku" path="res://Scenes/Tutku/ScoreManager.cs" id="1_xnl5n"]
+
+[node name="HUD" type="Control" unique_id=1968364421]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="." unique_id=1940829434]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -147.0
+offset_top = 107.0
+offset_right = -15.0
+offset_bottom = 156.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 35
+text = "Score: 0"
+script = ExtResource("1_xnl5n")
+
+[node name="V2Hartslag" parent="." unique_id=1933339560 instance=ExtResource("1_ivl78")]
