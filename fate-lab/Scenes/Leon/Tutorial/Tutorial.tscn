@@ -2079,7 +2079,8 @@ transform = Transform3D(0.43845028, 0, -0.89875656, 0, 1, 0, 0.89875656, 0, 0.43
 modulate = Color(0, 1, 1, 1)
 text = "Plaats een orgaan of staalje op het juiste gele vlak om de machine of microscoop te activeren. 
 Druk op E om het onderzoek te starten en vernietig de infectie 
-door er op tijd op te klikken!"
+door er op tijd op te klikken!
+Na het onderzoek zijn de organen / staaltjes genezen en moet je het in de groene bak gooien."
 
 [node name="StaticBody3D" type="StaticBody3D" parent="tutorial/Characters/CharacterI7" unique_id=696370350]
 
@@ -2496,9 +2497,13 @@ transform = Transform3D(20.96269, 0, 6.82121e-13, 0, 1, 0, -4.5474735e-13, 0, 32
 mesh = SubResource("BoxMesh_ow2ex")
 surface_material_override/0 = SubResource("StandardMaterial3D_1uei2")
 
-[node name="Sprite3D" type="Sprite3D" parent="tutorial/meubels/Test_Machine/MeshInstance3D" unique_id=1702039178]
-transform = Transform3D(0.2386894, -1.28441435e-08, 1.1346158e-07, 1.1434511e-08, -0.18958604, -0.69370323, 2.7605354e-08, 0.18958609, -0.6937033, -7.752523, 0.6473465, 0.04219818)
-texture = ExtResource("26_ebd4u")
+[node name="Sprite3D" type="Sprite3D" parent="tutorial/meubels/Test_Machine/MeshInstance3D" unique_id=1841055764]
+transform = Transform3D(0.13112138, -0.0020228855, 0.028990943, 0.004176688, 0.0061023505, -0.9467232, 0.0025057725, 0.09568194, 0.06099265, 0.015899897, 0.9177704, 0.22638702)
+texture = ExtResource("26_17wr1")
+
+[node name="Sprite3D7" type="Sprite3D" parent="tutorial/meubels/Test_Machine/MeshInstance3D" unique_id=1721451500]
+transform = Transform3D(0.15543006, 0.003437879, 0.06658961, 0.0982411, -0.055431202, -47.1031, -0.0025207354, 0.08619819, -0.029800033, -0.013739586, 0.7511978, -0.16473389)
+texture = ExtResource("27_efrfb")
 
 [node name="microscope_01" parent="tutorial/meubels" unique_id=856399162 node_paths=PackedStringArray("mainNode", "SampleNode", "mainCamera", "sampleCamera") instance=ExtResource("33_b2d6g")]
 transform = Transform3D(-2.145688e-09, 0, 0.02, 0, 0.02, 0, -0.02, 0, -2.145688e-09, 46.85136, 1.5010462, 5.224681)
@@ -2525,13 +2530,9 @@ transform = Transform3D(20.96269, 0, 1.8189894e-12, 0, 1, 0, -4.5474735e-13, 0, 
 mesh = SubResource("BoxMesh_bbqkd")
 surface_material_override/0 = SubResource("StandardMaterial3D_rpoxt")
 
-[node name="Sprite3D" type="Sprite3D" parent="tutorial/meubels/microscope_01/MeshInstance3D" unique_id=1841055764]
-transform = Transform3D(0.13112138, -0.002022895, 0.028990937, 0.004176688, 0.0061023505, -0.9467232, 0.0025057779, 0.09568194, 0.060992654, 7.8113956, 4.600792, 0.019744873)
-texture = ExtResource("26_17wr1")
-
-[node name="Sprite3D7" type="Sprite3D" parent="tutorial/meubels" unique_id=1721451500]
-transform = Transform3D(-0.0016379841, 0.056011833, -0.01936415, 0.001964822, -0.001108624, -0.94206196, -0.06516465, -0.0014413464, -0.027917946, 46.417286, 1.5738976, 1.5587813)
-texture = ExtResource("27_efrfb")
+[node name="Sprite3D2" type="Sprite3D" parent="tutorial/meubels/microscope_01/MeshInstance3D" unique_id=1702039178]
+transform = Transform3D(0.2386894, -3.1524458e-08, 1.8181365e-07, 1.1434511e-08, -0.18958604, -0.69370323, 3.7395772e-08, 0.18958609, -0.6937033, -0.033495903, 1.1197052, -0.057365417)
+texture = ExtResource("26_ebd4u")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="tutorial/meubels" unique_id=1495860982]
 transform = Transform3D(0.0603199, 0, 0, 0, 0.41104877, 0, 0, 0, 1.935709, 16.27084, 1.8278909, 4.70631)

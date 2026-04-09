@@ -17,28 +17,42 @@ public partial class main_orgaanspawner : Node3D
     [Export] public float BloodScale = 0.2f;
     [Export] public float DrugScale = 0.01f;
 
+    [ExportGroup("Rij Instellingen")]
+    [Export] public int AantalTeSpawnen = 5;
+    [Export] public float AfstandTussenObjecten = 0.8f; // Pas dit aan in de Inspector voor meer/minder ruimte
+
     private Node3D _spawnPoint;
 
     public override void _Ready()
     {
-        GD.Print("SPAWNER DEBUG: _Ready is gestart");
-
         _spawnPoint = GetNodeOrNull<Node3D>("spawn");
 
         if (_spawnPoint == null)
         {
-            GD.PrintErr("SPAWNER DEBUG FOUT: Kind-node 'spawn' niet gevonden!");
+            GD.PrintErr("SPAWNER FOUT: Kind-node 'spawn' niet gevonden!");
             return;
         }
 
-        GD.Print("SPAWNER DEBUG: Spawnpoint gevonden, start SpawnLogic...");
-        SpawnLogic();
+        // We roepen een nieuwe functie aan die de lus regelt
+        SpawnRij();
     }
 
-    public void SpawnLogic()
+    public void SpawnRij()
     {
-        GD.Print("SPAWNER DEBUG: SpawnLogic wordt uitgevoerd!");
+        // Bereken het startpunt zodat de rij gecentreerd is onder de 'spawn' node
+        float totaleBreedte = (AantalTeSpawnen - 1) * AfstandTussenObjecten;
+        float startX = -totaleBreedte / 2.0f;
 
+        for (int i = 0; i < AantalTeSpawnen; i++)
+        {
+            float xOffset = startX + (i * AfstandTussenObjecten);
+            SpawnLogic(xOffset);
+        }
+    }
+
+    // We hebben SpawnLogic aangepast om een xOffset te accepteren
+    public void SpawnLogic(float xOffset)
+    {
         int objectChoice = _random.Next(1, 5);
         PackedScene selectedScene = null;
         float chosenScale = 0.2f;
@@ -51,11 +65,7 @@ public partial class main_orgaanspawner : Node3D
             case 4: selectedScene = DrugSampleScene; chosenScale = DrugScale; break;
         }
 
-        if (selectedScene == null)
-        {
-            GD.PrintErr("SPAWNER DEBUG FOUT: Scène niet toegewezen!");
-            return;
-        }
+        if (selectedScene == null) return;
 
         int statusChoice = _random.Next(0, 3);
         string finalStatus = "Goed";
@@ -65,16 +75,17 @@ public partial class main_orgaanspawner : Node3D
         var instance = selectedScene.Instantiate<RigidBody3D>();
         AddChild(instance);
 
-        Transform3D t = instance.GlobalTransform;
-        t.Origin = _spawnPoint.GlobalPosition;
-        t.Basis = Basis.FromScale(new Vector3(chosenScale, chosenScale, chosenScale));
-        instance.GlobalTransform = t;
+        // Zet de positie met de berekende offset
+        Vector3 spawnPos = _spawnPoint.GlobalPosition;
+        spawnPos.X += xOffset; // We schuiven ze opzij over de X-as
 
-        // GEBRUIK METADATA IN PLAATS VAN SET
-        // Dit "plakt" het label direct op de node op een manier die de scanner ALTIJD kan lezen
+        instance.GlobalPosition = spawnPos;
+        instance.Basis = Basis.FromScale(new Vector3(chosenScale, chosenScale, chosenScale));
+
+        // Plak het label
         instance.SetMeta("IsGoed", finalStatus);
 
-        GD.Print($"SPAWNER SUCCES: {instance.Name} gespawned met status: {finalStatus}");
+        GD.Print($"SPAWNER: {instance.Name} gespawned op offset {xOffset} met status: {finalStatus}");
 
         if (finalStatus == "Geinfecteerd")
         {
