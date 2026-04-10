@@ -56,13 +56,28 @@ public partial class main_orgaanspawner : Node3D
         int objectChoice = _random.Next(1, 5);
         PackedScene selectedScene = null;
         float chosenScale = 0.2f;
+        bool isStandaardSample = false;
 
         switch (objectChoice)
         {
-            case 1: selectedScene = HeartScene; chosenScale = HeartScale; break;
-            case 2: selectedScene = LungScene; chosenScale = LungScale; break;
-            case 3: selectedScene = BloodSampleScene; chosenScale = BloodScale; break;
-            case 4: selectedScene = DrugSampleScene; chosenScale = DrugScale; break;
+            case 1: 
+                selectedScene = HeartScene; 
+                chosenScale = HeartScale; 
+                break;
+            case 2: 
+                selectedScene = LungScene; 
+                chosenScale = LungScale; 
+                break;
+            case 3: 
+                selectedScene = BloodSampleScene; 
+                chosenScale = BloodScale; 
+                isStandaardSample = true;
+                break;
+            case 4: 
+                selectedScene = DrugSampleScene; 
+                chosenScale = DrugScale; 
+                isStandaardSample = true;
+                break;
         }
 
         if (selectedScene == null) return;
@@ -74,6 +89,30 @@ public partial class main_orgaanspawner : Node3D
 
         var instance = selectedScene.Instantiate<RigidBody3D>();
         AddChild(instance);
+
+        // --- LOGICA VOOR DE MACHINE ---
+
+        // 1. Als het een bloed- of drugstaaltje is, hoort het sowieso bij de machine
+        if (isStandaardSample)
+        {
+            instance.AddToGroup("Sample");
+        }
+
+        // 2. Als een object (orgaan OF sample) geïnfecteerd is:
+        if (finalStatus == "Geinfecteerd")
+        {
+            // Voeg toe aan "infected" zodat de machine weet dat de minigame moet starten
+            instance.AddToGroup("infected"); 
+            
+            // BELANGRIJK: Geef organen OOK de groep "Sample" als ze ziek zijn, 
+            // anders negeert de machine ze volledig.
+            if (!instance.IsInGroup("Sample"))
+            {
+                instance.AddToGroup("Sample");
+            }
+
+            ApplyVisualInfection(instance, chosenScale);
+        }
 
         // Zet de positie met de berekende offset
         Vector3 spawnPos = _spawnPoint.GlobalPosition;
@@ -89,6 +128,12 @@ public partial class main_orgaanspawner : Node3D
 
         if (finalStatus == "Geinfecteerd")
         {
+            instance.AddToGroup("infected"); 
+            
+            if (!instance.IsInGroup("Sample"))
+            {
+                instance.AddToGroup("Sample");
+            }
             ApplyVisualInfection(instance, chosenScale);
         }
     }

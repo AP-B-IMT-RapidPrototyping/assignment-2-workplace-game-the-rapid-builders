@@ -71,12 +71,10 @@ public partial class BacterieMinigame : Node3D
         {
             
             Bacterie instance = BacterieScene.Instantiate<Bacterie>();
-            GD.Print("spawn my pussy");
             // Bepaal een willekeurige positie voor de bacteriën
             float x = (float)GD.RandRange(-3.5, 3.5);
             float y = (float)GD.RandRange(-2.0, 2.0);
             instance.Position = new Vector3(x, y, 0);
-            GD.Print("spawn my n****");
 
             // Verbind het signaal van de bacterie aan de teller-functie
             instance.Geklikt += OnBacterieGeklikt;
@@ -103,36 +101,46 @@ public partial class BacterieMinigame : Node3D
     // Voeg 'async' toe aan de functie
     public async void StopDeGame(bool isGewonnen)
     {
-        if (TafelScript != null)
-        {
-            TafelScript.UpdateStatus(isGewonnen);
-        }
+        GD.Print("BacterieMinigame: StopDeGame aangeroepen.");
 
-        // Zoek de HUD die je net hebt toegevoegd
-        var hud = GetTree().Root.FindChild("MeldingUI", true, false) as HUD;
-        
-        if (hud != null)
+        if (isGewonnen)
         {
-            string bericht = isGewonnen ? "Test voltooid! Ga terug naar het dossier." : "Test mislukt!";
-            hud.ToonMelding(bericht);
+            // Zoek de machine via de groep (werkt altijd, ongeacht de naam of plek)
+            var machines = GetTree().GetNodesInGroup("MachineGroup");
             
-            // Wacht 3 seconden zodat de speler het kan lezen
-            await ToSignal(GetTree().CreateTimer(3.0f), SceneTreeTimer.SignalName.Timeout);
+            if (machines.Count > 0)
+            {
+                // We pakken de eerste node uit de groep en casten hem naar jouw script
+                var machine = machines[0] as Main_TestMachineInteraction;
+                if (machine != null)
+                {
+                    GD.Print("BacterieMinigame: Machine gevonden via groep! Roep StopMiniGame aan...");
+                    machine.StopMiniGame();
+                    return; // Stop hier, want de machine regelt de rest (camera, muis, etc.)
+                }
+            }
+            else
+            {
+                GD.PrintErr("CRITISCHE FOUT: Geen node gevonden in 'MachineGroup'! Heb je de groep toegevoegd in de Editor?");
+            }
         }
 
-        // Nu pas terug naar het lab
-        // 1. De minigame node pauzeren en verbergen
-            SampleNode.ProcessMode = ProcessModeEnum.Disabled;
-            SampleNode.Visible = false;
+        // Fallback voor als er geen machine is of je hebt verloren
+        SampleNode.ProcessMode = ProcessModeEnum.Disabled;
+        SampleNode.Visible = false;
+        mainNode.ProcessMode = ProcessModeEnum.Inherit; 
+        mainCamera.MakeCurrent();
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+    }
 
-            // 2. De tutorial weer aanzetten
-            mainNode.ProcessMode = ProcessModeEnum.Inherit; 
-            mainNode.Visible = true;
-
-            // 3. Camera terug naar de speler
-            mainCamera.MakeCurrent();
-
-            // 4. Muis weer verbergen voor de First Person besturing
-            Input.MouseMode = Input.MouseModeEnum.Captured;
+    // Kleine helper om de camera te resetten als de machine-aanroep faalt of bij verlies
+    private void HandmatigeCameraReset()
+    {
+        SampleNode.ProcessMode = ProcessModeEnum.Disabled;
+        SampleNode.Visible = false;
+        mainNode.ProcessMode = ProcessModeEnum.Inherit; 
+        mainNode.Visible = true;
+        mainCamera.MakeCurrent();
+        Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 }
