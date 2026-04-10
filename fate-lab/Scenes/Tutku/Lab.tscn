@@ -80,6 +80,7 @@
 [ext_resource type="Texture2D" uid="uid://cllmr0am7bl6i" path="res://Assets/LabMenu2.png" id="84_xxook"]
 [ext_resource type="PackedScene" uid="uid://doiy4mcwchlfk" path="res://Assets/NatureKit/glTF/Flower_3_Single.gltf" id="86_xxook"]
 [ext_resource type="PackedScene" uid="uid://bnb5ij3q7fr83" path="res://Assets/NatureKit/glTF/Flower_3_Group.gltf" id="87_j85q8"]
+[ext_resource type="Script" uid="uid://cofldsw1oibn" path="res://Scenes/Tutku/Main_MicroscopeInteraction.cs" id="87_rb2ri"]
 [ext_resource type="PackedScene" uid="uid://dhd3333q8m8rc" path="res://Assets/NatureKit/glTF/Pebble_Square_4.gltf" id="88_n4k3u"]
 [ext_resource type="Script" uid="uid://dcxe0la58lgik" path="res://Scenes/Tutku/main_DoosSlecht.cs" id="88_xy3ac"]
 [ext_resource type="PackedScene" uid="uid://duvjf5uglxebi" path="res://Assets/NatureKit/glTF/Pebble_Round_5.gltf" id="89_sp3q3"]
@@ -123,7 +124,7 @@ height = 11.611633
 radius = 1.4482422
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_si5i6"]
-size = Vector3(740.5399, 95.838806, 86.24481)
+size = Vector3(740.5399, 74.05234, 86.24481)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmpir"]
 albedo_color = Color(0.20033002, 0.20033002, 0.20032999, 1)
@@ -631,6 +632,9 @@ shadow_mesh = SubResource("ArrayMesh_h4jp7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16ejr"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rb2ri"]
+size = Vector3(0.9995117, 1, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_stxhh"]
 size = Vector3(14.056892, 2.076416, 0.7270508)
 
@@ -937,7 +941,7 @@ transform = Transform3D(-0.02, 0, 1.7484555e-09, 0, 0.02, 0, -1.7484555e-09, 0, 
 [node name="StaticBody3D" type="StaticBody3D" parent="Main/Meubels/Low Poly - Lab Assets47" unique_id=565368741]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Main/Meubels/Low Poly - Lab Assets47/StaticBody3D" unique_id=1097768617]
-transform = Transform3D(1, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 1, 31.409119, 7.443756, 5.4739075)
+transform = Transform3D(1, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 1, 31.409119, -3.449482, 5.4739227)
 shape = SubResource("BoxShape3D_si5i6")
 
 [node name="Low Poly - Lab Assets48" parent="Main/Meubels" unique_id=742739146 instance=ExtResource("7_5xgaq")]
@@ -1369,6 +1373,12 @@ mesh = SubResource("CylinderMesh_hdkv3")
 transform = Transform3D(27.92468, 0, 0, 0, 0.280627, 0, 0, 0, 16.139383, 10.191306, 4.1635528, 4.125679)
 mesh = SubResource("BoxMesh_wbc6g")
 surface_material_override/0 = SubResource("StandardMaterial3D_16ejr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Main/Muren/Plafond" unique_id=1766527132]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Main/Muren/Plafond/StaticBody3D" unique_id=1328663546]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.9999983, -0.00024414063, 0, 0)
+shape = SubResource("BoxShape3D_rb2ri")
 
 [node name="Muur41" parent="Main/Muren" unique_id=225867466 instance=ExtResource("4_0oif5")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.60285, 2.051, -3.5934715)
@@ -2186,8 +2196,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16009474, -1.7786481)
 [node name="Player" parent="Main" unique_id=81074348 instance=ExtResource("4_16ejr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.938477, 0.45819974, 0.53773487)
 
-[node name="microscope_01" parent="Main" unique_id=856399162 instance=ExtResource("5_wbc6g")]
+[node name="microscope_01" parent="Main" unique_id=856399162 node_paths=PackedStringArray("mainNode", "MicroscoopWorld", "mainCamera", "microCamera") groups=["MicroscopeGroup"] instance=ExtResource("5_wbc6g")]
 transform = Transform3D(-0.02, 0, -3.0199159e-09, 0, 0.02, 0, 3.0199159e-09, 0, -0.02, 14.94618, 1.4738815, -2.7464237)
+script = ExtResource("87_rb2ri")
+mainNode = NodePath("..")
+MicroscoopWorld = NodePath("../../bacterie")
+mainCamera = NodePath("../player/Camera3D")
+microCamera = NodePath("../../bacterie/Camera3D")
 
 [node name="machine_microscope" parent="Main/microscope_01" index="0" unique_id=22363550]
 material_override = SubResource("StandardMaterial3D_bbp18")
@@ -2215,7 +2230,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_p88ly")
 transform = Transform3D(0.2386894, -3.1524458e-08, 1.8181365e-07, 1.1434511e-08, -0.18958604, -0.69370323, 3.7395772e-08, 0.18958609, -0.6937033, -0.033495903, 1.1197052, -0.057365417)
 texture = ExtResource("98_qoytd")
 
-[node name="Test_Machine" parent="Main" unique_id=102491177 node_paths=PackedStringArray("mainNode", "SampleNode", "mainCamera", "sampleCamera") instance=ExtResource("17_wbc6g")]
+[node name="Test_Machine" parent="Main" unique_id=102491177 node_paths=PackedStringArray("mainNode", "SampleNode", "mainCamera", "sampleCamera") groups=["MachineGroup"] instance=ExtResource("17_wbc6g")]
 transform = Transform3D(-8.7422775e-10, 0, 0.02, 0, 0.02, 0, -0.02, 0, -8.7422775e-10, 11.13914, 1.5588735, 2.8616905)
 script = ExtResource("89_vqd8d")
 mainNode = NodePath("..")

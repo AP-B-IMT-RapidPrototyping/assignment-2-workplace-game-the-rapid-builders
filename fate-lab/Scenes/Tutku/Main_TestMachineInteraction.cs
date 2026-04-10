@@ -47,8 +47,6 @@ public partial class Main_TestMachineInteraction : Node3D
 
     public override void _Process(double delta)
     {
-        // Check of de speler op de interactie-toets drukt
-        // Alleen mogelijk als de speler én de sample in de zone staan
         if (!_isBezigMetMinigame && _spelerInBuurt && _sampleInBuurt && Input.IsActionJustPressed(InteractieActie))
         {
             StartMiniGame();
@@ -66,7 +64,7 @@ public partial class Main_TestMachineInteraction : Node3D
         }
         
 		// Alleen een nieuw sample accepteren als we niet bezig zijn
-        if (!_isBezigMetMinigame && body.IsInGroup("Sample"))
+        if (!_isBezigMetMinigame && body.IsInGroup("Sample") && !body.IsInGroup("Organ"))
         {
 			if (body.IsInGroup("infected")) 
         	{
@@ -79,6 +77,10 @@ public partial class Main_TestMachineInteraction : Node3D
 			{
 				GD.Print($"FOUT: {body.Name} is niet geïnfecteerd.");			
 			}
+        }
+        else if (body.IsInGroup("Organ")) // Optionele extra check voor organen
+        {
+            GD.Print($"MACHINE: Weigering - Dit is een orgaan, geen orgaan!");
         }
     }
 
@@ -100,8 +102,8 @@ public partial class Main_TestMachineInteraction : Node3D
 
     private void UpdateLabelVisibility()
     {
-        // Toon de "Druk op E" tekst alleen als beide aanwezig zijn
-		_interactieLabel.Visible = (_spelerInBuurt && _sampleInBuurt && !_isBezigMetMinigame);    }
+		_interactieLabel.Visible = (_spelerInBuurt && _sampleInBuurt && !_isBezigMetMinigame);    
+    }
 
     private void StartMiniGame()
     {

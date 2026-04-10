@@ -27,6 +27,8 @@ Organ=""
 Bad=""
 infected=""
 good=""
+MicroscopeGroup=""
+MachineGroup=""
 
 [input]
 

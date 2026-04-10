@@ -105,42 +105,62 @@ public partial class BacterieMinigame : Node3D
 
         if (isGewonnen)
         {
-            // Zoek de machine via de groep (werkt altijd, ongeacht de naam of plek)
             var machines = GetTree().GetNodesInGroup("MachineGroup");
+            var microscopen = GetTree().GetNodesInGroup("MicroscopeGroup");
             
+            bool machineHeeftSample = false;
+
             if (machines.Count > 0)
+        {
+            var machine = machines[0] as Main_TestMachineInteraction;
+            if (machine != null && machine.Get("_huidigSample").As<Node3D>() != null) 
             {
-                // We pakken de eerste node uit de groep en casten hem naar jouw script
-                var machine = machines[0] as Main_TestMachineInteraction;
-                if (machine != null)
-                {
-                    GD.Print("BacterieMinigame: Machine gevonden via groep! Roep StopMiniGame aan...");
-                    machine.StopMiniGame();
-                    return; // Stop hier, want de machine regelt de rest (camera, muis, etc.)
-                }
-            }
-            else
-            {
-                GD.PrintErr("CRITISCHE FOUT: Geen node gevonden in 'MachineGroup'! Heb je de groep toegevoegd in de Editor?");
+                machine.StopMiniGame();
+                GD.Print("BacterieMinigame: Machine succesvol afgehandeld.");
+                machineHeeftSample = true;
             }
         }
-
-        // Fallback voor als er geen machine is of je hebt verloren
-        SampleNode.ProcessMode = ProcessModeEnum.Disabled;
-        SampleNode.Visible = false;
-        mainNode.ProcessMode = ProcessModeEnum.Inherit; 
-        mainCamera.MakeCurrent();
-        Input.MouseMode = Input.MouseModeEnum.Captured;
+            
+            if (!machineHeeftSample && microscopen.Count > 0)
+            {
+                var micro = microscopen[0] as Main_MicroscopeInteraction;
+                if (micro != null)
+                {
+                    micro.StopMicroscoop();
+                    GD.Print("BacterieMinigame: Microscoop succesvol afgehandeld.");
+                }
+            }
+        }
+        else
+        {
+            HandmatigeCameraReset();
+        }
     }
 
     // Kleine helper om de camera te resetten als de machine-aanroep faalt of bij verlies
     private void HandmatigeCameraReset()
     {
-        SampleNode.ProcessMode = ProcessModeEnum.Disabled;
-        SampleNode.Visible = false;
-        mainNode.ProcessMode = ProcessModeEnum.Inherit; 
-        mainNode.Visible = true;
-        mainCamera.MakeCurrent();
+        // 1. Zet de minigame wereld uit (dit geldt voor beide apparaten)
+        // We gebruiken 'this' omdat dit script op de minigame node staat
+        this.ProcessMode = ProcessModeEnum.Disabled;
+        this.Visible = false;
+
+        // 2. Vertel de hoofdwereld dat hij weer mag draaien
+        if (mainNode != null)
+        {
+            mainNode.ProcessMode = ProcessModeEnum.Inherit;
+            mainNode.Visible = true;
+        }
+
+        // 3. Camera en Muis reset
+        // We gebruiken de mainCamera die je in de Inspector hebt gesleept
+        if (mainCamera != null)
+        {
+            mainCamera.MakeCurrent();
+        }
+        
         Input.MouseMode = Input.MouseModeEnum.Captured;
+        
+        GD.Print("BacterieMinigame: Handmatige reset uitgevoerd (fallback).");
     }
 }
