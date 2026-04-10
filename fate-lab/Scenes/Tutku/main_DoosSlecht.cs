@@ -6,6 +6,7 @@ public partial class main_DoosSlecht : Area3D
 	[Export] public AudioStreamPlayer3D GeluidTrue;  // Het geluid voor de juiste bak
     [Export] public AudioStreamPlayer3D GeluidFalse; // Het geluid voor de verkeerde bak
     [Export] public ScoreManager ScoreLabel;
+    [Export] public Node GameManagerNode;
 
     public override void _Ready()
     {
@@ -33,6 +34,11 @@ public partial class main_DoosSlecht : Area3D
                 GD.Print($"DOOS SLECHT: Foutief orgaan ({waarde})! -5");
                 if (ScoreLabel != null) ScoreLabel.VoegPuntenToe(-5);
                 if (GeluidFalse != null) GeluidFalse.Play();
+            }
+
+            if (GameManagerNode != null)
+            {
+                GameManagerNode.Call("ObjectVerwerkt");
             }
 
             // Verwijder het orgaan uit de game

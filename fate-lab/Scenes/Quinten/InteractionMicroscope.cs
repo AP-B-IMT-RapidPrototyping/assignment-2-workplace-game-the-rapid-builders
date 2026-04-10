@@ -112,6 +112,7 @@ public partial class InteractionMicroscope : Node3D
         // Vertel het script op de SampleNode dat het spel moet starten (bacteriën spawnen)
         if (SampleNode is BacterieMinigame minigameScript)
         {
+            minigameScript.DeMicroscoop = this;
             minigameScript.startSpel(); 
             GD.Print("BacterieMinigame script aangeroepen!");
         }

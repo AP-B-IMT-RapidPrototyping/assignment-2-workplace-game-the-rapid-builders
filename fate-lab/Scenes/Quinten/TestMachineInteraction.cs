@@ -112,6 +112,11 @@ public partial class TestMachineInteraction : Node3D
         // Vertel het script op de SampleNode dat het spel moet starten (bacteriën spawnen)
         if (SampleNode is BacterieMinigame minigameScript)
         {
+            try {
+                minigameScript.Set("DeMicroscoop", this);
+            } catch {
+                GD.Print("Kon DeMicroscoop variabele niet direct vullen, we vertrouwen op de Groep.");
+            }
             minigameScript.startSpel(); 
             GD.Print("BacterieMinigame script aangeroepen!");
         }

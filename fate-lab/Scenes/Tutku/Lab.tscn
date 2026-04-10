@@ -107,6 +107,8 @@
 [ext_resource type="Script" uid="uid://d4m0hsu4f28oy" path="res://Scenes/Leon/HartScript.cs" id="102_xxrnp"]
 [ext_resource type="Script" uid="uid://da5rianwvj7v3" path="res://Scenes/Leon/ProgressBarAftikken.cs" id="103_b2pfw"]
 [ext_resource type="PackedScene" uid="uid://xpar0xtwias0" path="res://Scenes/Tutku/bacterie_3d.tscn" id="106_lkv3o"]
+[ext_resource type="Script" uid="uid://dt7h582w387xi" path="res://Scenes/Tutku/PushButton.cs" id="107_hdkv3"]
+[ext_resource type="Script" uid="uid://daul7gncwhkhu" path="res://Scenes/Tutku/GameManager.cs" id="108_xxrnp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l0pdq"]
 sky_top_color = Color(0.64705884, 0.78039217, 0.8392157, 1)
@@ -626,8 +628,6 @@ shadow_mesh = SubResource("ArrayMesh_h4jp7")
 
 [sub_resource type="BoxMesh" id="BoxMesh_a7i26"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_hdkv3"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_wbc6g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16ejr"]
@@ -900,6 +900,55 @@ _data = {
 &"animatie1": SubResource("Animation_w8vlp"),
 &"animatie2": SubResource("Animation_xy3ac"),
 &"animatieman2": SubResource("Animation_4wovr")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rb2ri"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xxrnp"]
+material = SubResource("StandardMaterial3D_rb2ri")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xxrnp"]
+height = 0.15637207
+radius = 0.22070313
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hdkv3"]
+
+[sub_resource type="Animation" id="Animation_b2pfw"]
+resource_name = "PushButton"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(22.924002, 1.5555705, 2.1762712), Vector3(22.924002, 1.4613196, 2.1762712), Vector3(22.924002, 1.4851747, 2.1762712), Vector3(22.924002, 1.4465246, 2.1762712), Vector3(22.924, 1.556, 2.176)]
+}
+
+[sub_resource type="Animation" id="Animation_jki5n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(22.924002, 1.5555705, 2.1762712)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2tf60"]
+_data = {
+&"PushButton": SubResource("Animation_b2pfw"),
+&"RESET": SubResource("Animation_jki5n")
 }
 
 [node name="Node3D" type="Node3D" unique_id=1428270883]
@@ -1362,10 +1411,6 @@ modulate = Color(0.98937523, 0, 0, 1)
 text = "Is het  resultaat ROOD, 
 gooi het orgaan/ staaltje dan onmiddellijk in de rode bak"
 font_size = 11
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Main/Meubels" unique_id=1478304335]
-transform = Transform3D(0.6, 0, 0, 0, 0.028, 0, 0, 0, 0.6, 22.929396, 1.4861901, 2.1719234)
-mesh = SubResource("CylinderMesh_hdkv3")
 
 [node name="Muren" type="Node3D" parent="Main" unique_id=1963934434]
 
@@ -2085,12 +2130,13 @@ shape = SubResource("BoxShape3D_w8vlp")
 transform = Transform3D(-7.138398e-09, 0, 1.421098, -0.1633075, -5.591417e-08, -6.211817e-08, 7.138398e-09, -1.2791672, 7.764026e-15, 26.298388, 0.012902319, 7.32855)
 mesh = SubResource("BoxMesh_qoytd")
 
-[node name="Area3D" type="Area3D" parent="Main/Dozen/DoosSlecht" unique_id=560038617 node_paths=PackedStringArray("GeluidTrue", "GeluidFalse", "ScoreLabel")]
+[node name="Area3D" type="Area3D" parent="Main/Dozen/DoosSlecht" unique_id=560038617 node_paths=PackedStringArray("GeluidTrue", "GeluidFalse", "ScoreLabel", "GameManagerNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.11918, 0, 7.329539)
 script = ExtResource("88_xy3ac")
 GeluidTrue = NodePath("True")
 GeluidFalse = NodePath("False")
 ScoreLabel = NodePath("../../../HUD/Score")
+GameManagerNode = NodePath("../../../GameManager")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Main/Dozen/DoosSlecht/Area3D" unique_id=1062814536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20991898, 0.13537598, 0.01977539)
@@ -2149,12 +2195,13 @@ mesh = SubResource("BoxMesh_si5i6")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 24.332148, 0.48843837, 6.67961)
 text = "Goed"
 
-[node name="Area3D" type="Area3D" parent="Main/Dozen/DoosGoed" unique_id=2139394452 node_paths=PackedStringArray("GeluidTrue", "GeluidFalse", "ScoreLabel")]
+[node name="Area3D" type="Area3D" parent="Main/Dozen/DoosGoed" unique_id=2139394452 node_paths=PackedStringArray("GeluidTrue", "GeluidFalse", "ScoreLabel", "GameManagerNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.281368, 0, 7.392736)
 script = ExtResource("91_xy3ac")
 GeluidTrue = NodePath("True")
 GeluidFalse = NodePath("False")
 ScoreLabel = NodePath("../../../HUD/Score")
+GameManagerNode = NodePath("../../../GameManager")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Main/Dozen/DoosGoed/Area3D" unique_id=923968275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0093688965, 0.17492676, -0.013793945)
@@ -2221,6 +2268,9 @@ surface_material_override/0 = null
 [node name="Area3D" parent="Main/microscope_01" index="1" unique_id=39924926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.610291, 0, -1.5258789e-05)
 
+[node name="Label3D" parent="Main/microscope_01" index="2" unique_id=1460933259]
+font_size = 71
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Main/microscope_01" unique_id=1468524355]
 transform = Transform3D(31.632635, 0, -3.0026163e-06, 0, 3.200749, 0, 2.010981e-06, 0, 47.231026, -34.01654, -1.6030273, -2.8163757)
 mesh = SubResource("BoxMesh_xy3ac")
@@ -2241,8 +2291,16 @@ sampleCamera = NodePath("../../bacterie/Camera3D")
 [node name="machine_hot_plate" parent="Main/Test_Machine" index="0" unique_id=1795013126]
 transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, -9.521118, 0, 0)
 
-[node name="CollisionShape3D" parent="Main/Test_Machine/Area3D" parent_id_path=PackedInt32Array(102491177, 1430372005) index="0" unique_id=1024499878]
+[node name="Area3D" parent="Main/Test_Machine" index="1" unique_id=1430372005]
+transform = Transform3D(1, 0, 3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, 1, -2.0792694, 0, 0)
+
+[node name="CollisionShape3D" parent="Main/Test_Machine/Area3D" index="0" unique_id=1024499878]
 transform = Transform3D(1, 0, -7.1054274e-15, 0, 1, 0, 7.1054274e-15, 0, 1, -7.657181, 6.9029922, 6.7927246)
+
+[node name="Label3D" parent="Main/Test_Machine" index="2" unique_id=88920277]
+transform = Transform3D(-1, -8.599487e-09, -8.827703e-08, -2.5798464e-08, 0.980457, 0.19673337, 8.4860034e-08, 0.19673337, -0.980457, -9.310684, 12.577873, -15.793091)
+visible = true
+font_size = 60
 
 [node name="M-Geelvlak-Machine" type="MeshInstance3D" parent="Main/Test_Machine" unique_id=2015125686]
 transform = Transform3D(-1.4758925e-06, 0, -39.58112, 0, 3.8869019, 0, 33.764503, 0, -1.7301447e-06, -10.552811, -4.608795, 35.854248)
@@ -2448,11 +2506,42 @@ mesh = ExtResource("99_xy3ac")
 transform = Transform3D(-0.6424132, 0, -0.7663585, 0, 1, 0, 0.7663585, 0, -0.6424132, 45.537735, 0, 6.7448916)
 mesh = ExtResource("99_xy3ac")
 
+[node name="PushButton" type="StaticBody3D" parent="Main" unique_id=1585612879 node_paths=PackedStringArray("PlayerRay")]
+script = ExtResource("107_hdkv3")
+PlayerRay = NodePath("../player/Camera3D/RayCast3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Main/PushButton" unique_id=743354952]
+transform = Transform3D(0.45, 0, 0, 0, 0.09245419, 0, 0, 0, 0.45, 22.924002, 1.5555705, 2.1762712)
+mesh = SubResource("CylinderMesh_xxrnp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Main/PushButton" unique_id=1954938632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.909586, 1.58641, 2.169843)
+shape = SubResource("CylinderShape3D_xxrnp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Main/PushButton" unique_id=1478304335]
+transform = Transform3D(0.6, 0, 0, 0, 0.028, 0, 0, 0, 0.6, 22.929396, 1.4861901, 2.1719234)
+mesh = SubResource("CylinderMesh_hdkv3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main/PushButton" unique_id=16605593]
+libraries/ = SubResource("AnimationLibrary_2tf60")
+
+[node name="Label3D" type="Label3D" parent="Main/PushButton" unique_id=1409763974]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 22.984253, 2.4331343, 2.1739125)
+text = "START
+Druk E"
+font_size = 45
+
+[node name="GameManager" type="Node" parent="Main" unique_id=2088023823 node_paths=PackedStringArray("DeTimerBalk")]
+script = ExtResource("108_xxrnp")
+DeTimerBalk = NodePath("../HUD/V2Hartslag/ProgressBar")
+
 [node name="bacterie" parent="." unique_id=1794971909 node_paths=PackedStringArray("mainNode", "SampleNode", "mainCamera") instance=ExtResource("106_lkv3o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -102.53638)
 mainNode = NodePath("../Main")
 SampleNode = NodePath(".")
 mainCamera = NodePath("../Main/player/Camera3D")
+
+[connection signal="ButtonPressed" from="Main/PushButton" to="Main/OrgaanSpawner" method="OnStartButtonPressed"]
 
 [editable path="Main/microscope_01"]
 [editable path="Main/Test_Machine"]

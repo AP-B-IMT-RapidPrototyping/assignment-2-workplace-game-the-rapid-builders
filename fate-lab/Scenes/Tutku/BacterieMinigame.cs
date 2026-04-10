@@ -9,22 +9,19 @@ public partial class BacterieMinigame : Node3D
     [Export] public Node3D mainNode;
     [Export] public Node3D SampleNode;
     [Export] public Camera3D mainCamera;
-    [Export] public PapierInteractie TafelScript; // Sleep hier je Area3D (Tafel) in!
-// Verander dit als het nog op 'ProgressBarAftikken' stond
+    [Export] public PapierInteractie TafelScript; 
     [Export] public ProgressBarUpdate HartslagMeter;
     
     // Voeg dit toe voor een tijdslimiet:
     [Export] public float Tijdslimiet = 10.0f; // 10 seconden om te winnen
 
+    public InteractionMicroscope DeMicroscoop;
     private int _overgebleven = 0;
 
     public override void _Ready()
     {
-        // Laat _Ready leeg, we starten via de interactie in de tutorial
     }
 
-    // We halen de _Process weg omdat we het spel handmatig starten 
-    // wanneer de speler bij de machine op E drukt.
 
     public void startSpel()
     {
@@ -98,7 +95,6 @@ public partial class BacterieMinigame : Node3D
         }
     }
 
-    // Voeg 'async' toe aan de functie
     public async void StopDeGame(bool isGewonnen)
     {
         GD.Print("BacterieMinigame: StopDeGame aangeroepen.");
@@ -108,20 +104,20 @@ public partial class BacterieMinigame : Node3D
             var machines = GetTree().GetNodesInGroup("MachineGroup");
             var microscopen = GetTree().GetNodesInGroup("MicroscopeGroup");
             
-            bool machineHeeftSample = false;
+            bool succesvolAfgehandeld = false;
 
             if (machines.Count > 0)
-        {
-            var machine = machines[0] as Main_TestMachineInteraction;
-            if (machine != null && machine.Get("_huidigSample").As<Node3D>() != null) 
             {
-                machine.StopMiniGame();
-                GD.Print("BacterieMinigame: Machine succesvol afgehandeld.");
-                machineHeeftSample = true;
+                var machine = machines[0] as Main_TestMachineInteraction;
+                if (machine != null && machine.Get("_huidigSample").As<Node3D>() != null) 
+                {
+                    machine.StopMiniGame();
+                    GD.Print("BacterieMinigame: Machine succesvol afgehandeld.");
+                    succesvolAfgehandeld = true;
+                }
             }
-        }
             
-            if (!machineHeeftSample && microscopen.Count > 0)
+            if (!succesvolAfgehandeld && microscopen.Count > 0)
             {
                 var micro = microscopen[0] as Main_MicroscopeInteraction;
                 if (micro != null)
@@ -129,6 +125,18 @@ public partial class BacterieMinigame : Node3D
                     micro.StopMicroscoop();
                     GD.Print("BacterieMinigame: Microscoop succesvol afgehandeld.");
                 }
+            }
+            if (!succesvolAfgehandeld && DeMicroscoop != null)
+            {
+                DeMicroscoop.StopMiniGame();
+                GD.Print("BacterieMinigame: Directe Microscoop-link succesvol afgehandeld.");
+                succesvolAfgehandeld = true;
+            }
+
+            if (!succesvolAfgehandeld)
+            {
+                GD.Print("FOUT: Geen machine of microscoop gevonden in groepen! We gebruiken de fallback.");
+                HandmatigeCameraReset();
             }
         }
         else

@@ -6,6 +6,7 @@ public partial class main_orgaanspawner : Node3D
     private Random _random = new Random();
 
     [ExportGroup("Object Scènes")]
+    [Export] public PackedScene OrgaanScene;
     [Export] public PackedScene HeartScene;
     [Export] public PackedScene LungScene;
     [Export] public PackedScene BloodSampleScene;
@@ -34,7 +35,7 @@ public partial class main_orgaanspawner : Node3D
         }
 
         // We roepen een nieuwe functie aan die de lus regelt
-        SpawnRij();
+        //SpawnRij();
     }
 
     public void SpawnRij()
@@ -160,5 +161,27 @@ public partial class main_orgaanspawner : Node3D
             );
             parent.AddChild(dot);
         }
+    }
+
+    public void SpawnBatch()
+    {
+        // 1. Controleer of je wel een scene hebt gekozen in de Inspector
+        if (OrgaanScene == null)
+        {
+            GD.Print("FOUT: Je bent vergeten de OrgaanScene te slepen in de Inspector van de Spawner!");
+            return;
+        }
+
+        GD.Print("SPAWNER: Knop is ingedrukt, ik begin nu met spawnen!");
+
+        // 2. Maak het orgaan aan
+        // We casten het naar RigidBody3D omdat je organen waarschijnlijk physics hebben
+        RigidBody3D nieuwOrgaan = OrgaanScene.Instantiate<RigidBody3D>();
+
+        // 3. Voeg het toe aan de scene
+        AddChild(nieuwOrgaan);
+
+        // 4. Zet het op de juiste plek (de plek waar de spawner zelf staat)
+        nieuwOrgaan.GlobalPosition = this.GlobalPosition;
     }
 }

@@ -11,7 +11,7 @@ public partial class HartScript : TextureRect
 	[Export] public AudioStreamPlayer HartslagDood;
 	public override void _Ready()
 	{
-		Hart();
+		//Hart();
 	}
 
 	public void Hart()

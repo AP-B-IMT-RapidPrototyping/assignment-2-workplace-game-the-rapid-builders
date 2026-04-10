@@ -9,18 +9,58 @@ public partial class ProgressBarAftikken : ProgressBar
 	private bool _HartSnel = false;
     private bool _isDood = false;
 	private double _Tijdnu;
+    private bool _isGestart = false;
 
 	public override void _Ready()
 	{
-		MaxValue = MaxTijd;
-		Value = MaxTijd;
-		_Tijdnu = MaxTijd;
-
-        GameOverTekst.Visible = false;
+        ResetTimer();
 	}
+
+    public void StartTimer()
+    {
+        GD.Print("UI: Timer en Hartslag worden nu gestart!");
+        _isGestart = true;
+        SetProcess(true); 
+        
+        mijnHart?.Hart(); 
+    }
+
+    public void ResetTimer()
+    {
+        _isGestart = false;
+        SetProcess(false);
+        
+        _Tijdnu = MaxTijd;
+        MaxValue = MaxTijd;
+        Value = MaxTijd;
+        
+        _HartSnel = false;
+        _isDood = false;
+
+        if (GameOverTekst != null) 
+            GameOverTekst.Visible = false;
+
+        if (mijnHart != null)
+        {
+            mijnHart._speed = 1.0; 
+            mijnHart.Scale = new Vector2(1f, 1f);
+            mijnHart.HartslagGewoon?.Stop();
+            mijnHart.HartslagSnel?.Stop(); 
+        }
+
+        GD.Print("UI: Timer volledig gereset naar beginstand.");
+    }
+
+    public void StopTimer()
+    {
+        _isGestart = false;
+        SetProcess(false); 
+        GD.Print("UI: Gefeliciteerd! Alle organen ingeleverd. Tijd gestopt.");
+    }
 
 	public override void _Process(double delta)
 	{
+        if (!_isGestart) return;
         if (_Tijdnu > 0)
         {
             _Tijdnu -= delta;
@@ -48,12 +88,8 @@ public partial class ProgressBarAftikken : ProgressBar
                 _Tijdnu = 0;
                 Value = 0;
                 mijnHart.StopHart();
-                
-                if (mijnHart != null) 
-                {
-                    GameOverTekst.Visible = true;
-                    GD.Print("Het hart is gestopt.");
-                }
+                GameOverTekst.Visible = true;
+                GD.Print("Het hart is gestopt.");
             }
         }
     }
