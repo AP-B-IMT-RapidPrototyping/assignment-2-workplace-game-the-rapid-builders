@@ -2824,6 +2824,13 @@ transform = Transform3D(0.007, 0, 0, 0, 0.007, 0, 0, 0, 0.007, -9.010052, 1.1437
 [node name="Low Poly - Lab Assets53" parent="tutorial/meubels" unique_id=2065755517 instance=ExtResource("63_cq7iq")]
 transform = Transform3D(0.007, 0, 0, 0, 0.007, 0, 0, 0, 0.007, -15.1464815, 1.1546841, -5.1545)
 
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="tutorial/meubels" unique_id=526590750]
+transform = Transform3D(0.0603199, 0, 0, 0, 0.41104877, 0, 0, 0, 1.935709, 21.851746, 1.8278909, 6.4261994)
+mesh = SubResource("BoxMesh_b2d6g")
+
+[node name="Whitebord5" parent="tutorial/meubels" unique_id=1821640381 instance=ExtResource("25_tjw18")]
+transform = Transform3D(2.6226832e-07, 0, -2, 0, 2, 0, 2, 0, 2.6226832e-07, 16.314949, 1.4112186, 4.818141)
+
 [node name="Lichten" type="Node3D" parent="tutorial" unique_id=718880442]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="tutorial/Lichten" unique_id=1120124660]
@@ -3339,13 +3346,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.458575, -0.6192247, 11.378
 
 [node name="Rock_Medium_22" parent="tutorial/Buiten" unique_id=1126116769 instance=ExtResource("48_1d78h")]
 transform = Transform3D(-0.80983275, 0.02763402, -2.6723325, -0.030370655, 7.190626, 0.2207216, 0.5858743, 0.41094643, -3.682426, -8.327248, -5.7255163, 19.188234)
-
-[node name="Whitebord" parent="tutorial" unique_id=1821640381 instance=ExtResource("25_tjw18")]
-transform = Transform3D(2.6226832e-07, 0, -2, 0, 2, 0, 2, 0, 2.6226832e-07, 16.314949, 1.4112186, 4.818141)
-
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="tutorial" unique_id=526590750]
-transform = Transform3D(0.0603199, 0, 0, 0, 0.41104877, 0, 0, 0, 1.935709, 21.851746, 1.8278909, 6.4261994)
-mesh = SubResource("BoxMesh_b2d6g")
 
 [connection signal="body_entered" from="tutorial/Deuren/SensorDeuren/Area3D" to="tutorial/Deuren/SensorDeuren" method="OnArea3DBodyEntered"]
 [connection signal="body_entered" from="tutorial/Deuren/SensorDeuren2/Area3D" to="tutorial/Deuren/SensorDeuren2" method="OnArea3DBodyEntered"]
